@@ -17,8 +17,8 @@ button { font-family: inherit; }
 .projects-para3{
   font-size: 20px;
   font-weight: 700;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 25px;
+  margin-left: 16px;
 }
 .download-btn{
   background-color: #1976d2;
@@ -29,7 +29,7 @@ button { font-family: inherit; }
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: 10px;
+  margin-left: 16px;
 
 }
 .service{
