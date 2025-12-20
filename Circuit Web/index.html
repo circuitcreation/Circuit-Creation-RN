@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <!-- Basic SEO -->
+    <meta name="description" content="Circuit Creation RN is an electronics learning platform with Arduino projects, ESP32 tutorials, and practical circuit designs for beginners to advanced learners.">
+    <meta name="keywords" content="electronics, circuits, custom circuits, arduino projects, esp32">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Circuit Creation RN | Arduino & Electronics Projects">
+    <meta property="og:description" content="High quality locally-made electronic circuits and projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/logo/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Circuit Creation - Electronic Circuits & Projects">
+    <meta name="twitter:description" content="Custom-made electronic circuits and hardware projects.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/logo/logo.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Circuit Creation RN | Arduino & Electronics Projects</title>
+    <link rel="stylesheet" href="assets/css/circuit.css" type="text/css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        /* Background Animation Styles */
+        body {
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fff !important; 
+        }
+
+        /* Transparency Reset for containers */
+        html, body, .container, .body, .left-section, .right-section, .left, .right {
+            background-color: transparent !important;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .arduino-board {
+            position: absolute;
+            width: 180px; 
+            height: auto;
+            opacity: 1;
+            filter: drop-shadow(6px 8px 15px rgba(0,0,0,0.25));
+        }
+
+        @keyframes boardRolling2D {
+            0% { transform: translate(-250px, 10vh) rotate(0deg); }
+            33% { transform: translate(30vw, 45vh) rotate(120deg); }
+            66% { transform: translate(70vw, 15vh) rotate(240deg); }
+            100% { transform: translate(115vw, 55vh) rotate(360deg); }
+        }
+
+        @keyframes boardRolling2DReverse {
+            0% { transform: translate(110vw, 20vh) rotate(360deg); }
+            50% { transform: translate(45vw, 65vh) rotate(180deg); }
+            100% { transform: translate(-250px, 10vh) rotate(0deg); }
+        }
+
+        .board-1 {
+            animation: boardRolling2D 22s infinite linear;
+        }
+
+        .board-2 {
+            width: 140px;
+            animation: boardRolling2DReverse 30s infinite linear;
+            animation-delay: -7s; 
+        }
+
+        /* Ensure main content stays above the background */
+        .container, .body, .right-section {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation Layer -->
+    <div class="animated-bg">
+        <img src="assets/images/ArduinoUno.png" class="arduino-board board-1" alt="Arduino Board">
+        <img src="assets/images/ard-mega.webp" class="arduino-board board-2" alt="Arduino Board">
+    </div>
+
+    <div class="container">
+        <div class="right">
+                <a class="local" href="index.html">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><button class="home">Home</button></td>
+                        <td><a href="assets/circuit-about.html"><button class="home">About</button></a></td>
+                        <td><a href="assets/circuit-gallery.html"><button class="home" >Gallery</button></a></td>
+                        <td><a href="assets/circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <h1 style="display:none;">
+        Circuit Creation RN – Arduino & Electronics Projects
+    </h1>
+
+    <div class="body">
+        <div class="left-section">
+            <img class="image" src="assets/logo/Logo.jpg" >
+            <br>
+            <p class="para5" id="para6">Our Projects</p>
+            <img class="cat" src="assets/images/Circuit.png">
+            <img class="cat" id="roll" src="assets/images/Circuit3.png">
+        <a href="assets/circuit-gallery.html">
+            <button class="see" id="see">Click for more photos</button>
+        </a>
+        </div>
+    </div>
+    <div class="right-section">
+        <p class="para" id="para11"><br>Circuit Creation RN<br>Official</p>
+        <br>
+        <p class="para5">New Update</p>
+        <iframe class="location"
+            src="https://www.youtube.com/embed/HL9eayLZAt0?si=yTReO5NZKy_Yyc0H" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+        <br>
+        <p class="para3">About Us</p>
+        <p class="para4"> THIS PAGE IS FOR ELECTRONICS AND ARDUINO <br> LOVERS.<br></p>
+        <a href="https://www.instagram.com/circuitcreation_rn/">
+            <button class="face"><img class="img-face " src="assets/images/download.png">Visit Instagram</button>
+        </a>
+        <a href="https://www.youtube.com/@CircuitCreation-RN">
+            <button class="you" id="you"><img class="img-face" id="img-you" src="assets/images/InShot_20251114_191952412.jpg">Visit YouTube</button>
+        </a>
+    </div>
+</body>
+</html>
