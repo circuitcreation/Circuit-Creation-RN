@@ -214,11 +214,88 @@ button:focus, a:focus { outline: 3px solid #cfe3ff; outline-offset: 2px; }
   transition: all 0.3s ease;
 }
 
+
 .project-para2{
   font-size: 30px;
   font-weight: 700;
   text-align: left;
   margin-top: 180px;
+}
+
+.projects-page {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 28px 20px;
+}
+
+.projects-intro h1 {
+  color: #111;
+  margin: 0 0 12px 0;
+  font-size: clamp(20px, 3.6vw, 28px);
+}
+
+.projects-intro p {
+  color: #555;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  align-items: start;
+}
+.project-card {
+  background-color: #ffffff;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.project-card h3 {
+  margin: 0 0 6px 0;
+  color: #222;
+  font-size: 18px;
+}
+
+.project-card p {
+  color: #555;
+  margin: 0;
+  flex: 1 1 auto;
+}
+.project-card a:hover {
+  text-decoration: underline;
+}
+.project-a{
+    text-decoration: none;
+}
+/* Project image inside card */
+.project-card .ard-imgg{ 
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Slightly increase gap on larger screens */
+@media (min-width: 1200px) {
+  .projects-grid { gap: 28px; }
+}
+
+@media (max-width: 640px) {
+  .projects-page { padding: 18px 12px; }
+  .project-card .ard-imgg { height: 140px; }
 }
 @media (max-width: 980px) {
   

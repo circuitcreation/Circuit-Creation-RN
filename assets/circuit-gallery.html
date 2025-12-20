@@ -5,9 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Circuit Creation official</title>
     <link rel="stylesheet" href="css/circuit.css" type="text/css">
-    
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <style>
+        /* Background Animation Styles */
+        body {
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fff !important; 
+        }
+
+        /* Transparency Reset for containers */
+        html, body, .container, .body, .left-section, .right-section, .left, .right {
+            background-color: transparent !important;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .arduino-board {
+            position: absolute;
+            width: 180px; 
+            height: auto;
+            opacity: 1;
+            filter: drop-shadow(6px 8px 15px rgba(0,0,0,0.25));
+        }
+
+        @keyframes boardRolling2D {
+            0% { transform: translate(-250px, 10vh) rotate(0deg); }
+            33% { transform: translate(30vw, 45vh) rotate(120deg); }
+            66% { transform: translate(70vw, 15vh) rotate(240deg); }
+            100% { transform: translate(115vw, 55vh) rotate(360deg); }
+        }
+
+        @keyframes boardRolling2DReverse {
+            0% { transform: translate(110vw, 20vh) rotate(360deg); }
+            50% { transform: translate(45vw, 65vh) rotate(180deg); }
+            100% { transform: translate(-250px, 10vh) rotate(0deg); }
+        }
+
+        .board-1 {
+            animation: boardRolling2D 22s infinite linear;
+        }
+
+        .board-2 {
+            width: 140px;
+            animation: boardRolling2DReverse 30s infinite linear;
+            animation-delay: -7s; 
+        }
+
+        /* Ensure main content stays above the background */
+        .container, .body, .right-section {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
+    <div class="animated-bg">
+        <img src="images/ArduinoUno.png" class="arduino-board board-1" alt="Arduino Board">
+        <img src="images/ard-mega.webp" class="arduino-board board-2" alt="Arduino Board">
+    </div>
     <div class="container">  
 
         <div class="right">
@@ -28,15 +95,15 @@
     <div class="gallery-body">
 
             <img class="gallery-img2" id="img22" src="logo/Logo.jpg">
-            <img class="gallery-img1" id="img22" src="imgaes/Circuit.png">
-            <img class="gallery-img1" id="img11" src="imgaes/Circuit3.png" >
-            <img class="gallery-img1" id="img11" src="imgaes/Circuit4.png">
-            <img class="gallery-img1" id="img12" src="imgaes/Circuit2.png">
-            <img src="imgaes/circuit5.webp" class="gallery-img1" id="img12">
-            <img src="imgaes/circuit6.webp" class="gallery-img1" id="img12">
-            <img src="imgaes/circuit7.webp" class="gallery-img1" id="img12">
-            <img src="imgaes/circuit8.webp" class="gallery-img1" id="img12">
-            <img src="imgaes/circuit9.webp" class="gallery-img1" id="img12">
+            <img class="gallery-img1" id="img22" src="images/Circuit.png">
+            <img class="gallery-img1" id="img11" src="images/Circuit3.png" >
+            <img class="gallery-img1" id="img11" src="images/Circuit4.png">
+            <img class="gallery-img1" id="img12" src="images/Circuit2.png">
+            <img src="images/circuit5.webp" class="gallery-img1" id="img12">
+            <img src="images/circuit6.webp" class="gallery-img1" id="img12">
+            <img src="images/circuit7.webp" class="gallery-img1" id="img12">
+            <img src="images/circuit8.webp" class="gallery-img1" id="img12">
+            <img src="images/" class="gallery-img1" id="img12">
 
 
     </div>
