@@ -1,0 +1,228 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>LED Pattern Project using Arduino | Beginner Level Project</title>
+
+    <meta name="description" content="Create LED patterns using Arduino. Learn how multiple LEDs work together with simple code and clear explanations for beginners.">
+
+    <meta name="robots" content="index, follow">
+    <meta charset="UTF-8">
+
+    <link rel="canonical" href="https://circuitcreation.github.io/Arduino-Hub/led-blink-pattern.html">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Pattern project using Arduino</title>
+    <link rel="stylesheet" href="css/circuit.css" text="text/css"> 
+</head>
+<body>
+    <div class="container">
+        <div class="right">
+                <a class="local" href="index.html">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="../index.html"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                        <td><a href="circuit-gallery.html"><button class="home" >Gallery</button></a></td>
+                        <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <main class="project-detail">
+        <!-- Section 1 -->
+        <section class="project-header">
+            <h1>LED Pattern using Arduino</h1>
+            <p>
+                In this project, we will create different LED blinking patterns
+                 using Arduino.This project helps beginners understand how to 
+                 control multiple LEDs using code.
+            </p>
+
+            <span class="difficulty --beginner">Beginner</span>
+        </section>
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+
+            <ul class="components-list">
+                <li>Arduino Uno (or compatible board)</li>
+                <li>4 or 5 LED</li>
+                <li>4 or 5 × 220Ω resistors</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+                <li>USB Cable</li>
+            </ul>
+        </section>
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                Follow the steps below to connect the LED with the Arduino board.
+                Make sure the Arduino is not connected to USB while wiring.
+            </p>
+
+            <ol>
+                <li>
+                    Connect the long leg (anode) of each
+                    LED to <strong>Arduino pins (8, 9, 10, 11).</strong>
+                </li>
+                <li>
+                  Connect the short leg (cathode) of each
+                   LED to <strong>GND</strong> through a resistor.
+                </li>
+                <li>
+                  Place all components on a breadboard.
+                </li>
+                <li>
+                  Connect Arduino GND to breadboard ground rail.
+                </li>
+            </ol>
+            <img loading="lazy" src="circuit-images/led_pattern.PNG" class="circuit-image" alt="Arduino LED blinking circuit connection">
+            <p>
+                here is the circuit diagram for reference.
+            </p>
+        </section>
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <pre class="code-block">
+                <code>
+                int leds[] = {8, 9, 10, 11};
+
+                void setup() {
+                  for (int i = 0; i < 4; i++) {
+                    pinMode(leds[i], OUTPUT);
+                  }
+                }
+
+                void loop() {
+                  for (int i = 0; i < 4; i++) {
+                    digitalWrite(leds[i], HIGH);
+                    delay(200);
+                    digitalWrite(leds[i], LOW);
+                  }
+                }
+                </code>
+            </pre>
+        </section>
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+
+            <ol>
+                <li>Connect the Arduino board to your computer using the USB cable.</li>
+                <li>Open the Arduino IDE and paste the code into a new sketch.</li>
+                <li>Select the correct board and port from the Tools menu.</li>
+                <li>Click the Upload button.</li>
+            </ol>
+
+        </section>
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>How It Works</h2>
+
+            <p>
+                When the Arduino starts, it prepares all the connected LED pins to work as outputs.
+                This allows the Arduino to control when each LED turns ON or OFF.
+            </p>
+
+            <p>
+                The Arduino continuously runs the code inside the loop function.
+                It turns ON the first LED, waits for a short time, and then turns it OFF.
+                After that, the next LED is turned ON and the same process repeats.
+            </p>
+
+            <p>
+                Because this process happens in sequence and very quickly,
+                the LEDs appear to light up one after another, forming a pattern.
+                </p>
+
+            <p>
+                The speed of the LED pattern depends on the delay value used in the program.
+                Changing the delay time will make the LEDs blink faster or slower.
+            </p>
+        </section>
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+
+            <p>
+                In this project, we use multiple LEDs to create a simple blinking pattern.
+                Each LED is connected to a different digital pin on the Arduino.
+            </p>
+
+            <p>
+                We store all the LED pin numbers inside an array. This allows us to control
+                multiple LEDs easily using a loop instead of writing repeated code.
+            </p>
+
+            <p>
+                Inside the <code>setup()</code> function, we set all the LED pins as OUTPUT.
+                This tells the Arduino that these pins will send signals to the LEDs.
+            </p>
+
+            <p>
+                In the <code>loop()</code> function, the Arduino turns ON one LED at a time.
+                After a short delay, the LED is turned OFF and the next LED is turned ON.
+                This creates a running light or LED pattern effect.
+                </p>
+
+            <p>
+                The <code>delay()</code> function controls the speed of the pattern.
+                By changing the delay value, you can make the LEDs blink faster or slower.
+            </p>
+        </section>
+        <!-- Section 8 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+
+            <ul class="mistakes-list">
+                <li>
+                    <strong>LED does not glow:</strong>
+                    Check the LED direction. The longer leg should be connected to the Arduino pin.
+                </li>
+
+                <li>
+                  <strong>No blinking:</strong>
+                  Make sure the correct pin number is used in the code.
+                  If you are using another pin, update <code>ledPin</code>.
+                </li>
+
+                <li>
+                  <strong>Wrong resistor value:</strong>
+                  Use a 220Ω or 330Ω resistor. Very high or very low values may cause issues.
+                </li>
+
+                <li>
+                  <strong>Upload error:</strong>
+                  Select the correct board and COM port from the Arduino IDE Tools menu.
+                </li>
+
+                <li>
+                  <strong>LED very dim:</strong>
+                  Check loose connections on the breadboard and jumper wires.
+                </li>
+            </ul>
+        </section>
+        <!-- Section 9 -->
+         <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How to control multiple LEDs using Arduino.</li>
+                <li>Using arrays to manage multiple output pins efficiently.</li>
+                <li>How loops help reduce repeated code.</li>
+                <li>Creating simple LED blinking patterns.</li>
+                <li>Controlling timing and speed using the <code>delay()</code> function.</li>
+            </ul>
+        </section>
+        <!-- Section 10 -->
+         <a href="circuit-projects.html" class="aa"><button class="button-exp">Explore More Projects</button></a>
+    </main>
+</body>
+</html>

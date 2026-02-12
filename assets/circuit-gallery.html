@@ -72,8 +72,8 @@
 </head>
 <body>
     <div class="animated-bg">
-        <img src="images/ArduinoUno.png" class="arduino-board board-1" alt="Arduino Board">
-        <img src="images/ard-mega.webp" class="arduino-board board-2" alt="Arduino Board">
+        <img loading="lazy" src="images/ArduinoUno.png" class="arduino-board board-1" alt="Arduino Board">
+        <img loading="lazy" src="images/ard-mega.webp" class="arduino-board board-2" alt="Arduino Board">
     </div>
     <div class="container">  
 
@@ -94,18 +94,62 @@
     <hr>
     <div class="gallery-body">
 
-            <img class="gallery-img2" id="img22" src="logo/Logo.jpg">
-            <img class="gallery-img1" id="img22" src="images/Circuit.png">
-            <img class="gallery-img1" id="img11" src="images/Circuit3.png" >
-            <img class="gallery-img1" id="img11" src="images/Circuit4.png">
-            <img class="gallery-img1" id="img12" src="images/Circuit2.png">
-            <img src="images/circuit5.webp" class="gallery-img1" id="img12">
-            <img src="images/circuit6.webp" class="gallery-img1" id="img12">
-            <img src="images/circuit7.webp" class="gallery-img1" id="img12">
-            <img src="images/circuit8.webp" class="gallery-img1" id="img12">
-            <img src="images/" class="gallery-img1" id="img12">
+            <img loading="lazy" class="gallery-img2" id="img22" src="logo/Logo.jpg">
+            <img loading="lazy" class="gallery-img1" id="img22" src="images/Circuit.png">
+            <img loading="lazy" class="gallery-img1" id="img11" src="images/Circuit3.png" >
+            <img loading="lazy" class="gallery-img1" id="img11" src="images/Circuit4.png">
+            <img loading="lazy" class="gallery-img1" id="img12" src="images/Circuit2.png">
+            <img loading="lazy" src="images/circuit5.webp" class="gallery-img1" id="img12">
+            <img loading="lazy" src="images/circuit6.webp" class="gallery-img1" id="img12">
+            <img loading="lazy" src="images/circuit7.webp" class="gallery-img1" id="img12">
+            <img loading="lazy" src="images/circuit8.webp" class="gallery-img1" id="img12">
+            <img loading="lazy" src="images/circuit9.webp" class="gallery-img1" id="img12">
+        </div>
 
+        <!-- Lightbox overlay for viewing single image -->
+        <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+                <button id="lightboxClose" class="lightbox-close" aria-label="Close">✕</button>
+                <div class="lightbox-content">
+                        <img id="lightboxImage" src="" alt="" />
+                </div>
+        </div>
 
-    </div>
+        <script>
+        (function(){
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const closeBtn = document.getElementById('lightboxClose');
+
+            function openLightbox(src, alt){
+                lightboxImage.src = src;
+                lightboxImage.alt = alt || '';
+                lightbox.classList.add('open');
+                lightbox.setAttribute('aria-hidden','false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox(){
+                lightbox.classList.remove('open');
+                lightbox.setAttribute('aria-hidden','true');
+                lightboxImage.src = '';
+                document.body.style.overflow = '';
+            }
+
+            // attach listeners to all images inside gallery-body
+            const imgs = document.querySelectorAll('.gallery-body img');
+            imgs.forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', () => openLightbox(img.src, img.alt));
+            });
+
+            // close handlers
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+        })();
+        </script>
+
 </body>
 </html>

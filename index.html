@@ -2,7 +2,7 @@
 <html lang="en">
 <head> 
     <!-- Basic SEO -->
-    <meta name="description" content="Circuit Creation RN is an electronics learning platform with Arduino projects, ESP32 tutorials, and practical circuit designs for beginners to advanced learners.">
+    <meta name="description" content="This is the Official Website of Circuit Creation. Circuit Creation RN is an electronics learning platform with Arduino projects, ESP32 tutorials, and practical circuit designs for beginners to advanced learners.">
     <meta name="keywords" content="electronics, circuits, custom circuits, arduino projects, esp32">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
@@ -60,27 +60,38 @@
             filter: drop-shadow(6px 8px 15px rgba(0,0,0,0.25));
         }
 
+        /* Forward path animation */
         @keyframes boardRolling2D {
-            0% { transform: translate(-250px, 10vh) rotate(0deg); }
-            33% { transform: translate(30vw, 45vh) rotate(120deg); }
+            0% { transform: translate(-300px, 10vh) rotate(0deg); }
+            33% { transform: translate(30vw, 55vh) rotate(120deg); }
             66% { transform: translate(70vw, 15vh) rotate(240deg); }
-            100% { transform: translate(115vw, 55vh) rotate(360deg); }
+            100% { transform: translate(120vw, 60vh) rotate(360deg); }
         }
 
+        /* Reverse path animation */
         @keyframes boardRolling2DReverse {
-            0% { transform: translate(110vw, 20vh) rotate(360deg); }
-            50% { transform: translate(45vw, 65vh) rotate(180deg); }
-            100% { transform: translate(-250px, 10vh) rotate(0deg); }
+            0% { transform: translate(120vw, 25vh) rotate(360deg); }
+            50% { transform: translate(45vw, 70vh) rotate(180deg); }
+            100% { transform: translate(-300px, 5vh) rotate(0deg); }
         }
 
+        /* Board 1: Starts at the beginning */
         .board-1 {
-            animation: boardRolling2D 22s infinite linear;
+            animation: boardRolling2D 25s infinite linear;
         }
 
+        /* Board 2: Heavy delay to create distance */
         .board-2 {
             width: 140px;
-            animation: boardRolling2DReverse 30s infinite linear;
-            animation-delay: -7s; 
+            animation: boardRolling2DReverse 35s infinite linear;
+            animation-delay: -12s; 
+        }
+
+        /* Board 3: New board moving forward with a delay */
+        .board-3 {
+            width: 160px;
+            animation: boardRolling2D 28s infinite linear;
+            animation-delay: -15s; 
         }
 
         /* Ensure main content stays above the background */
@@ -93,9 +104,10 @@
 <body>
     <!-- Background Animation Layer -->
     <div class="animated-bg">
-        <img src="assets/images/ArduinoUno.png" class="arduino-board board-1" alt="Arduino Board">
-        <img src="assets/images/ard-mega.webp" class="arduino-board board-2" alt="Arduino Board">
+        <img loading="lazy" src="assets/images/ArduinoUno.png" class="arduino-board board-1" alt="Arduino Board">
+        <img loading="lazy" src="assets/images/ard-mega.webp" class="arduino-board board-2" alt="Arduino Board">
     </div>
+
 
     <div class="container">
         <div class="right">
@@ -119,11 +131,11 @@
 
     <div class="body">
         <div class="left-section">
-            <img class="image" src="assets/logo/Logo.jpg" >
+            <img loading="lazy" class="image" src="assets/logo/Logo.jpg" >
             <br>
             <p class="para5" id="para6">Our Projects</p>
-            <img class="cat" src="assets/images/Circuit.png">
-            <img class="cat" id="roll" src="assets/images/Circuit3.png">
+            <img loading="lazy" class="cat" src="assets/images/Circuit.png">
+            <img loading="lazy" class="cat" id="roll" src="assets/images/Circuit3.png">
         <a href="assets/circuit-gallery.html">
             <button class="see" id="see">Click for more photos</button>
         </a>
@@ -140,10 +152,10 @@
         <p class="para3">About Us</p>
         <p class="para4"> THIS PAGE IS FOR ELECTRONICS AND ARDUINO <br> LOVERS.<br></p>
         <a href="https://www.instagram.com/circuitcreation_rn/">
-            <button class="face"><img class="img-face " src="assets/images/download.png">Visit Instagram</button>
+            <button class="face"><img loading="lazy" class="img-face " src="assets/images/download.png">Visit Instagram</button>
         </a>
         <a href="https://www.youtube.com/@CircuitCreation-RN">
-            <button class="you" id="you"><img class="img-face" id="img-you" src="assets/images/InShot_20251114_191952412.jpg">Visit YouTube</button>
+            <button class="you" id="you"><img loading="lazy" class="img-face" id="img-you" src="assets/images/InShot_20251114_191952412.jpg">Visit YouTube</button>
         </a>
     </div>
 </body>
