@@ -14,6 +14,31 @@ button { font-family: inherit; }
   justify-content: space-between;
   gap: 12px;
 }
+
+/* Floating navbar styles */
+.floating-navbar {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1180px;
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  z-index: 1200;
+  transition: padding 180ms ease, transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+.floating-navbar.scrolled {
+  padding: 8px 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+  background: rgba(255,255,255,0.9);
+}
+
+/* Ensure content below header is not hidden */
+body.has-floating-navbar { padding-top: 72px; }
 .projects-para3{
   font-size: 20px;
   font-weight: 700;
@@ -512,6 +537,14 @@ button:focus, a:focus { outline: 3px solid #cfe3ff; outline-offset: 2px; }
 }
 .button-exp:hover {
     box-shadow: 0 0 10px #00979D;
+}
+
+.coming-soon {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #e0f7f7;
+    border-radius: 10px;
 }
 /* Slightly increase gap on larger screens */
 @media (min-width: 1200px) {
