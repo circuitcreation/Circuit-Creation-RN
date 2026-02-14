@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic SEO -->
+    <meta name="description" content="Arduino & Electronics Projects - Learn with Circuit Creation. Step-by-step tutorials for beginners to advanced. LED projects, servo control, button circuits, and more.">
+    <meta name="keywords" content="arduino projects, electronics tutorials, led projects, servo motor, button control, circuit projects">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Arduino & Electronics Projects | Circuit Creation">
+    <meta property="og:description" content="Explore our collection of Arduino and electronics projects with detailed tutorials and code.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-projects.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arduino & Electronics Projects - Circuit Creation">
+    <meta name="twitter:description" content="Learn Arduino and electronics with our comprehensive project tutorials.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-projects.html">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Circuit Creation</title>
+    <title>Arduino & Electronics Projects - Circuit Creation</title>
     <link rel="stylesheet" href="css/circuit.css" type="text/css">
     <link rel="icon" type="image/png" href="../favicon.png">
     <style>
@@ -137,7 +159,7 @@
                 </div>
             </a>
             <!-- Project Card 4 -->
-             <a href="" class="project-a">
+             <a href="servo-project.html" class="project-a">
                 <div class="project-card">
                     <h3>Servo Motor Control</h3>
                     <img loading="lazy" class="ard-imgg" src="images/servo.jpg" alt="">
@@ -239,3 +261,25 @@
             </section>
     </section>
     </div>
+    
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

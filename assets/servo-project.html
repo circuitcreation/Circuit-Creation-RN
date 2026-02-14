@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+
+    <!-- Basic SEO -->
+    <meta name="description" content="Learn how to control a servo motor using Arduino. Step-by-step guide with components list, circuit diagram, code explanation, and working principle. Perfect for robotics.">
+    <meta name="keywords" content="servo motor, arduino servo, motor control, pwm, robotics, motion control">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Servo Motor Control Project using Arduino | Beginner Tutorial">
+    <meta property="og:description" content="Control a servo motor with Arduino. Complete tutorial for robotics and automation projects.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/servo-project.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/servo.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Servo Motor Control Project using Arduino">
+    <meta name="twitter:description" content="Learn servo motor control with Arduino - great for robotics and automation projects.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/servo.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/servo-project.html">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servo Motor Control Project using Arduino | Beginner Tutorial</title>
+    <link rel="stylesheet" href="css/circuit.css" text="text/css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="right">
+                <a class="local" href="../index.html">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="../index.html"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                        <td><a href="circuit-gallery.html"><button class="home" >Gallery</button></a></td>
+                        <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <main class="project-detail">
+        <!-- Section 1 -->
+        <section class="project-header">
+            <h1>Servo Motor Control Project using Arduino</h1>
+            <p>
+                The servo motor control project is an essential Arduino project that teaches beginners
+                how to control servo motors. It helps you understand PWM signals, motor control,
+                and how to program precise angular movement.
+            </p>
+
+            <span class="difficulty --beginner">Beginner</span>
+        </section>
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+
+            <ul class="components-list">
+                <li>Arduino Uno (or compatible board)</li>
+                <li>Servo Motor (SG90 or similar)</li>
+                <li>Jumper Wires</li>
+                <li>Breadboard</li>
+                <li>USB Cable</li>
+                <li>External Power Supply (optional, for larger servos)</li>
+            </ul>
+        </section>
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                Follow the steps below to connect the servo motor with the Arduino board.
+                Make sure the Arduino is not connected to USB while wiring.
+            </p>
+
+            <ol>
+                <li>
+                    Connect the servo motor's RED wire to the 5V pin on Arduino.
+                </li>
+                <li>
+                  Connect the servo motor's BROWN/BLACK wire to the GND pin on Arduino.
+                </li>
+                <li>
+                  Connect the servo motor's YELLOW/WHITE wire to digital pin 9 on Arduino.
+                </li>
+                <li>
+                  Double-check all connections before powering up the Arduino.
+                </li>
+            </ol>
+            <img loading="lazy" src="circuit-images/servo_connection.PNG" class="circuit-image" alt="Arduino Servo Motor circuit connection">
+            <p>
+                Here is the circuit diagram for reference. The servo signal pin is connected to PWM-enabled pin 9.
+            </p>
+        </section>
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <pre class="code-block">
+                <code>
+                // Servo Motor Control Project
+                // Circuit Creation
+
+                #include &lt;Servo.h&gt;
+
+                Servo myservo;
+                int pos = 0;
+
+                void setup() {
+                  myservo.attach(9);
+                }
+
+                void loop() {
+                  // Sweep from 0 to 180 degrees
+                  for (pos = 0; pos &lt;= 180; pos += 1) {
+                    myservo.write(pos);
+                    delay(15);
+                  }
+                  
+                  // Sweep back from 180 to 0 degrees
+                  for (pos = 180; pos &gt;= 0; pos -= 1) {
+                    myservo.write(pos);
+                    delay(15);
+                  }
+                }
+                </code>
+            </pre>
+        </section>
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+
+            <ol>
+                <li>Connect the Arduino board to your computer using the USB cable.</li>
+                <li>Open the Arduino IDE and paste the code into a new sketch.</li>
+                <li>Select the correct board and port from the Tools menu.</li>
+                <li>Click the Upload button.</li>
+                <li>The servo motor should start sweeping smoothly from 0 to 180 degrees.</li>
+            </ol>
+
+        </section>
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+
+            <p>
+                Let us understand how the Arduino code works step by step.
+                This will help you modify the project later and build more advanced projects.
+            </p>
+
+            <h3>Including the Servo Library</h3>
+            <p>
+                <code>#include &lt;Servo.h&gt;</code> includes the Servo library which provides functions
+                to control servo motors using PWM signals.
+            </p>
+
+            <h3>Creating a Servo Object</h3>
+            <p>
+                <code>Servo myservo;</code> creates a Servo object named myservo that we will use
+                to control the servo motor.
+            </p>
+
+            <h3>setup() Function</h3>
+            <p>
+                The <code>myservo.attach(9)</code> function attaches the servo to pin 9.
+                Without this, the servo cannot be controlled.
+            </p>
+
+            <h3>loop() Function</h3>
+            <p>
+                The loop contains two for loops that sweep the servo from 0 to 180 degrees
+                and back from 180 to 0 degrees, creating a smooth sweeping motion.
+            </p>
+
+            <h3>myservo.write() Function</h3>
+            <p>
+                The <code>myservo.write(pos)</code> function sets the servo to a specific angle.
+                The value ranges from 0 to 180 degrees.
+            </p>
+
+            <h3>delay() Function</h3>
+            <p>
+                The <code>delay(15)</code> pauses for 15 milliseconds between each degree change,
+                creating a smooth sweeping motion.
+            </p>
+        </section>
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+
+            <ul class="mistakes-list">
+                <li>
+                    <strong>Servo does not move:</strong>
+                    Check that the servo library is correctly included and the pin number matches your setup.
+                </li>
+
+                <li>
+                  <strong>Servo jitters or vibrates:</strong>
+                  Make sure your power supply is stable. Incorrect connections can cause power fluctuations.
+                </li>
+
+                <li>
+                  <strong>No power to servo:</strong>
+                  Verify the RED (power) and BLACK (ground) wires are connected to 5V and GND respectively.
+                </li>
+
+                <li>
+                  <strong>Servo moves erratically:</strong>
+                  Check if pin 9 is a PWM pin. Use PWM-enabled pins only (3, 5, 6, 9, 10, 11).
+                </li>
+
+                <li>
+                  <strong>Upload error:</strong>
+                  Make sure you have installed the Servo library. It comes with Arduino IDE by default.
+                </li>
+            </ul>
+        </section>
+        <!-- Section 8 -->
+         <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How to control a servo motor using Arduino PWM signals.</li>
+                <li>Understanding the Servo library and its functions.</li>
+                <li>Using <code>myservo.write()</code> to set servo angles.</li>
+                <li>Creating smooth motor movements with delay commands.</li>
+                <li>Building circuits with actuators and motors.</li>
+            </ul>
+        </section>
+        <!-- Section 9 -->
+         <a href="circuit-projects.html" class="aa"><button class="button-exp">Explore More Projects</button></a>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

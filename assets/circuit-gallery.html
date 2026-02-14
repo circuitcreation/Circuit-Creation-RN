@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic SEO -->
+    <meta name="description" content="Circuit Creation Gallery - View our electronic circuits, Arduino projects, and circuit designs. Browse high-quality project images and inspiring electronics work.">
+    <meta name="keywords" content="circuit gallery, arduino projects, electronics circuits, custom circuits, project images">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Circuit Creation Gallery | Arduino & Electronics Projects">
+    <meta property="og:description" content="Explore our gallery of Arduino projects, electronic circuits, and custom circuit designs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-gallery.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Circuit Creation Gallery - Arduino Projects">
+    <meta name="twitter:description" content="Browse our collection of Arduino projects and electronic circuit designs in the Circuit Creation Gallery.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-gallery.html">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Circuit Creation official</title>
+    <title>Circuit Creation Gallery | Arduino & Electronics Projects</title>
     <link rel="stylesheet" href="css/circuit.css" type="text/css">
     <link rel="icon" type="image/png" href="../favicon.png">
     <style>
@@ -114,41 +136,24 @@
                 </div>
         </div>
 
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+        
         <script>
-        (function(){
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightboxImage');
-            const closeBtn = document.getElementById('lightboxClose');
-
-            function openLightbox(src, alt){
-                lightboxImage.src = src;
-                lightboxImage.alt = alt || '';
-                lightbox.classList.add('open');
-                lightbox.setAttribute('aria-hidden','false');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeLightbox(){
-                lightbox.classList.remove('open');
-                lightbox.setAttribute('aria-hidden','true');
-                lightboxImage.src = '';
-                document.body.style.overflow = '';
-            }
-
-            // attach listeners to all images inside gallery-body
-            const imgs = document.querySelectorAll('.gallery-body img');
-            imgs.forEach(img => {
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', () => openLightbox(img.src, img.alt));
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const container = document.querySelector('.container');
+                if (window.scrollY > 10) {
+                    container.classList.add('scrolled');
+                } else {
+                    container.classList.remove('scrolled');
+                }
             });
-
-            // close handlers
-            closeBtn.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) closeLightbox();
-            });
-            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-        })();
         </script>
 
 </body>

@@ -3,17 +3,65 @@
 
   <url>
     <loc>https://circuitcreation.github.io/Circuit-Creation-RN/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
 
   <url>
     <loc>https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-about.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-gallery.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-projects.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://circuitcreation.github.io/Circuit-Creation-RN/assets/led-blink.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://circuitcreation.github.io/Circuit-Creation-RN/assets/led-blink-pattern.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://circuitcreation.github.io/Circuit-Creation-RN/assets/button-controlled-led.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://circuitcreation.github.io/Circuit-Creation-RN/assets/servo-project.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://circuitcreation.github.io/Circuit-Creation-RN/assets/project-pages/led-blink.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
   </url>
 
 </urlset>
