@@ -824,7 +824,7 @@ footer .footer-social {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-top: 10px;
+  margin-top: 05px;
 }
 
 footer .footer-social a {
@@ -880,3 +880,18 @@ footer .footer-bottom p {
   }
 }
 
+/* About page: force single-column centered layout (override site grid) */
+  .about-body {
+    display: block !important;
+    grid-template-columns: none !important;
+    max-width: 820px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 24px 20px;
+  }
+  .about-body .about-para, .about-body .about-para2, .about-body #about-para4 {
+    justify-self: center;
+    width: 100%;
+    max-width: 720px;
+    margin: 8px auto;
+  }
