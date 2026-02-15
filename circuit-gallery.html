@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic SEO -->
+    <meta name="description" content="Circuit Creation Gallery - View our electronic circuits, Arduino projects, and circuit designs. Browse high-quality project images and inspiring electronics work.">
+    <meta name="keywords" content="circuit gallery, arduino projects, electronics circuits, custom circuits, project images">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Circuit Creation Gallery | Arduino & Electronics Projects">
+    <meta property="og:description" content="Explore our gallery of Arduino projects, electronic circuits, and custom circuit designs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-gallery.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Circuit Creation Gallery - Arduino Projects">
+    <meta name="twitter:description" content="Browse our collection of Arduino projects and electronic circuit designs in the Circuit Creation Gallery.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-gallery.html">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Circuit Creation Gallery | Arduino & Electronics Projects</title>
+    <link rel="stylesheet" href="css/circuit.css" type="text/css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <style>
+        /* Background Animation Styles */
+        body {
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fff !important; 
+        }
+
+        /* Transparency Reset for containers */
+        html, body, .container, .body, .left-section, .right-section, .left, .right {
+            background-color: transparent !important;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .arduino-board {
+            position: absolute;
+            width: 180px; 
+            height: auto;
+            opacity: 1;
+            filter: drop-shadow(6px 8px 15px rgba(0,0,0,0.25));
+        }
+
+        @keyframes boardRolling2D {
+            0% { transform: translate(-250px, 10vh) rotate(0deg); }
+            33% { transform: translate(30vw, 45vh) rotate(120deg); }
+            66% { transform: translate(70vw, 15vh) rotate(240deg); }
+            100% { transform: translate(115vw, 55vh) rotate(360deg); }
+        }
+
+        @keyframes boardRolling2DReverse {
+            0% { transform: translate(110vw, 20vh) rotate(360deg); }
+            50% { transform: translate(45vw, 65vh) rotate(180deg); }
+            100% { transform: translate(-250px, 10vh) rotate(0deg); }
+        }
+
+        .board-1 {
+            animation: boardRolling2D 22s infinite linear;
+        }
+
+        .board-2 {
+            width: 140px;
+            animation: boardRolling2DReverse 30s infinite linear;
+            animation-delay: -7s; 
+        }
+
+        /* Ensure main content stays above the background */
+        .container, .body, .right-section {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg">
+        <img loading="lazy" src="images/ArduinoUno.png" class="arduino-board board-1" alt="Arduino Board">
+        <img loading="lazy" src="images/ard-mega.webp" class="arduino-board board-2" alt="Arduino Board">
+    </div>
+    <div class="container">  
+
+        <div class="right">
+                <a class="local" href="../index.html">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="../index.html"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="about">About</button></a></td>
+                        <td><button class="gallery" >Gallery</button></td>
+                        <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <div class="gallery-body">
+
+            <img loading="lazy" class="gallery-img2" id="img22" src="logo/Logo.png">
+            <img loading="lazy" class="gallery-img1" id="img22" src="images/cSEN-IMG.png">
+            <img loading="lazy" class="gallery-img1" id="img11" src="images/Circuit3.png" >
+            <img loading="lazy" class="gallery-img1" id="img11" src="images/Circuit4.png">
+            <img loading="lazy" class="gallery-img1" id="img12" src="images/Circuit2.png">
+            <img loading="lazy" src="images/circuit5.webp" class="gallery-img1" id="img12">
+            <img loading="lazy" src="images/circuit6.webp" class="gallery-img1" id="img12">
+            <img loading="lazy" src="images/circuit7.webp" class="gallery-img1" id="img12">
+            <img loading="lazy" src="images/circuit8.webp" class="gallery-img1" id="img12">
+            <img loading="lazy" src="images/circuit9.webp" class="gallery-img1" id="img12">
+        </div>
+
+        <!-- Lightbox overlay for viewing single image -->
+        <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+                <button id="lightboxClose" class="lightbox-close" aria-label="Close">✕</button>
+                <div class="lightbox-content">
+                        <img id="lightboxImage" src="" alt="" />
+                </div>
+        </div>
+
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+        
+        <script>
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const container = document.querySelector('.container');
+                if (window.scrollY > 10) {
+                    container.classList.add('scrolled');
+                } else {
+                    container.classList.remove('scrolled');
+                }
+            });
+
+            // Lightbox: open clicked image in overlay, close on click/outside/Escape
+            (function() {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImage = document.getElementById('lightboxImage');
+                const lightboxClose = document.getElementById('lightboxClose');
+                const galleryImages = document.querySelectorAll('.gallery-body img');
+
+                function openLightbox(src, alt) {
+                    lightboxImage.src = src;
+                    lightboxImage.alt = alt || '';
+                    lightbox.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeLightbox() {
+                    lightbox.setAttribute('aria-hidden', 'true');
+                    lightboxImage.src = '';
+                    lightboxImage.alt = '';
+                    document.body.style.overflow = '';
+                }
+
+                galleryImages.forEach(img => {
+                    img.style.cursor = 'pointer';
+                    img.addEventListener('click', (e) => {
+                        openLightbox(e.currentTarget.src, e.currentTarget.alt);
+                    });
+                });
+
+                lightboxClose.addEventListener('click', closeLightbox);
+
+                // Close when clicking outside the image
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox || e.target === lightboxClose) {
+                        closeLightbox();
+                    }
+                });
+
+                // Close on Escape
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') {
+                        closeLightbox();
+                    }
+                });
+            })();
+        </script>
+
+    <style>
+        /* Minimal lightbox styles to ensure overlay works even if main CSS lacks them */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .lightbox-overlay[aria-hidden="false"] {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content img {
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+            border-radius: 6px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: transparent;
+            color: #fff;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .gallery-body img { cursor: pointer; }
+    </style>
+
+</body>
+</html>
