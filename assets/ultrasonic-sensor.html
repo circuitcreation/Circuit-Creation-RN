@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+
+    <!-- Basic SEO -->
+    <meta name="description" content="Learn how to measure distance using an ultrasonic sensor and Arduino. Step-by-step guide with components list, circuit diagram, code explanation, and working principle. Perfect for obstacle detection.">
+    <meta name="keywords" content="ultrasonic sensor, distance measurement, arduino sensor, obstacle detection, hc-sr04, robotics">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Ultrasonic Distance Sensor Project using Arduino | Intermediate Tutorial">
+    <meta property="og:description" content="Measure distance with an ultrasonic sensor using Arduino. Complete guide for obstacle detection and robotics projects.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/ultrasonic-sensor.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/ultrasonic-sensor_.avif">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ultrasonic Distance Sensor Project using Arduino">
+    <meta name="twitter:description" content="Learn ultrasonic sensor with Arduino - great for obstacle detection and robotics projects.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/ultrasonic-sensor_.avif">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/ultrasonic-sensor.html">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultrasonic Distance Sensor Project using Arduino | Intermediate Tutorial</title>
+    <link rel="stylesheet" href="css/circuit.css" text="text/css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="right">
+                <a class="local" href="../index.html">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="../index.html"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                        <td><a href="circuit-gallery.html"><button class="home" >Gallery</button></a></td>
+                        <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <main class="project-detail">
+        <!-- Section 1 -->
+        <section class="project-header">
+            <h1>Ultrasonic Distance Sensor Project using Arduino</h1>
+            <p>
+                The ultrasonic distance sensor project teaches you how to measure distances using
+                ultrasonic sound waves. This is an essential skill for robotics, obstacle avoidance,
+                and proximity-based automation systems.
+            </p>
+
+            <span class="difficulty --intermediate">Intermediate</span>
+        </section>
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+
+            <ul class="components-list">
+                <li>Arduino Uno (or compatible board)</li>
+                <li>HC-SR04 Ultrasonic Sensor</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+                <li>USB Cable</li>
+                <li>Optional: LED for visual feedback</li>
+            </ul>
+        </section>
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                Follow the steps below to connect the ultrasonic sensor with the Arduino board.
+                The HC-SR04 has 4 pins: VCC, GND, TRIG, and ECHO.
+            </p>
+
+            <ol>
+                <li>
+                    Connect the VCC pin of the sensor to the 5V pin on Arduino.
+                </li>
+                <li>
+                  Connect the GND pin of the sensor to the GND pin on Arduino.
+                </li>
+                <li>
+                  Connect the TRIG pin to digital pin 9 on Arduino.
+                </li>
+                <li>
+                  Connect the ECHO pin to digital pin 10 on Arduino.
+                </li>
+                <li>
+                  Double-check all connections before powering up the Arduino.
+                </li>
+            </ol>
+            <img loading="lazy" src="circuit-images/ultrasonic_connection.PNG" class="circuit-image" alt="Arduino Ultrasonic Sensor circuit connection">
+            <p>
+                Here is the circuit diagram for reference. The TRIG pin sends the ultrasonic pulse,
+                and the ECHO pin receives the reflected signal.
+            </p>
+        </section>
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block">
+                <code>
+                // Ultrasonic Distance Sensor Project
+                // Circuit Creation
+
+                const int trigPin = 9;
+                const int echoPin = 10;
+
+                void setup() {
+                  Serial.begin(9600);
+                  pinMode(trigPin, OUTPUT);
+                  pinMode(echoPin, INPUT);
+                }
+
+                void loop() {
+                  // Clear the trigPin
+                  digitalWrite(trigPin, LOW);
+                  delayMicroseconds(2);
+
+                  // Set the trigPin on HIGH state for 10 microseconds
+                  digitalWrite(trigPin, HIGH);
+                  delayMicroseconds(10);
+                  digitalWrite(trigPin, LOW);
+
+                  // Read the echoPin, pulseIn() returns the duration (time for sound to travel)
+                  long duration = pulseIn(echoPin, HIGH);
+
+                  // Calculating the distance
+                  long distance = duration * 0.034 / 2;
+
+                  // Prints the distance in inches or centimeters
+                  Serial.print("Distance: ");
+                  Serial.print(distance);
+                  Serial.println(" cm");
+
+                  delay(500);
+                }
+                </code>
+            </pre>
+            </div>
+        </section>
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+
+            <ol>
+                <li>Connect the Arduino board to your computer using the USB cable.</li>
+                <li>Open the Arduino IDE and paste the code into a new sketch.</li>
+                <li>Select the correct board and port from the Tools menu.</li>
+                <li>Click the Upload button.</li>
+                <li>Open the Serial Monitor (Ctrl+Shift+M) to view distance readings.</li>
+                <li>Move objects closer and farther from the sensor to see the distance change.</li>
+            </ol>
+
+        </section>
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+
+            <p>
+                Let us understand how the Arduino code works step by step.
+                This will help you modify the project and build more advanced applications.
+            </p>
+
+            <h3>Defining Pins</h3>
+            <p>
+                <code>const int trigPin = 9;</code> and <code>const int echoPin = 10;</code> 
+                define which pins the sensor is connected to.
+            </p>
+
+            <h3>setup() Function</h3>
+            <p>
+                The <code>setup()</code> function initializes Serial communication at 9600 baud,
+                sets trigPin as OUTPUT, and echoPin as INPUT.
+            </p>
+
+            <h3>Triggering the Sensor</h3>
+            <p>
+                First, we set trigPin to LOW for 2 microseconds to ensure a clean pulse.
+                Then, we send a 10-microsecond HIGH pulse to trigger the sensor's measurement.
+            </p>
+
+            <h3>Reading the Echo</h3>
+            <p>
+                <code>pulseIn(echoPin, HIGH)</code> measures how long the ECHO pin stays HIGH.
+                This duration is proportional to the distance of the object.
+            </p>
+
+            <h3>Calculating Distance</h3>
+            <p>
+                The formula <code>distance = duration * 0.034 / 2</code> converts the time
+                to distance in centimeters. The factor 0.034 is the speed of sound (343 m/s).
+                We divide by 2 because the sound travels to the object and back.
+            </p>
+
+            <h3>Serial Output</h3>
+            <p>
+                The distance values are printed to the Serial Monitor every 500 milliseconds
+                using the <code>delay(500)</code> function.
+            </p>
+        </section>
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+
+            <ul class="mistakes-list">
+                <li>
+                    <strong>Sensor not detecting objects:</strong>
+                    Check that the TRIG and ECHO pins are correctly connected to pins 9 and 10.
+                </li>
+
+                <li>
+                  <strong>Inconsistent or very high readings:</strong>
+                  Make sure both power and ground connections are secure. Loose connections cause noise.
+                </li>
+
+                <li>
+                  <strong>No output in Serial Monitor:</strong>
+                  Verify that the Serial Monitor baud rate is set to 9600 to match the code.
+                </li>
+
+                <li>
+                  <strong>Sensor reads zero distance:</strong>
+                  Ensure there is an object in front of the sensor. Ultrasonic sensors need something to reflect the sound.
+                </li>
+
+                <li>
+                  <strong>Wrong distance values:</strong>
+                  The sensor's accuracy depends on the speed of sound, which varies with temperature.
+                  For better accuracy, calibrate with known distances.
+                </li>
+
+                <li>
+                  <strong>Upload error:</strong>
+                  Make sure you have selected the correct Arduino board and COM port in the Tools menu.
+                </li>
+            </ul>
+        </section>
+        <!-- Section 8 -->
+         <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How ultrasonic sensors measure distance using sound waves.</li>
+                <li>Understanding the TRIG and ECHO pins of the HC-SR04 sensor.</li>
+                <li>Using <code>pulseIn()</code> to measure pulse duration.</li>
+                <li>Converting time measurements to distance.</li>
+                <li>Reading sensor data and displaying it on the Serial Monitor.</li>
+                <li>Building projects for obstacle detection and distance measurement.</li>
+            </ul>
+        </section>
+        <!-- Section 9 -->
+         <section class="project-section">
+            <h2>Project Ideas</h2>
+            <ul>
+                <li><strong>Obstacle Avoiding Robot:</strong> Use ultrasonic sensors to detect obstacles and move around them automatically.</li>
+                <li><strong>Distance Alarm:</strong> Set a threshold distance and trigger an LED or buzzer when objects get too close.</li>
+                <li><strong>Parking Assistant:</strong> Display distance readings to help users park their vehicles safely.</li>
+                <li><strong>Water Level Detector:</strong> Measure the distance to water surface to detect water levels in tanks.</li>
+                <li><strong>Gesture Control:</strong> Use distance changes to detect hand gestures for controlling devices.</li>
+            </ul>
+        </section>
+         <a href="circuit-projects.html" class="aa"><button class="button-exp">Explore More Projects</button></a>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy code');
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

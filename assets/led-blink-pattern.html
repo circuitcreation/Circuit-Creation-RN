@@ -26,7 +26,8 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LED Pattern project using Arduino</title>
-    <link rel="stylesheet" href="css/circuit.css" text="text/css"> 
+    <link rel="stylesheet" href="css/circuit.css" text="text/css">
+    <link rel="icon" type="image/png" href="../favicon.png"> 
 </head>
 <body>
     <div class="container">
@@ -104,7 +105,9 @@
         <section class="project-section">
             <h2>Arduino Code</h2>
 
-            <pre class="code-block">
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block">
                 <code>
                 int leds[] = {8, 9, 10, 11};
 
@@ -123,6 +126,7 @@
                 }
                 </code>
             </pre>
+            </div>
         </section>
         <!-- Section 5 -->
         <section class="project-section">
@@ -247,6 +251,24 @@
     </footer>
     
     <script>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy code');
+            });
+        }
+
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const container = document.querySelector('.container');
