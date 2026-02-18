@@ -114,7 +114,9 @@
         </div>
     </div>
     <hr>
+    <p class="gallery-instruction">Click an image to view the picture in full size</p>
     <div class="gallery-body">
+        <!-- instruction for users -->
 
             <img loading="lazy" class="gallery-img2" id="img22" src="logo/Logo.png">
             <img loading="lazy" class="gallery-img1" id="img22" src="images/cSEN-IMG.png">
@@ -202,6 +204,15 @@
         </script>
 
     <style>
+        /* Instruction styling */
+        .gallery-instruction {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #333;
+            margin: 10px 0;
+            font-style: italic;
+        }
+
         /* Minimal lightbox styles to ensure overlay works even if main CSS lacks them */
         .lightbox-overlay {
             position: fixed;
