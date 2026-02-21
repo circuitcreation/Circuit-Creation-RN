@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+
+    <!-- Basic SEO -->
+    <meta name="description" content="Detect ambient light levels with an LDR sensor and Arduino. Step-by-step guide with components list, circuit diagram, code explanation, and working principle.">
+    <meta name="keywords" content="LDR sensor, light sensor, arduino ldr, analogRead, voltage divider, electronics tutorial">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="LDR Sensor Project using Arduino | Beginner Tutorial">
+    <meta property="og:description" content="Monitor light level using an LDR sensor and Arduino. Complete tutorial with circuit and code.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/ldr-sensor.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/ldr.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LDR Sensor Project using Arduino">
+    <meta name="twitter:description" content="Monitor ambient light using Arduino and an LDR. Beginner-friendly tutorial.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/ldr.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/ldr-sensor.html">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDR Sensor Project using Arduino | Beginner Tutorial</title>
+    <link rel="stylesheet" href="css/circuit.css" text="text/css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="right">
+                <a class="local" href="../index.html">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="../index.html"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                        <td><a href="circuit-gallery.html"><button class="home" >Gallery</button></a></td>
+                        <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <main class="project-detail">
+        <!-- Section 1 -->
+        <section class="project-header">
+            <h1>LDR Sensor Project using Arduino</h1>
+            <p>
+                The LDR (Light Dependent Resistor) sensor project helps you measure ambient light levels.
+                This tutorial walks you through connecting the sensor, reading values with Arduino,
+                and displaying or acting on the data.
+            </p>
+
+            <span class="difficulty --beginner">Beginner</span>
+        </section>
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+
+            <ul class="components-list">
+                <li>Arduino Uno (or compatible board)</li>
+                <li>LDR (Light Dependent Resistor) sensor</li>
+                <li>10 k&Omega; resistor</li>
+                <li>Breadboard</li>
+                <li>Jumper wires</li>
+                <li>USB cable</li>
+                <li>LED (optional – to indicate dark/light)</li>
+            </ul>
+        </section>
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                Build a simple voltage divider using the LDR and a fixed resistor.
+                The middle node will connect to an analog input on the Arduino.
+                Make sure power is removed while wiring the circuit.
+            </p>
+
+            <ol>
+                <li>
+                    Place the LDR and 10 k&Omega; resistor on the breadboard in series.
+                </li>
+                <li>
+                    Connect one end of the LDR to 5 V on the Arduino.
+                </li>
+                <li>
+                    Connect the free end of the resistor to GND on the Arduino.
+                </li>
+                <li>
+                    Connect the junction between LDR and resistor to <strong>A0</strong> (analog pin 0).
+                </li>
+                <li>
+                    (Optional) Connect an LED to digital pin 13 with a 220 &Omega; resistor to indicate darkness.
+                </li>
+            </ol>
+            <img loading="lazy" src="circuit-images/ldr_sensor.PNG" class="circuit-image" alt="Arduino LDR sensor circuit connection">
+            <p>
+                Here is the circuit diagram for reference. Analog pin A0 measures the voltage from the divider.
+            </p>
+        </section>
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block">
+                <code>
+                // LDR Sensor Project
+                // Circuit Creation
+
+                const int ldrPin = A0;      // analog input pin
+                int ldrValue = 0;
+
+                void setup() {
+                  Serial.begin(9600);
+                  pinMode(13, OUTPUT);    // optional LED indicator
+                }
+
+                void loop() {
+                  ldrValue = analogRead(ldrPin);
+                  Serial.println(ldrValue);
+
+                  // turn on LED when it is dark (value less than threshold)
+                  if (ldrValue < 500) {
+                    digitalWrite(13, HIGH);
+                  } else {
+                    digitalWrite(13, LOW);
+                  }
+
+                  delay(500);
+                }
+                </code>
+            </pre>
+            </div>
+        </section>
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+
+            <ol>
+                <li>Connect the Arduino board to your computer using the USB cable.</li>
+                <li>Open the Arduino IDE and paste the code into a new sketch.</li>
+                <li>Select the correct board and port from the Tools menu.</li>
+                <li>Click the Upload button.</li>
+                <li>Open the Serial Monitor at 9600 baud to observe the light readings.</li>
+            </ol>
+
+        </section>
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+
+            <p>
+                Let us understand how the Arduino code works step by step.
+                This will help you modify the project later and build more advanced circuits.
+            </p>
+
+            <h3>Declaring the LDR Pin</h3>
+            <p>
+                <code>const int ldrPin = A0;</code> sets the analog pin used to read the voltage divider.
+            </p>
+
+            <h3>setup() Function</h3>
+            <p>
+                The <code>setup()</code> function initializes serial communication and configures
+                pin 13 as an output for the optional LED indicator.
+            </p>
+
+            <h3>loop() Function</h3>
+            <p>
+                The <code>loop()</code> function continuously reads the analog value from the LDR,
+                prints it over the serial port, and toggles the LED based on a threshold.
+            </p>
+
+            <h3>analogRead() Function</h3>
+            <p>
+                The <code>analogRead(ldrPin)</code> command returns a value from 0 (dark) to 1023 (bright).
+            </p>
+
+            <h3>Serial.println()</h3>
+            <p>
+                The <code>Serial.println()</code> sends the sensor reading to the Serial Monitor,
+                allowing you to observe light changes in real time.
+            </p>
+        </section>
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+
+            <ul class="mistakes-list">
+                <li>
+                    <strong>No readings:</strong> Ensure the LDR and resistor are correctly placed
+                    forming a voltage divider and that A0 is connected.
+                </li>
+
+                <li>
+                  <strong>Values stuck at 0 or 1023:</strong> Check for short circuits or open connections.
+                </li>
+
+                <li>
+                  <strong>Serial output not showing:</strong> Confirm the baud rate is set to 9600
+                  in the Serial Monitor.
+                </li>
+
+                <li>
+                  <strong>LED not lighting:</strong> Verify the threshold in code and check LED orientation.
+                </li>
+            </ul>
+        </section>
+        <!-- Section 8 -->
+         <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How to build and read a voltage divider with an LDR sensor.</li>
+                <li>Using <code>analogRead()</code> to measure sensor values.</li>
+                <li>Interpreting analog readings and using thresholds.</li>
+                <li>Sending data to the Serial Monitor for debugging.</li>
+                <li>Controlling an LED based on sensor input.</li>
+            </ul>
+        </section>
+        <!-- Section 9 -->
+         <a href="circuit-projects.html" class="aa"><button class="button-exp">Explore More Projects</button></a>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy code');
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
