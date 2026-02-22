@@ -28,69 +28,6 @@
     <title>Arduino & Electronics Projects - Circuit Creation</title>
     <link rel="stylesheet" href="css/circuit.css" type="text/css">
     <link rel="icon" type="image/png" href="../favicon.png">
-    <style>
-        /* Background Animation Styles */
-        body {
-            position: relative;
-            overflow-x: hidden;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #fff !important; 
-        }
-
-        /* Transparency Reset for containers */
-        html, body, .container, .body, .left-section, .right-section, .left, .right {
-            background-color: transparent !important;
-        }
-
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; 
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .arduino-board {
-            position: absolute;
-            width: 180px; 
-            height: auto;
-            opacity: 1;
-            filter: drop-shadow(6px 8px 15px rgba(0,0,0,0.25));
-        }
-
-        @keyframes boardRolling2D {
-            0% { transform: translate(-250px, 10vh) rotate(0deg); }
-            33% { transform: translate(30vw, 45vh) rotate(120deg); }
-            66% { transform: translate(70vw, 15vh) rotate(240deg); }
-            100% { transform: translate(115vw, 55vh) rotate(360deg); }
-        }
-
-        @keyframes boardRolling2DReverse {
-            0% { transform: translate(110vw, 20vh) rotate(360deg); }
-            50% { transform: translate(45vw, 65vh) rotate(180deg); }
-            100% { transform: translate(-250px, 10vh) rotate(0deg); }
-        }
-
-        .board-1 {
-            animation: boardRolling2D 22s infinite linear;
-        }
-
-        .board-2 {
-            width: 140px;
-            animation: boardRolling2DReverse 30s infinite linear;
-            animation-delay: -7s; 
-        }
-
-        /* Ensure main content stays above the background */
-        .container, .body, .right-section {
-            position: relative;
-            z-index: 2;
-        }
-    </style>
 </head>
 <body>
     <div class="animated-bg">
@@ -269,17 +206,5 @@
             <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
         </div>
     </footer>
-    
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const container = document.querySelector('.container');
-            if (window.scrollY > 10) {
-                container.classList.add('scrolled');
-            } else {
-                container.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 </html>
