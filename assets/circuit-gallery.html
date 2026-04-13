@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Basic SEO -->
     <meta name="description" content="Circuit Creation Gallery - View our electronic circuits, Arduino projects, and circuit designs. Browse high-quality project images and inspiring electronics work.">
     <meta name="keywords" content="circuit gallery, arduino projects, electronics circuits, custom circuits, project images">
@@ -34,7 +36,7 @@
         <img loading="lazy" src="images/ArduinoUno.png" class="arduino-board board-1" alt="Arduino Board">
         <img loading="lazy" src="images/ard-mega.webp" class="arduino-board board-2" alt="Arduino Board">
     </div>
-    <div class="container">  
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg- bg-opacity-90 backdrop-blur-sm shadow-md">  
 
         <div class="right">
                 <a class="local" href="../index.html">Circuit Creation</a>
@@ -51,30 +53,32 @@
         </div>
     </div>
     <hr>
-    <p class="gallery-instruction">Click an image to view the picture in full size</p>
-    <div class="gallery-body">
-        <!-- instruction for users -->
+    <div style="margin-top: 100px;">
+        <p class="gallery-instruction">Click an image to view the picture in full size</p>
+        <div class="gallery-body">
+            <!-- instruction for users -->
 
-            <img loading="lazy" class="gallery-img2" id="img22" src="logo/Logo.png">
-            <img loading="lazy" class="gallery-img1" id="img22" src="images/cSEN-IMG.png">
-            <img loading="lazy" class="gallery-img1" id="img11" src="images/Circuit3.png" >
-            <img loading="lazy" class="gallery-img1" id="img11" src="images/Circuit4.png">
-            <img loading="lazy" class="gallery-img1" id="img12" src="images/Circuit2.png">
-            <img loading="lazy" src="images/circuit5.webp" class="gallery-img1" id="img12">
-            <img loading="lazy" src="images/circuit6.webp" class="gallery-img1" id="img12">
-            <img loading="lazy" src="images/circuit7.webp" class="gallery-img1" id="img12">
-            <img loading="lazy" src="images/circuit8.webp" class="gallery-img1" id="img12">
-            <img loading="lazy" src="images/circuit9.webp" class="gallery-img1" id="img12">
-        </div>
+                <img loading="lazy" class="gallery-img2" id="img22" src="logo/Logo.png">
+                <img loading="lazy" class="gallery-img1" id="img22" src="images/cSEN-IMG.png">
+                <img loading="lazy" class="gallery-img1" id="img11" src="images/Circuit3.png" >
+                <img loading="lazy" class="gallery-img1" id="img11" src="images/Circuit4.png">
+                <img loading="lazy" class="gallery-img1" id="img12" src="images/Circuit2.png">
+                <img loading="lazy" src="images/circuit5.webp" class="gallery-img1" id="img12">
+                <img loading="lazy" src="images/circuit6.webp" class="gallery-img1" id="img12">
+                <img loading="lazy" src="images/circuit7.webp" class="gallery-img1" id="img12">
+                <img loading="lazy" src="images/circuit8.webp" class="gallery-img1" id="img12">
+                <img loading="lazy" src="images/circuit9.webp" class="gallery-img1" id="img12">
+            </div>
 
-        <!-- Lightbox overlay for viewing single image -->
-        <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+            <!-- Lightbox overlay for viewing single image -->
+            <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
                 <button id="lightboxClose" class="lightbox-close" aria-label="Close">✕</button>
                 <div class="lightbox-content">
-                        <img id="lightboxImage" src="" alt="" />
+                    <img id="lightboxImage" src="" alt="" />
                 </div>
-        </div>
-
+            </div>
+        </div>    
+    </div>
     <footer>
         <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
         <div class="footer-social">
