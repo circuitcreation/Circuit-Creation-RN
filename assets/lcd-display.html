@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Basic SEO -->
+    <meta name="description" content="Learn how to interface an LCD display with Arduino. Step-by-step guide with components list, circuit diagram, code explanation, and working principle for beginners.">
+    <meta name="keywords" content="lcd display, arduino lcd, 16x2 lcd, character lcd, lcd project, beginner arduino">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="LCD Display Project using Arduino | Beginner Tutorial">
+    <meta property="og:description" content="Learn how to interface an LCD display with Arduino. Complete guide with circuit diagram and code.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/lcd-display.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/lcd.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LCD Display Project using Arduino">
+    <meta name="twitter:description" content="Complete Arduino LCD display tutorial for beginners with code and circuit diagram.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/lcd.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/lcd-display.html">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCD Display Project using Arduino | Beginner Tutorial</title>
+    <link rel="stylesheet" href="css/circuit.css" text="text/css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg- bg-opacity-90 backdrop-blur-sm shadow-md">
+        <div class="right">
+                <a class="local" href="../index.html">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="../index.html"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                        <td><a href="circuit-gallery.html"><button class="home" >Gallery</button></a></td>
+                        <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <main class="project-detail" style="margin-top: 100px;">
+        <!-- Section 1 -->
+        <section class="project-header" >
+            <h1>LCD Display Project using Arduino</h1>
+            <p>
+                The LCD (Liquid Crystal Display) project allows you to display text and numbers on a screen using Arduino.
+                This is a fundamental skill for creating user interfaces and showing sensor data in real-time on any Arduino project.
+            </p>
+
+            <span class="difficulty --beginner">Beginner</span>
+        </section>
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+
+            <ul class="components-list">
+                <li>Arduino Uno (or compatible board)</li>
+                <li>16x2 LCD Display (HD44780 compatible)</li>
+                <li>10kΩ Potentiometer (for contrast adjustment)</li>
+                <li>220Ω Resistor (for LED backlight)</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+                <li>USB Cable</li>
+            </ul>
+        </section>
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                Follow the steps below to connect the LCD with the Arduino board.
+                Proper connections are essential for the display to work correctly.
+            </p>
+
+            <ol>
+                <li>
+                    Connect the LCD VSS (pin 1) to GND.
+                </li>
+                <li>
+                    Connect the LCD VCC (pin 2) to 5V.
+                </li>
+                <li>
+                    Connect the 10kΩ potentiometer between 5V and GND, and connect its center pin to LCD V0 (pin 3).
+                </li>
+                <li>
+                    Connect the LCD RS (pin 4) to Arduino digital pin 12.
+                </li>
+                <li>
+                    Connect the LCD RW (pin 5) to GND.
+                </li>
+                <li>
+                    Connect the LCD E (pin 6) to Arduino digital pin 11.
+                </li>
+                <li>
+                    Connect the LCD D4 (pin 11) to Arduino digital pin 5.
+                </li>
+                <li>
+                    Connect the LCD D5 (pin 12) to Arduino digital pin 4.
+                </li>
+                <li>
+                    Connect the LCD D6 (pin 13) to Arduino digital pin 3.
+                </li>
+                <li>
+                    Connect the LCD D7 (pin 14) to Arduino digital pin 2.
+                </li>
+                <li>
+                    Connect the LCD A (pin 15) to 5V through a 220Ω resistor.
+                </li>
+                <li>
+                    Connect the LCD K (pin 16) to GND.
+                </li>
+            </ol>
+            <div class="circuit-container">
+                <img loading="lazy" src="circuit-images/lcd_display.PNG" class="circuit-image" alt="Arduino LCD display circuit connection">
+                <button class="download-btn" onclick="downloadImage('circuit-images/lcd_display.PNG', 'lcd_display.PNG')"><i class="fas fa-download"></i>  Download circuit diagram</button>
+            </div>
+            <p>
+                Here is the circuit diagram for reference.
+            </p>
+        </section>
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block">
+                <code>
+// Include the LiquidCrystal library
+#include &lt;LiquidCrystal.h&gt;
+
+// Initialize the library with LCD pin numbers
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+void setup() {
+  // Set up the LCD's number of columns and rows
+  lcd.begin(16, 2);
+  
+  // Print "Hello World" on the first row
+  lcd.print("Hello World");
+}
+
+void loop() {
+  // Nothing to do, just display the message
+}
+                </code>
+            </pre>
+            </div>
+        </section>
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+
+            <ol>
+                <li>Make sure the Arduino IDE has the LiquidCrystal library installed (it's included by default).</li>
+                <li>Connect the Arduino board to your computer using the USB cable.</li>
+                <li>Open the Arduino IDE and paste the code into a new sketch.</li>
+                <li>Select the correct board and port from the Tools menu.</li>
+                <li>Click the Upload button.</li>
+                <li>Once uploaded, you should see text display on the LCD screen.</li>
+                <li>If the display is not visible, adjust the 10kΩ potentiometer for contrast.</li>
+            </ol>
+
+        </section>
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+
+            <p>
+                Let us understand how the Arduino code works step by step.
+                This will help you modify the project later and display custom text.
+            </p>
+
+            <h3>Including the Library</h3>
+            <p>
+                <code>#include &lt;LiquidCrystal.h&gt;</code> includes the LiquidCrystal library
+                which provides functions to control the LCD display.
+            </p>
+
+            <h3>Initialize the LCD</h3>
+            <p>
+                <code>LiquidCrystal lcd(12, 11, 5, 4, 3, 2);</code> creates an LCD object
+                with the pins connected to the RS, E, D4, D5, D6, and D7 pins respectively.
+            </p>
+
+            <h3>setup() Function</h3>
+            <p>
+                The <code>setup()</code> function runs only once when the Arduino starts.
+                <code>lcd.begin(16, 2)</code> initializes the LCD with 16 columns and 2 rows.
+                <code>lcd.print()</code> displays text on the LCD starting from the current cursor position.
+            </p>
+
+            <h3>setCursor() Function</h3>
+            <p>
+                <code>lcd.setCursor(x, y)</code> moves the cursor to column x and row y.
+                This allows you to position text anywhere on the display.
+            </p>
+
+            <h3>loop() Function</h3>
+            <p>
+                The <code>loop()</code> function runs continuously.
+                Here, we display the elapsed time and a counter value that updates every 100 milliseconds.
+            </p>
+
+            <h3>clear() Function</h3>
+            <p>
+                <code>lcd.clear()</code> clears all text from the LCD display.
+                This is useful when you want to update the display with new information.
+            </p>
+        </section>
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+
+            <ul class="mistakes-list">
+                <li>
+                    <strong>No display at all:</strong>
+                    Check if the LCD is powered correctly. Verify 5V and GND connections.
+                </li>
+
+                <li>
+                  <strong>Garbled or unreadable text:</strong>
+                  Adjust the contrast using the 10kΩ potentiometer.
+                  Turn the potentiometer dial slowly until text becomes clear.
+                </li>
+
+                <li>
+                  <strong>Wrong pin connections:</strong>
+                  Double-check that all pins are connected according to the diagram.
+                  Even one wrong wire can prevent the display from working.
+                </li>
+
+                <li>
+                  <strong>Library not found:</strong>
+                  The LiquidCrystal library should be pre-installed with Arduino IDE.
+                  If not, install it from Sketch → Include Library → Manage Libraries.
+                </li>
+
+                <li>
+                  <strong>Text not updating:</strong>
+                  Make sure you use <code>lcd.clear()</code> before displaying new text,
+                  otherwise old text may remain on the screen.
+                </li>
+
+                <li>
+                  <strong>Upload error:</strong>
+                  Select the correct board and COM port from the Arduino IDE Tools menu.
+                </li>
+            </ul>
+        </section>
+        <!-- Section 8 -->
+         <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How to connect a 16x2 LCD display to Arduino.</li>
+                <li>Using the LiquidCrystal library to control the display.</li>
+                <li>Displaying text at specific positions on the LCD using <code>setCursor()</code>.</li>
+                <li>Updating the display dynamically using <code>clear()</code> and <code>print()</code>.</li>
+                <li>Adjusting LCD contrast using a potentiometer.</li>
+                <li>Creating user interfaces for Arduino projects with visual feedback.</li>
+            </ul>
+        </section>
+        <!-- Section 9 -->
+         <a href="circuit-projects.html" class="aa"><button class="button-exp">Explore More Projects</button></a>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy code');
+            });
+        }
+        // Download image functionality
+        function downloadImage(src, filename) {
+            const link = document.createElement('a');
+            link.href = src;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

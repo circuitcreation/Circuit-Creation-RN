@@ -108,7 +108,10 @@
                      Connect a 220Ω resistor from the shorter leg (cathode) of the LED to <strong>GND</strong>.
                     </li>
                 </ol>
-                <img loading="lazy" src="circuit-images/button_led.PNG" class="circuit-image" alt="Arduino Button Controlled LED circuit connection">
+                <div class="circuit-container">
+                    <img loading="lazy" src="circuit-images/button_led.PNG" class="circuit-image" alt="Arduino Button Controlled LED circuit connection">
+                    <button class="download-btn" onclick="downloadImage('circuit-images/button_led.PNG', 'button_led.PNG')"><i class="fas fa-download"></i> Download circuit diagram</button>
+                </div>
                 <p>
                     Here is the circuit diagram for reference.
                 </p>
@@ -284,7 +287,15 @@
                 alert('Failed to copy code');
             });
         }
-
+        // Download image functionality
+        function downloadImage(src, filename) {
+            const link = document.createElement('a');
+            link.href = src;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const container = document.querySelector('.container');

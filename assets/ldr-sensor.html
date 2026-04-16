@@ -101,7 +101,10 @@
                     (Optional) Connect an LED to digital pin 13 with a 220 &Omega; resistor to indicate darkness.
                 </li>
             </ol>
-            <img loading="lazy" src="circuit-images/ldr_sensor.PNG" class="circuit-image" alt="Arduino LDR sensor circuit connection">
+            <div class="circuit-container">
+                <img loading="lazy" src="circuit-images/ldr_sensor.PNG" class="circuit-image" alt="Arduino LDR sensor circuit connection">
+                <button class="download-btn" onclick="downloadImage('circuit-images/ldr_sensor.PNG', 'ldr_sensor.PNG')"><i class="fas fa-download"></i>  Download circuit diagram</button>
+            </div>
             <p>
                 Here is the circuit diagram for reference. Analog pin A0 measures the voltage from the divider.
             </p>
@@ -257,7 +260,15 @@
                 alert('Failed to copy code');
             });
         }
-
+        // Download image functionality
+        function downloadImage(src, filename) {
+            const link = document.createElement('a');
+            link.href = src;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const container = document.querySelector('.container');
