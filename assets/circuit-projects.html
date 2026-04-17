@@ -54,16 +54,31 @@
     <hr>
     <div class="projects-page" style="margin-top: 100px;">
         <section class="projects-intro">
-                    <h1>Arduino Projects</h1>
+            <div class="projects-intro-header">
+                <h1>Arduino Projects</h1>
+                <div class="category-filter">
+                    <label for="categorySelect">Filter:</label>
+                    <select id="categorySelect" onchange="filterProjects(this.value)">
+                        <option value="all">All Projects</option>
+                        <option value="LED-projects">LED Projects</option>
+                        <option value="Sensor-Projects">Sensor Projects</option>
+                        <option value="servo">Servo Projects</option>
+                        <option value="Input-Projects">Input Projects</option>
+                        <option value="Output-Projects">Output Projects</option>
+                    </select>
+                </div>
+            </div>
                     <p>
                         Browse Arduino projects from beginner to advanced level.
                         Click on any project to see full explanation, circuit, and code.
                     </p>
         </section>
 
+        
+
         <section class="projects-grid">
             <!-- Project Card 1 -->
-            <a href="led-blink.html" class="project-a">
+            <a href="led-blink.html" class="project-a" data-category="LED-projects">
                 <div class="project-card">
                     <h3>LED Blinking Project</h3>
                     <img loading="lazy" class="ard-imgg" src="images/led.jpg" class="" alt="">
@@ -74,7 +89,7 @@
                 </div>
             </a>
             <!-- Project Card 2 -->
-             <a href="led-blink-pattern.html " class="project-a">
+             <a href="led-blink-pattern.html " class="project-a" data-category="LED-projects">
                 <div class="project-card">
                     <h3>LED Pattern Project</h3>
                     <img loading="lazy" class="ard-imgg" src="images/LED_PATTERN.jpeg" alt="">
@@ -87,7 +102,7 @@
             </a>
            
             <!-- Project Card 3 -->
-             <a href="button-controlled-led.html" class="project-a">
+             <a href="button-controlled-led.html" class="project-a" data-category="LED-projects">
                 <div class="project-card">
                     <h3>Button Controlled LED</h3>
                     <img loading="lazy" class="ard-imgg" src="images/led-btn.webp" alt="">
@@ -98,7 +113,7 @@
                 </div>
             </a>
             <!-- Project Card 4 -->
-             <a href="servo-project.html" class="project-a">
+             <a href="servo-project.html" class="project-a" data-category="servo">
                 <div class="project-card">
                     <h3>Servo Motor Control</h3>
                     <img loading="lazy" class="ard-imgg" src="images/servo.jpg" alt="">
@@ -109,7 +124,7 @@
                 </div>
             </a>
             <!-- Project Card 5 -->
-             <a href="ultrasonic-sensor.html" class="project-a">
+             <a href="ultrasonic-sensor.html" class="project-a" data-category="Sensor-Projects">
                 <div class="project-card">
                     <h3>Ultrasonic Distance Sensor</h3>
                     <img loading="lazy" class="ard-imgg" src="images/ultrasonic.jpeg" alt="">
@@ -120,7 +135,7 @@
                 </div>
             </a>
             <!-- Project Card 6 -->
-             <a href="ldr-sensor.html" class="project-a">
+             <a href="ldr-sensor.html" class="project-a" data-category="Sensor-Projects">
                 <div class="project-card">
                     <h3>LDR Sensor Project</h3>
                     <img loading="lazy" class="ard-imgg" src="images/ldr.png" alt="">
@@ -131,7 +146,7 @@
                 </div>
             </a>
             <!-- Project Card 7 -->
-                <a href="lcd-display.html" class="project-a">
+                <a href="lcd-display.html" class="project-a" data-category="Output-Projects">
                     <div class="project-card">
                         <h3>LCD Display Project</h3>
                         <img loading="lazy" class="ard-imgg" src="images/lcd.jpg" alt="">
@@ -142,7 +157,7 @@
                     </div>
                 </a>
             <!-- Project Card 8 -->
-             <a href="" class="project-a">
+             <a href="temperature-sensor.html" class="project-a" data-category="Sensor-Projects">
                 <div class="project-card">
                     <h3>Temperature Sensor Project</h3>
                     <img loading="lazy" class="ard-imgg" src="images/temp.jpeg" alt="">
@@ -153,7 +168,7 @@
                 </div>
             </a>
             <!-- Project Card 9 -->
-             <a href="">
+             <a href="" class="project-a" data-category="Sensor-Projects">
                 <div class="project-card">
                     <h3>IR Sensor Project</h3>
                     <img loading="lazy" class="ard-imgg" src="images/IR-Sensor.webp" alt="">
@@ -164,7 +179,7 @@
                 </div>
              </a>
              <!-- Project Card 10 -->
-             <a href="">
+             <a href="" class="project-a" data-category="Output-Projects">
                 <div class="project-card">
                     <h3>Buzzer Sound Project</h3>
                     <img loading="lazy" class="ard-imgg" src="images/buzzer.jpg" alt="">
@@ -174,7 +189,7 @@
                 </div>
             </a>
              <!-- Project Card 11 -->
-             <a href="">
+             <a href="" class="project-a" data-category="Input-Projects">
                 <div class="project-card">
                     <h3>Potentiometer Control</h3>
                     <img loading="lazy" class="ard-imgg" src="images/pot.webp" alt="">
@@ -184,7 +199,7 @@
                 </div>
             </a>
              <!-- Project Card 12 -->
-            <a href="">
+            <a href="" class="project-a" data-category="Sensor-Projects">
                 <div class="project-card">
                     <h3>Soil Moisture Sensor</h3>
                     <img loading="lazy" class="ard-imgg" src="images/moist.jpg" alt="">
@@ -194,7 +209,7 @@
                 </div>
             </a> 
             <!-- Project Card 13 -->
-            <a href="">
+            <a href="" class="project-a" data-category="Sensor-Projects">
                 <div class="project-card">
                     <h3>Touch sensor LED</h3>
                     <img loading="lazy" class="ard-imgg" src="images/Touch Sensor .jpg" alt="">
@@ -203,6 +218,76 @@
                     </p>
                 </div>
             </a>
+            <!-- Project Card 14 -->
+            <a href="" class="project-a" data-category="Input-Projects">
+                <div class="project-card">
+                    <h3>Joystick input reading</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/Joystick.jpg" alt="">
+                    <p>
+                        Read joystick input with Arduino to control variables or navigate menus. Great for game controllers and robotics.
+                    </p>
+                </div>
+            </a>
+             <!-- Project Card 15 -->
+                <a href="" class="project-a" data-category="Sensor-Projects">
+                    <div class="project-card">
+                        <h3>PIR motion sensor light</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/PIR.jpg" alt="">
+                        <p>
+                            Use a PIR motion sensor to control a light with Arduino. Ideal for security and energy-saving applications.
+                        </p>
+                    </div>
+                </a>
+             <!-- Project Card 16 -->
+                <a href="" class="project-a" data-category="Sensor-Projects">
+                    <div class="project-card">
+                        <h3>Vibration sensor alert</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/Motion.webp" alt="">
+                        <p>
+                            Detect vibrations with a sensor and trigger an alert using Arduino. Useful for security systems and earthquake detection.
+                        </p>
+                    </div>
+                </a>
+             <!-- Project Card 17 -->
+                <a href="" class="project-a" data-category="Sensor-Projects">
+                    <div class="project-card">
+                        <h3>Gas sensor monitor</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/gas_sensor.webp" alt="">
+                        <p>
+                            Monitor gas levels with a sensor and Arduino. Great for safety applications like carbon monoxide detection.
+                        </p>
+                    </div>
+                </a>
+                <!-- Project Card 18 -->
+                <a href="" class="project-a" data-category="Output-Projects">
+                    <div class="project-card">
+                        <h3>Relay module ON/OFF</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/relay_arduino.jpg" alt="">
+                        <p>
+                            Control high-power devices with a relay module and Arduino. Perfect for home automation projects.
+                        </p>
+                    </div>
+                </a>
+                <!-- Project Card 19 -->
+                <a href="" class="project-a" data-category="servo">
+                    <div class="project-card">
+                        <h3>Servo controlled by potentiometer</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/servo_pot.jpg" alt="">
+                        <p>
+                            Control a servo motor's position with a potentiometer and Arduino. Great for interactive projects and robotics.
+                        </p>
+                    </div>
+                </a>
+                <!-- Project Card 20 -->
+                <a href="" class="project-a" data-category="Input-Projects">
+                    <div class="project-card">
+                        <h3>Piano with buttons</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/Buzzer-piano.png" alt="">
+                        <p>
+                            Create a simple piano using buttons and a buzzer with Arduino. Learn about digital input and sound generation.
+                        </p>
+                    </div>
+                </a>
             <!-- Coming soon sigh -->
             <section class="coming-soon">
                 <h2>More Projects Coming Soon!</h2>
@@ -218,5 +303,34 @@
             <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
         </div>
     </footer>
+
+    <script>
+        // Filter projects by category
+        function filterProjects(category) {
+            const projectCards = document.querySelectorAll('.project-a');
+            
+            projectCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (category === 'all') {
+                    card.style.display = '';
+                } else if (cardCategory === category) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>

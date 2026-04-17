@@ -92,12 +92,4 @@
     <priority>0.60</priority>
   </url>
 
-  <!-- Favicon Image URL -->
-  <url>
-    <loc>https://circuitcreation.github.io/Circuit-Creation-RN/favicon.png</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.50</priority>
-  </url>
-
 </urlset>

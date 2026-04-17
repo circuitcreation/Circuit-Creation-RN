@@ -124,26 +124,26 @@
                     <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                     <pre class="code-block">
                     <code>
-                    // Button Controlled LED Project
-                    // Arduino Hub
+// Button Controlled LED Project
+// Arduino Hub
 
-                    int buttonPin = 2;
-                    int ledPin = 13;
+int buttonPin = 2;
+int ledPin = 13;
 
-                    void setup() {
-                      pinMode(buttonPin, INPUT);
-                      pinMode(ledPin, OUTPUT);
-                    }
+void setup() {
+  pinMode(buttonPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+}
 
-                    void loop() {
-                      int buttonState = digitalRead(buttonPin);
+void loop() {
+  int buttonState = digitalRead(buttonPin);
                         
-                      if (buttonState == HIGH) {
-                        digitalWrite(ledPin, HIGH);
-                      } else {
-                        digitalWrite(ledPin, LOW);
-                      }
-                    }
+  if (buttonState == HIGH) {
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+}
                     </code>
                 </pre>
                 </div>

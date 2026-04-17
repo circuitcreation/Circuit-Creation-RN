@@ -117,30 +117,30 @@
                 <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                 <pre class="code-block">
                 <code>
-                // LDR Sensor Project
-                // Circuit Creation
+// LDR Sensor Project
+// Circuit Creation
 
-                const int ldrPin = A0;      // analog input pin
-                int ldrValue = 0;
+const int ldrPin = A0;      // analog input pin
+int ldrValue = 0;
 
-                void setup() {
-                  Serial.begin(9600);
-                  pinMode(13, OUTPUT);    // optional LED indicator
-                }
+void setup() {
+  Serial.begin(9600);
+  pinMode(13, OUTPUT);    // optional LED indicator
+}
 
-                void loop() {
-                  ldrValue = analogRead(ldrPin);
-                  Serial.println(ldrValue);
+void loop() {
+  ldrValue = analogRead(ldrPin);
+  Serial.println(ldrValue);
 
-                  // turn on LED when it is dark (value less than threshold)
-                  if (ldrValue < 500) {
-                    digitalWrite(13, HIGH);
-                  } else {
-                    digitalWrite(13, LOW);
-                  }
+  // turn on LED when it is dark (value less than threshold)
+  if (ldrValue < 500) {
+    digitalWrite(13, HIGH);
+  } else {
+    digitalWrite(13, LOW);
+  }
 
-                  delay(500);
-                }
+  delay(500);
+}
                 </code>
             </pre>
             </div>

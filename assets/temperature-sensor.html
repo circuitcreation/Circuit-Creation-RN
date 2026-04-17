@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Basic SEO -->
+    <meta name="description" content="Learn how to measure temperature using Arduino and a temperature sensor. Step-by-step guide with components list, circuit diagram, code explanation, and working principle for beginners.">
+    <meta name="keywords" content="temperature sensor, arduino temperature, ds18b20, thermistor, temperature measurement, sensor reading">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Temperature Sensor Project using Arduino | Beginner Tutorial">
+    <meta property="og:description" content="Learn how to measure temperature with Arduino. Complete guide with circuit diagram and code for temperature monitoring.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/temperature-sensor.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/temp.jpeg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Temperature Sensor Project using Arduino">
+    <meta name="twitter:description" content="Complete Arduino temperature sensor tutorial for beginners with code and circuit diagram.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/temp.jpeg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/temperature-sensor.html">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Sensor Project using Arduino | Beginner Tutorial</title>
+    <link rel="stylesheet" href="css/circuit.css" text="text/css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg- bg-opacity-90 backdrop-blur-sm shadow-md">
+        <div class="right">
+                <a class="local" href="../index.html">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="../index.html"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                        <td><a href="circuit-gallery.html"><button class="home" >Gallery</button></a></td>
+                        <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <main class="project-detail" style="margin-top: 100px;">
+        <!-- Section 1 -->
+        <section class="project-header" >
+            <h1>Temperature Sensor Project using Arduino</h1>
+            <p>
+                The temperature sensor project teaches you how to read analog and digital sensors
+                to measure temperature. This is a fundamental skill for building weather stations,
+                climate monitoring systems, and IoT projects.
+            </p>
+
+            <span class="difficulty --beginner">Beginner</span>
+        </section>
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+
+            <ul class="components-list">
+                <li>Arduino Uno (or compatible board)</li>
+                <li>TMP36 Temperature Sensor</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+                <li>USB Cable</li>
+                <li>Optional: 16x2 LCD Display (to show temperature readings)</li>
+            </ul>
+        </section>
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                The TMP36 is an analog temperature sensor that's easy to use and requires no special libraries.
+                It provides a voltage output proportional to the temperature. Make sure the Arduino is not connected to USB while wiring.
+            </p>
+
+            <h3>TMP36 Sensor Pin Configuration:</h3>
+            <p>
+                The TMP36 has three pins when viewed from the flat side facing you:
+            </p>
+            <ol>
+                <li>Left pin: VCC (Power Supply)</li>
+                <li>Middle pin: VOUT (Output Voltage)</li>
+                <li>Right pin: GND (Ground)</li>
+            </ol>
+
+            <h3>Wiring Steps:</h3>
+            <ol>
+                <li>
+                    Connect the VCC pin (left) to <strong>5V</strong> on Arduino.
+                </li>
+                <li>
+                    Connect the GND pin (right) to <strong>GND</strong> on Arduino.
+                </li>
+                <li>
+                    Connect the VOUT pin (middle) to <strong>analog pin A0</strong> on Arduino.
+                </li>
+            </ol>
+
+            <div class="circuit-container">
+                <img loading="lazy" src="circuit-images/temp_sensor.PNG" class="circuit-image" alt="Arduino temperature sensor circuit connection">
+                <button class="download-btn" onclick="downloadImage('circuit-images/', 'temp_sensor.PNG')"><i class="fas fa-download"></i>  Download circuit diagram</button>
+            </div>
+        </section>
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <p><strong>TMP36 Temperature Sensor Code:</strong></p>
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block">
+                <code>
+// TMP36 Temperature Sensor
+// Connect VOUT to A0
+
+const int temperaturePin = A0;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read analog value from TMP36
+  int analogValue = analogRead(temperaturePin);
+  
+  // Convert analog value to voltage
+  // Arduino reads 0-1023 for 0-5V
+  float voltage = analogValue * (5.0 / 1023.0);
+  
+  // TMP36 formula: (voltage - 0.5) * 100
+  // Each degree is 10mV, and 0V = -50°C
+  float temperatureC = (voltage - 0.5) * 100.0;
+  
+  // Convert to Fahrenheit (optional)
+  float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
+  
+  // Print to Serial Monitor
+  Serial.print("Temperature: ");
+  Serial.print(temperatureC);
+  Serial.print("°C / ");
+  Serial.print(temperatureF);
+  Serial.println("°F");
+  
+  delay(1000); // Wait 1 second before next reading
+}
+                </code>
+            </pre>
+            </div>
+        </section>
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>About the TMP36 Sensor</h2>
+
+            <p>
+                The TMP36 is a precision integrated circuit temperature sensor that requires no special libraries.
+                It operates from -40°C to +125°C and outputs an analog voltage proportional to temperature.
+            </p>
+
+            <p>
+                <strong>Key Features:</strong>
+            </p>
+            <ul>
+                <li>Precision: ±2°C accuracy at room temperature</li>
+                <li>Simple analog output - no communication protocol needed</li>
+                <li>Low power consumption</li>
+                <li>Three-pin package - VCC, VOUT, GND</li>
+            </ul>
+        </section>
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+
+            <ol>
+                <li>Connect the Arduino board to your computer using the USB cable.</li>
+                <li>Open the Arduino IDE and paste the code into a new sketch.</li>
+                <li>Select the correct board and port from the Tools menu.</li>
+                <li>Click the Upload button.</li>
+                <li>Open the Serial Monitor (Ctrl + Shift + M) to see temperature readings.</li>
+            </ol>
+
+        </section>
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+
+            <p>
+                Let us understand how the Arduino code works step by step.
+                This will help you modify the project later and build more projects.
+            </p>
+
+            <h3>Reading the Analog Value</h3>
+            <p>
+                <code>analogRead(temperaturePin)</code> reads the voltage from the TMP36 sensor.
+                Arduino converts the analog voltage (0-5V) to a digital value (0-1023).
+            </p>
+
+            <h3>Converting Analog to Voltage</h3>
+            <p>
+                <code>voltage = analogValue * (5.0 / 1023.0)</code> converts the digital reading back to voltage.
+                The 5V / 1023 ratio represents the resolution of the Arduino's analog-to-digital converter.
+            </p>
+
+            <h3>TMP36 Temperature Formula</h3>
+            <p>
+                The TMP36 outputs 10mV per degree Celsius, with 500mV at 0°C:
+                <code>temperatureC = (voltage - 0.5) * 100.0</code>
+            </p>
+            <p>
+                This means:
+            </p>
+            <ul>
+                <li>At 0°C: voltage = 0.5V</li>
+                <li>At 25°C: voltage = 0.75V</li>
+                <li>At -40°C: voltage = 0.1V</li>
+                <li>At 125°C: voltage = 1.75V</li>
+            </ul>
+
+            <h3>Fahrenheit Conversion</h3>
+            <p>
+                To convert Celsius to Fahrenheit, we use: <code>F = (C × 9/5) + 32</code>
+            </p>
+
+            <h3>Serial Communication</h3>
+            <p>
+                <code>Serial.begin(9600)</code> initializes serial communication at 9600 baud rate.
+                <code>Serial.print()</code> sends data to the Serial Monitor for viewing on your computer.
+            </p>
+        </section>
+        <!-- Section 8 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+
+            <ul class="mistakes-list">
+                <li>
+                    <strong>No temperature reading:</strong>
+                    Check that the TMP36 is properly connected. Verify VCC is 5V, GND is ground, and VOUT is on A0.
+                </li>
+
+                <li>
+                  <strong>Temperature shows incorrect values:</strong>
+                  Make sure the analog pin is set to A0 in the code. Double-check the TMP36 pin connections (left=VCC, middle=VOUT, right=GND).
+                </li>
+
+                <li>
+                  <strong>Readings are unstable or fluctuating:</strong>
+                  Take multiple analog readings and average them. Add a small delay between readings for stability.
+                </li>
+
+                <li>
+                  <strong>Sensor reads too hot or too cold:</strong>
+                  Ensure the sensor is not touching the Arduino board or other heat sources. Give it a moment to stabilize after power-on.
+                </li>
+
+                <li>
+                  <strong>Offset error (readings consistently off by a certain amount):</strong>
+                  The TMP36 may have a small calibration offset. Adjust the 0.5V offset in the formula if needed.
+                </li>
+
+                <li>
+                  <strong>Upload error or code won't compile:</strong>
+                  Make sure there are no typos in the code. Verify the correct board and COM port are selected in Arduino IDE.
+                </li>
+            </ul>
+        </section>
+        <!-- Section 9 -->
+         <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How to read analog sensor values using Arduino's ADC (Analog-to-Digital Converter).</li>
+                <li>Converting analog readings to voltage values.</li>
+                <li>Understanding the TMP36 temperature sensor's output characteristics.</li>
+                <li>Converting voltage to temperature using sensor-specific formulas.</li>
+                <li>Displaying real-time data on the Serial Monitor.</li>
+                <li>Troubleshooting common temperature sensor issues.</li>
+                <li>Building foundations for weather monitoring and IoT projects.</li>
+            </ul>
+        </section>
+        <!-- Section 10 -->
+         <a href="circuit-projects.html" class="aa"><button class="button-exp">Explore More Projects</button></a>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy code');
+            });
+        }
+        // Download image functionality
+        function downloadImage(src, filename) {
+            const link = document.createElement('a');
+            link.href = src;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
