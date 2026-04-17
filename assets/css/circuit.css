@@ -395,6 +395,10 @@ button:focus, a:focus { outline: 3px solid #cfe3ff; outline-offset: 2px; }
   cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   font-family: inherit;
+  appearance: auto;
+  -webkit-appearance: menulist;
+  -moz-appearance: menulist;
+  min-width: 120px;
 }
 
 .category-filter select:hover {
