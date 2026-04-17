@@ -58,14 +58,17 @@
                 <h1>Arduino Projects</h1>
                 <div class="category-filter">
                     <label for="categorySelect">Filter:</label>
-                    <select id="categorySelect" onchange="filterProjects(this.value)">
-                        <option value="all">All Projects</option>
-                        <option value="LED-projects">LED Projects</option>
-                        <option value="Sensor-Projects">Sensor Projects</option>
-                        <option value="servo">Servo Projects</option>
-                        <option value="Input-Projects">Input Projects</option>
-                        <option value="Output-Projects">Output Projects</option>
-                    </select>
+                    <div class="custom-dropdown" id="customDropdown">
+                        <div class="dropdown-selected">All Projects</div>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <div class="dropdown-option" data-value="all">All Projects</div>
+                            <div class="dropdown-option" data-value="LED-projects">LED Projects</div>
+                            <div class="dropdown-option" data-value="Sensor-Projects">Sensor Projects</div>
+                            <div class="dropdown-option" data-value="servo">Servo Projects</div>
+                            <div class="dropdown-option" data-value="Input-Projects">Input Projects</div>
+                            <div class="dropdown-option" data-value="Output-Projects">Output Projects</div>
+                        </div>
+                    </div>
                 </div>
             </div>
                     <p>
@@ -305,6 +308,35 @@
     </footer>
 
     <script>
+        // Custom dropdown functionality
+        const customDropdown = document.getElementById('customDropdown');
+        const dropdownSelected = customDropdown.querySelector('.dropdown-selected');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const dropdownOptions = customDropdown.querySelectorAll('.dropdown-option');
+
+        // Toggle dropdown on click
+        dropdownSelected.addEventListener('click', function() {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Handle option selection
+        dropdownOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                const text = this.textContent;
+                dropdownSelected.textContent = text;
+                dropdownMenu.classList.remove('active');
+                filterProjects(value);
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!customDropdown.contains(event.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
         // Filter projects by category
         function filterProjects(category) {
             const projectCards = document.querySelectorAll('.project-a');
