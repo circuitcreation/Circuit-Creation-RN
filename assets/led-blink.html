@@ -113,21 +113,36 @@
                 <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                 <pre class="code-block">
                 <code>
-                // LED Blinking Project
-                // Arduino Hub
+/*
+    Project: LED Blinking using Arduino
 
-                int ledPin = 13;
+   Components:
+     - Arduino Uno 
+     - LED 
+     - 220Ω Resistor 
+     - Breadboard 
+     - Jumper Wires 
+     - USB Cable 
+   Author: Circuit Creation RN
 
-                void setup() {
-                  pinMode(ledPin, OUTPUT);
-                }
+*/
 
-                void loop() {
-                  digitalWrite(ledPin, HIGH);
-                  delay(1000);
-                  digitalWrite(ledPin, LOW);
-                  delay(1000);
-                }
+
+// LED Blinking Project
+// Arduino Hub
+
+int ledPin = 13;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(ledPin, HIGH);
+  delay(1000);
+  digitalWrite(ledPin, LOW);
+  delay(1000);
+}
                 </code>
             </pre>
             </div>

@@ -116,41 +116,57 @@
                 <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                 <pre class="code-block">
                 <code>
-                // Ultrasonic Distance Sensor Project
-                // Circuit Creation
+/*
+   Project: Ultrasonic Distance Sensor Project using Arduino
+   Description: This project demonstrates how to use an ultrasonic sensor (HC-SR04) with
 
-                const int trigPin = 9;
-                const int echoPin = 10;
+   Components:
+     - Arduino Uno 
+     - HC-SR04 Ultrasonic Sensor 
+     - Breadboard 
+     - Jumper Wires 
+     - USB Cable 
+     - Optional: LED for visual feedback 
+   Author: Circuit Creation RN
 
-                void setup() {
-                  Serial.begin(9600);
-                  pinMode(trigPin, OUTPUT);
-                  pinMode(echoPin, INPUT);
-                }
+*/
 
-                void loop() {
-                  // Clear the trigPin
-                  digitalWrite(trigPin, LOW);
-                  delayMicroseconds(2);
 
-                  // Set the trigPin on HIGH state for 10 microseconds
-                  digitalWrite(trigPin, HIGH);
-                  delayMicroseconds(10);
-                  digitalWrite(trigPin, LOW);
+// Ultrasonic Distance Sensor Project
+// Circuit Creation
 
-                  // Read the echoPin, pulseIn() returns the duration (time for sound to travel)
-                  long duration = pulseIn(echoPin, HIGH);
+const int trigPin = 9;
+const int echoPin = 10;
 
-                  // Calculating the distance
-                  long distance = duration * 0.034 / 2;
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
 
-                  // Prints the distance in inches or centimeters
-                  Serial.print("Distance: ");
-                  Serial.print(distance);
-                  Serial.println(" cm");
+void loop() {
+  // Clear the trigPin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
 
-                  delay(500);
-                }
+  // Set the trigPin on HIGH state for 10 microseconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Read the echoPin, pulseIn() returns the duration (time for sound to travel)
+  long duration = pulseIn(echoPin, HIGH);
+
+  // Calculating the distance
+  long distance = duration * 0.034 / 2;
+
+  // Prints the distance in inches or centimeters
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  delay(500);
+}
                 </code>
             </pre>
             </div>

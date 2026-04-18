@@ -112,31 +112,47 @@
                 <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                 <pre class="code-block">
                 <code>
-                // Servo Motor Control Project
-                // Circuit Creation
+/*
+   Project: Servo Motor Control Project using Arduino
+   Description: This project demonstrates how to control a servo motor using an Arduino board. The servo
 
-                #include &lt;Servo.h&gt;
+   Components:
+     - Arduino Uno 
+     - SG90 Servo Motor 
+     - Jumper Wires 
+     - Breadboard 
+     - USB Cable 
+     - External Power Supply (optional) 
+   Author: Circuit Creation RN
 
-                Servo myservo;
-                int pos = 0;
+*/
 
-                void setup() {
-                  myservo.attach(9);
-                }
 
-                void loop() {
-                  // Sweep from 0 to 180 degrees
-                  for (pos = 0; pos &lt;= 180; pos += 1) {
-                    myservo.write(pos);
-                    delay(15);
-                  }
+// Servo Motor Control Project
+// Circuit Creation
+
+ #include &lt;Servo.h&gt;
+
+Servo myservo;
+int pos = 0;
+
+void setup() {
+  myservo.attach(9);
+}
+
+void loop() {
+  // Sweep from 0 to 180 degrees
+  for (pos = 0; pos &lt;= 180; pos += 1) {
+    myservo.write(pos);
+    delay(15);
+  }
                   
-                  // Sweep back from 180 to 0 degrees
-                  for (pos = 180; pos &gt;= 0; pos -= 1) {
-                    myservo.write(pos);
-                    delay(15);
-                  }
-                }
+  // Sweep back from 180 to 0 degrees
+  for (pos = 180; pos &gt;= 0; pos -= 1) {
+    myservo.write(pos);
+    delay(15);
+  }
+}
                 </code>
             </pre>
             </div>
