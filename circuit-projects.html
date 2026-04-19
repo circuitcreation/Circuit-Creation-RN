@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Basic SEO -->
+    <meta name="description" content="Arduino & Electronics Projects - Learn with Circuit Creation. Step-by-step tutorials for beginners to advanced. LED projects, servo control, button circuits, and more.">
+    <meta name="keywords" content="arduino projects, electronics tutorials, led projects, servo motor, button control, circuit projects">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Arduino & Electronics Projects | Circuit Creation">
+    <meta property="og:description" content="Explore our collection of Arduino and electronics projects with detailed tutorials and code.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-projects.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arduino & Electronics Projects - Circuit Creation">
+    <meta name="twitter:description" content="Learn Arduino and electronics with our comprehensive project tutorials.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-projects.html">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Arduino & Electronics Projects - Circuit Creation</title>
+    <link rel="stylesheet" href="css/circuit.css" type="text/css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+    <div class="animated-bg">
+        <img loading="lazy" src="images/ArduinoUno.png" class="arduino-board board-1" alt="Arduino Board">
+        <img loading="lazy" src="images/ard-mega.webp" class="arduino-board board-2" alt="Arduino Board">
+    </div>
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg- bg-opacity-90 backdrop-blur-sm shadow-md"> 
+        <div class="right"> 
+                <a class="local" href="../index.html">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="../index.html"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="about">About</button></a></td>
+                        <td><a href="circuit-gallery.html"><button class="gallery" >Gallery</button></a></td>
+                        <td><button class="home">Projects</button></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <div class="projects-page" style="margin-top: 100px;">
+        <section class="projects-intro">
+            <div class="projects-intro-header">
+                <h1>Arduino Projects</h1>
+                <div class="category-filter">
+                    <label for="categorySelect">Filter:</label>
+                    <div class="custom-dropdown" id="customDropdown">
+                        <div class="dropdown-selected">All Projects</div>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <div class="dropdown-option" data-value="all">All Projects</div>
+                            <div class="dropdown-option" data-value="LED-projects">LED Projects</div>
+                            <div class="dropdown-option" data-value="Sensor-Projects">Sensor Projects</div>
+                            <div class="dropdown-option" data-value="servo">Servo Projects</div>
+                            <div class="dropdown-option" data-value="Input-Projects">Input Projects</div>
+                            <div class="dropdown-option" data-value="Output-Projects">Output Projects</div>
+                            <div class="dropdown-option" data-value="other">Other Projects</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <p>
+                        Browse Arduino projects from beginner to advanced level.
+                        Click on any project to see full explanation, circuit, and code.
+                    </p>
+        </section>
+
+        
+
+        <section class="projects-grid">
+            <!-- Project Card 1 -->
+            <a href="led-blink.html" class="project-a" data-category="LED-projects">
+                <div class="project-card">
+                    <h3>LED Blinking Project</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/led.jpg" class="" alt="">
+                    <p>
+                        Learn how to blink an LED using Arduino.
+                        Perfect first project for beginners.
+                    </p>
+                </div>
+            </a>
+            <!-- Project Card 2 -->
+             <a href="led-blink-pattern.html " class="project-a" data-category="LED-projects">
+                <div class="project-card">
+                    <h3>LED Pattern Project</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/LED_PATTERN.jpeg" alt="">
+                    <p>
+                        build a LED Pattern Project using Arduino 
+                        and multiple LEDs.
+                        
+                    </p>
+                </div>
+            </a>
+           
+            <!-- Project Card 3 -->
+             <a href="button-controlled-led.html" class="project-a" data-category="LED-projects">
+                <div class="project-card">
+                    <h3>Button Controlled LED</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/led-btn.webp" alt="">
+                    <p>
+                        Use a push button to control an LED with Arduino.
+                        Learn about digital input and output.
+                    </p>
+                </div>
+            </a>
+            <!-- Project Card 4 -->
+             <a href="servo-project.html" class="project-a" data-category="servo">
+                <div class="project-card">
+                    <h3>Servo Motor Control</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/servo.jpg" alt="">
+                    <p>
+                        Control a servo motor's position with Arduino.
+                        Great for robotics and automation projects.
+                    </p>
+                </div>
+            </a>
+            <!-- Project Card 5 -->
+             <a href="ultrasonic-sensor.html" class="project-a" data-category="Sensor-Projects">
+                <div class="project-card">
+                    <h3>Ultrasonic Distance Sensor</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/ultrasonic.jpeg" alt="">
+                    <p>
+                        Measure distance using an ultrasonic sensor and Arduino.
+                        Useful for obstacle detection.
+                    </p>
+                </div>
+            </a>
+            <!-- Project Card 6 -->
+             <a href="ldr-sensor.html" class="project-a" data-category="Sensor-Projects">
+                <div class="project-card">
+                    <h3>LDR Sensor Project</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/ldr.png" alt="">
+                    <p>
+                        Detect ambient light levels with a LDR Sensor and Arduino.
+                        Ideal for automatic lighting systems.
+                    </p>
+                </div>
+            </a>
+            <!-- Project Card 7 -->
+                <a href="lcd-display.html" class="project-a" data-category="Output-Projects">
+                    <div class="project-card">
+                        <h3>LCD Display Project</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/lcd.jpg" alt="">
+                        <p>
+                            Interface an LCD display with Arduino to show text and data.
+                            Perfect for user interfaces.
+                        </p>
+                    </div>
+                </a>
+            <!-- Project Card 8 -->
+             <a href="temperature-sensor.html" class="project-a" data-category="Sensor-Projects">
+                <div class="project-card">
+                    <h3>Temperature Sensor Project</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/temp.jpeg" alt="">
+                    <p>
+                        Measure temperature using Arduino and a sensor.
+                        Display readings on Serial Monitor.
+                    </p>
+                </div>
+            </a>
+            <!-- Project Card 8.5 -->
+             <a href="water-level-indicator.html" class="project-a" data-category="Sensor-Projects">
+                <div class="project-card">
+                    <h3>Water Level Indicator</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/Water-level.webp" alt="">
+                    <p>
+                        Detect and monitor water levels with Arduino and a water level sensor.
+                        Perfect for tank monitoring and automation projects.
+                    </p>
+                </div>
+            </a>
+            <!-- Project Card 9 -->
+             <a href="" class="project-a" data-category="Sensor-Projects">
+                <div class="project-card">
+                    <h3>IR Sensor Project</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/IR-Sensor.webp" alt="">
+                    <p>
+                        Use an IR sensor with Arduino for object detection.
+                        Great for security and automation projects.
+                    </p>
+                </div>
+             </a>
+             <!-- Project Card 10 -->
+             <a href="" class="project-a" data-category="Output-Projects">
+                <div class="project-card">
+                    <h3>Buzzer Sound Project</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/buzzer.jpg" alt="">
+                    <p>
+                        Generate sound with a buzzer using Arduino. Learn about digital signals and timing.
+                    </p>
+                </div>
+            </a>
+             <!-- Project Card 11 -->
+             <a href="" class="project-a" data-category="Input-Projects">
+                <div class="project-card">
+                    <h3>Potentiometer Control</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/pot.webp" alt="">
+                    <p>
+                        Use a potentiometer to control variables in your Arduino project. Great for adjusting brightness or volume.
+                    </p>
+                </div>
+            </a>
+             <!-- Project Card 12 -->
+            <a href="" class="project-a" data-category="Sensor-Projects">
+                <div class="project-card">
+                    <h3>Soil Moisture Sensor</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/moist.jpg" alt="">
+                    <p>
+                        Monitor soil moisture levels with Arduino. Perfect for smart gardening and plant care automation.
+                    </p>
+                </div>
+            </a> 
+            <!-- Project Card 13 -->
+            <a href="" class="project-a" data-category="Sensor-Projects">
+                <div class="project-card">
+                    <h3>Touch sensor LED</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/Touch Sensor .jpg" alt="">
+                    <p>
+                        Use a touch sensor to control an LED with Arduino. Learn about capacitive sensing and user interaction.
+                    </p>
+                </div>
+            </a>
+            <!-- Project Card 14 -->
+            <a href="" class="project-a" data-category="Input-Projects">
+                <div class="project-card">
+                    <h3>Joystick input reading</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/Joystick.jpg" alt="">
+                    <p>
+                        Read joystick input with Arduino to control variables or navigate menus. Great for game controllers and robotics.
+                    </p>
+                </div>
+            </a>
+             <!-- Project Card 15 -->
+                <a href="" class="project-a" data-category="Sensor-Projects">
+                    <div class="project-card">
+                        <h3>PIR motion sensor light</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/PIR.jpg" alt="">
+                        <p>
+                            Use a PIR motion sensor to control a light with Arduino. Ideal for security and energy-saving applications.
+                        </p>
+                    </div>
+                </a>
+             <!-- Project Card 16 -->
+                <a href="" class="project-a" data-category="Sensor-Projects">
+                    <div class="project-card">
+                        <h3>Vibration sensor alert</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/Motion.webp" alt="">
+                        <p>
+                            Detect vibrations with a sensor and trigger an alert using Arduino. Useful for security systems and earthquake detection.
+                        </p>
+                    </div>
+                </a>
+             <!-- Project Card 17 -->
+                <a href="" class="project-a" data-category="Sensor-Projects">
+                    <div class="project-card">
+                        <h3>Gas sensor monitor</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/gas_sensor.webp" alt="">
+                        <p>
+                            Monitor gas levels with a sensor and Arduino. Great for safety applications like carbon monoxide detection.
+                        </p>
+                    </div>
+                </a>
+                <!-- Project Card 18 -->
+                <a href="" class="project-a" data-category="Output-Projects">
+                    <div class="project-card">
+                        <h3>Relay module ON/OFF</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/relay_arduino.jpg" alt="">
+                        <p>
+                            Control high-power devices with a relay module and Arduino. Perfect for home automation projects.
+                        </p>
+                    </div>
+                </a>
+                <!-- Project Card 19 -->
+                <a href="" class="project-a" data-category="servo">
+                    <div class="project-card">
+                        <h3>Servo controlled by potentiometer</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/servo_pot.jpg" alt="">
+                        <p>
+                            Control a servo motor's position with a potentiometer and Arduino. Great for interactive projects and robotics.
+                        </p>
+                    </div>
+                </a>
+                <!-- Project Card 20 -->
+                <a href="" class="project-a" data-category="Input-Projects">
+                    <div class="project-card">
+                        <h3>Piano with buttons</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/Buzzer-piano.png" alt="">
+                        <p>
+                            Create a simple piano using buttons and a buzzer with Arduino. Learn about digital input and sound generation.
+                        </p>
+                    </div>
+                </a>
+                 <!-- Project Card 21 -->
+                  <a href="" class="project-a" data-category="Output-Projects">
+                    <div class="project-card">
+                        <h3>7-Segment Display Counter</h3>
+                        <img loading="lazy" class="ard-imgg" src="images/7-segment-display.jpg" alt="">
+                        <p>
+                            Use a button to increment a counter displayed on a 7-segment display with Arduino. Great for learning about multiplexing and user input.
+                        </p>
+                    </div>
+                </a>
+            <!-- Coming soon sigh -->
+            <section class="coming-soon">
+                <h2>More Projects Coming Soon!</h2>
+                <p>Stay tuned for more exciting Arduino projects.</p>
+            </section>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+
+    <script>
+        // Custom dropdown functionality
+        const customDropdown = document.getElementById('customDropdown');
+        const dropdownSelected = customDropdown.querySelector('.dropdown-selected');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const dropdownOptions = customDropdown.querySelectorAll('.dropdown-option');
+
+        // Toggle dropdown on click
+        dropdownSelected.addEventListener('click', function() {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Handle option selection
+        dropdownOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                const text = this.textContent;
+                dropdownSelected.textContent = text;
+                dropdownMenu.classList.remove('active');
+                filterProjects(value);
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!customDropdown.contains(event.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Filter projects by category
+        function filterProjects(category) {
+            const projectCards = document.querySelectorAll('.project-a');
+            
+            projectCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (category === 'all') {
+                    card.style.display = '';
+                } else if (cardCategory === category) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
