@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Basic SEO -->
+    <meta name="description" content="Build a radar system using Arduino and ultrasonic sensor. Learn scanning, object detection, circuit, and code with real-time visualization.">
+    <meta name="keywords" content="arduino radar project, ultrasonic radar, hc-sr04 radar, arduino servo project, object detection">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Radar System using Ultrasonic Sensor | Arduino Project">
+    <meta property="og:description" content="Build your own Arduino radar system using ultrasonic sensor and servo motor. Step-by-step guide with code.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/radar-system.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/radar.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/radar-system.html">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar System using Ultrasonic Sensor | Arduino Project</title>
+    <link rel="stylesheet" href="css/circuit.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg-opacity-90 backdrop-blur-sm shadow-md">
+        <div class="right">
+            <a class="local" href="/">Circuit Creation</a>
+        </div>
+        <div class="left">
+            <table>
+                <tr>
+                    <td><a href="/"><button class="home">Home</button></a></td>
+                    <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                    <td><a href="circuit-gallery.html"><button class="home">Gallery</button></a></td>
+                    <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <main class="project-detail" style="margin-top: 100px;">
+
+        <!-- Section 1 -->
+        <section class="project-header">
+            <h1>Radar System using Ultrasonic Sensor</h1>
+            <p>
+                This project demonstrates how to build a simple radar system using an ultrasonic sensor,
+                servo motor, and Arduino. The sensor scans the surroundings and detects objects by measuring
+                distance, just like a real radar system.
+            </p>
+            <span class="difficulty --intermediate">Intermediate</span>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+            <ul class="components-list">
+                <li>Arduino Uno</li>
+                <li>HC-SR04 Ultrasonic Sensor</li>
+                <li>Servo Motor (SG90)</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+                <li>USB Cable</li>
+            </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                Follow the steps below to connect the ultrasonic sensor and servo motor with the Arduino board.
+                This setup allows the sensor to scan the surroundings by rotating with the servo motor.
+            </p>
+
+            <ol>
+                <li>
+                    Connect the VCC pin of the ultrasonic sensor to the 5V pin on Arduino.
+                </li>
+                <li>
+                    Connect the GND pin of the ultrasonic sensor to the GND pin on Arduino.
+                </li>
+                <li>
+                    Connect the TRIG pin of the sensor to digital pin 9 on Arduino.
+                </li>
+                <li>
+                    Connect the ECHO pin of the sensor to digital pin 10 on Arduino.
+                </li>
+                <li>
+                    Connect the signal pin of the servo motor to digital pin 11 on Arduino.
+                </li>
+                <li>
+                    Connect the VCC of the servo motor to 5V and GND to GND.
+                </li>
+            </ol>
+
+            <div class="circuit-container">
+                <img loading="lazy" src="circuit-images/radar.PNG" class="circuit-image" alt="Arduino Radar system circuit connection">
+                <button class="download-btn" onclick="downloadImage('circuit-images/radar.PNG', 'radar.PNG')">
+                    <i class="fas fa-download"></i>  Download circuit diagram
+                </button>
+            </div>
+
+            <p>
+                Here is the circuit diagram for reference. The ultrasonic sensor measures distance,
+                while the servo motor rotates it to create a scanning radar effect.
+            </p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block">
+                <code>
+#include &lt;Servo.h&gt;
+
+Servo myServo;
+
+int trigPin = 9;
+int echoPin = 10;
+
+long duration;
+int distance;
+
+void setup() {
+  Serial.begin(9600);
+  myServo.attach(11);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
+
+void loop() {
+  for(int angle = 15; angle <= 165; angle++){
+    myServo.write(angle);
+    delay(30);
+
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+
+    duration = pulseIn(echoPin, HIGH);
+    distance = duration * 0.034 / 2;
+
+    Serial.print(angle);
+    Serial.print(",");
+    Serial.print(distance);
+    Serial.print(".");
+  }
+}
+            </code>
+            </pre>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+            <ol>
+                <li>Connect Arduino to your computer.</li>
+                <li>Open Arduino IDE and paste the code.</li>
+                <li>Select correct board and port.</li>
+                <li>Click Upload.</li>
+                <li>Open Processing software to visualize radar output.</li>
+            </ol>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+
+            <p>
+                Let us understand how the radar system code works step by step.
+                This project combines a servo motor and an ultrasonic sensor to scan and detect objects.
+            </p>
+
+            <h3>Including the Library</h3>
+            <p>
+                <code>#include &lt;Servo.h&gt;</code> includes the Servo library which allows us
+                to control the servo motor easily.
+            </p>
+
+            <h3>Creating Servo Object</h3>
+            <p>
+                <code>Servo myServo;</code> creates a servo object that will control the rotation
+                of the sensor for scanning.
+            </p>
+
+            <h3>Defining Pins</h3>
+            <p>
+                <code>int trigPin = 9;</code> and <code>int echoPin = 10;</code> define the pins
+                connected to the ultrasonic sensor.
+            </p>
+
+            <h3>setup() Function</h3>
+            <p>
+                The <code>setup()</code> function initializes Serial communication at 9600 baud
+                and attaches the servo motor to pin 11 using <code>myServo.attach(11)</code>.
+                It also sets trigPin as OUTPUT and echoPin as INPUT.
+            </p>
+
+            <h3>Servo Scanning</h3>
+            <p>
+                The <code>for</code> loop rotates the servo from 15° to 165°.
+                This creates a scanning motion similar to a radar system.
+            </p>
+
+            <h3>Triggering the Sensor</h3>
+            <p>
+                The trigPin is set HIGH for 10 microseconds to send an ultrasonic pulse.
+                This pulse travels through the air and reflects back when it hits an object.
+            </p>
+
+            <h3>Reading the Echo</h3>
+            <p>
+                <code>pulseIn(echoPin, HIGH)</code> measures how long the echo signal stays HIGH.
+                This duration represents the time taken by the sound wave to travel.
+            </p>
+
+            <h3>Calculating Distance</h3>
+            <p>
+                The formula <code>distance = duration * 0.034 / 2</code> converts time into distance in centimeters.
+                The value 0.034 represents the speed of sound in cm/µs.
+            </p>
+
+            <h3>Sending Data to Processing</h3>
+            <p>
+                The Arduino sends data in the format <code>angle,distance</code> using Serial communication.
+                This data is used by Processing software to create the radar visualization.
+            </p>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+
+            <ul class="mistakes-list">
+                <li>
+                    <strong>Servo not moving:</strong>
+                    Check if the servo signal wire is connected to the correct pin (pin 11).
+                    Also ensure proper power supply, as servos need stable voltage.
+                </li>
+
+                <li>
+                    <strong>No distance detection:</strong>
+                    Verify that the TRIG and ECHO pins are correctly connected.
+                    Incorrect wiring will prevent the sensor from working.
+                </li>
+
+                <li>
+                    <strong>Unstable or incorrect readings:</strong>
+                    Loose connections or electrical noise can cause fluctuations.
+                    Make sure all wires are properly connected.
+                </li>
+
+                <li>
+                    <strong>No output in Processing:</strong>
+                    Ensure the correct COM port is selected and the baud rate is set to 9600.
+                    Also make sure Arduino Serial Monitor is closed.
+                </li>
+
+                <li>
+                    <strong>Radar display not working:</strong>
+                    Check if the data format sent from Arduino matches what Processing expects
+                    (angle,distance).
+                    </li>
+
+                <li>
+                    <strong>Upload error:</strong>
+                    Select the correct Arduino board and COM port from the Tools menu in Arduino IDE.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section 8 -->
+        <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How radar systems work using ultrasonic waves</li>
+                <li>Using servo motors for scanning</li>
+                <li>Serial communication with Processing</li>
+                <li>Real-time object detection</li>
+            </ul>
+        </section>
+
+        <!-- Section 9 -->
+        <a href="circuit-projects.html" class="aa">
+            <button class="button-exp">Explore More Projects</button>
+        </a>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                setTimeout(() => button.textContent = 'Copy', 2000);
+            });
+        }
+
+        function downloadImage(src, filename) {
+            const link = document.createElement('a');
+            link.href = src;
+            link.download = filename;
+            link.click();
+        }
+    </script>
+
+</body>
+</html>
