@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SEO -->
+    <meta name="description" content="Control an LED wirelessly using HC-05 Bluetooth module and Arduino. Step-by-step guide with circuit diagram and code.">
+    <meta name="keywords" content="bluetooth module, hc-05, arduino bluetooth, wireless control, led control, arduino project">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bluetooth Control using Arduino | HC-05 Project">
+    <meta property="og:description" content="Learn how to control LED wirelessly using Bluetooth module and Arduino.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/bluetooth-control.html">
+    <meta property="og:image" content="https://www.electronicwings.com/storage/PlatformSection/TopicContent/173/icon/HC-05%20Bluetooth%20Module%20Interfacing%20with%20Arduino%20UNO.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bluetooth Control using Arduino | HC-05 Project</title>
+
+    <link rel="stylesheet" href="css/circuit.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg-opacity-90 backdrop-blur-sm shadow-md">
+        <div class="right">
+            <a class="local" href="https://circuitcreation.github.io/Circuit-Creation-RN/">Circuit Creation</a>
+        </div>
+        <div class="left">
+            <table>
+                <tr>
+                    <td><a href="https://circuitcreation.github.io/Circuit-Creation-RN/"><button class="home">Home</button></a></td>
+                    <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                    <td><a href="circuit-gallery.html"><button class="home">Gallery</button></a></td>
+                    <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <main class="project-detail" style="margin-top:100px;">
+
+        <!-- Section 1 -->
+        <section class="project-header">
+            <h1>Bluetooth Control using Arduino (HC-05)</h1>
+            <p>
+                This project demonstrates how to control an LED wirelessly using a Bluetooth module (HC-05) and Arduino.
+                You can send commands from your smartphone to turn devices ON or OFF, making it a great beginner IoT project.
+            </p>
+            <span class="difficulty --beginner">Beginner</span>
+        </section>
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+            <ul class="components-list">
+                <li>Arduino Uno</li>
+                <li>HC-05 Bluetooth Module</li>
+                <li>LED</li>
+                <li>220Ω Resistor</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+                <li>USB Cable</li>
+                <li>Smartphone (Bluetooth Terminal App)</li>
+            </ul>
+        </section>
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                Follow the steps below to connect the Bluetooth module and LED with Arduino.
+            </p>
+
+            <ol>
+                <li>Connect HC-05 VCC to Arduino 5V.</li>
+                <li>Connect HC-05 GND to Arduino GND.</li>
+                <li>Connect HC-05 TX to Arduino RX (pin 0).</li>
+                <li>Connect HC-05 RX to Arduino TX (pin 1).</li>
+                <li>Connect LED positive to pin 8 through a 220Ω resistor.</li>
+                <li>Connect LED negative to GND.</li>
+            </ol>
+
+            <div class="circuit-container">
+                <img src="circuit-images/bluetooth_control_arduino.jpeg" class="circuit-image">
+                <button class="download-btn" onclick="downloadImage('circuit-images/bluetooth_control_arduino.jpeg','bluetooth_control_arduino.jpeg')">
+                    <i class="fas fa-download"></i> Download circuit diagram
+                </button>
+            </div>
+
+            <p>
+                The Bluetooth module receives commands from your phone and sends them to Arduino,
+                which then controls the LED accordingly.
+            </p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block">
+                <code>
+/*
+   Project: Bluetooth LED Control using Arduino
+   Description: Control an LED wirelessly using HC-05 Bluetooth module and Arduino. Send "1" to turn ON and "0" to turn OFF the LED.
+
+   Components:
+     - Arduino Uno 
+     - HC-05 Bluetooth Module
+     - LED 
+     - 220Ω Resistor 
+     - Breadboard 
+     - Jumper Wires
+     - USB Cable 
+     - Smartphone with Bluetooth Terminal App
+   Author: Circuit Creation RN
+
+*/
+
+// This code reads data from the Bluetooth module and controls an LED connected to pin 8 based on the received commands.
+
+
+char data;
+
+void setup() {
+  pinMode(8, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available()) {
+    data = Serial.read();
+
+    if (data == '1') {
+      digitalWrite(8, HIGH);
+    }
+    else if (data == '0') {
+      digitalWrite(8, LOW);
+    }
+  }
+}
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+
+            <ol>
+                <li>Disconnect HC-05 TX/RX before uploading.</li>
+                <li>Upload the code using Arduino IDE.</li>
+                <li>Reconnect Bluetooth module after upload.</li>
+                <li>Pair HC-05 with your phone (password: 1234 or 0000).</li>
+                <li>Use a Bluetooth terminal app to send "1" or "0".</li>
+            </ol>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+
+            <h3>Serial Communication</h3>
+            <p>
+                <code>Serial.begin(9600)</code> starts communication between Arduino and Bluetooth module.
+            </p>
+
+            <h3>Reading Data</h3>
+            <p>
+                <code>Serial.read()</code> reads incoming data from the Bluetooth module.
+            </p>
+
+            <h3>Controlling LED</h3>
+            <p>
+                If the received data is <code>'1'</code>, the LED turns ON.
+                If it is <code>'0'</code>, the LED turns OFF.
+            </p>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+
+                <ul class="mistakes-list">
+                <li><strong>Bluetooth not connecting:</strong> Check pairing password (1234).</li>
+                <li><strong>Upload error:</strong> Disconnect RX/TX before uploading.</li>
+                <li><strong>LED not working:</strong> Check resistor and polarity.</li>
+                <li><strong>No response:</strong> Ensure correct baud rate (9600).</li>
+            </ul>
+            </section>
+
+        <!-- Section 8 -->
+        <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How Bluetooth communication works with Arduino.</li>
+                <li>Using HC-05 module.</li>
+                <li>Wireless control using smartphone.</li>
+                <li>Basic IoT project development.</li>
+            </ul>
+        </section>
+
+        <a href="circuit-projects.html" class="aa">
+            <button class="button-exp">Explore More Projects</button>
+        </a>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Circuit Creation RN</p>
+        </footer>
+
+        <script>
+        function copyCode(button){
+            const code = button.nextElementSibling.innerText;
+            navigator.clipboard.writeText(code);
+            button.textContent="Copied!";
+            setTimeout(()=>button.textContent="Copy",2000);
+        }
+
+        function downloadImage(src,filename){
+            const link=document.createElement('a');
+            link.href=src;
+            link.download=filename;
+            link.click();
+        }
+        </script>
+
+    </body>
+</html>
