@@ -144,10 +144,10 @@ hr { border: 0; border-top: 1px solid #e6e6e6; margin: 10px 0 20px; }
 
 }
 .para {
-  font-size: medium;
   font-weight: 800;
-  line-height: 1.02;
-  margin: 6px 0 8px;
+  line-height: 1.3;   /* FIX: better vertical spacing */
+  margin: 20px 0 20px 0; /* FIX: add breathing space */
+  text-align: center; /* FIX: proper alignment */
 }
 .para2 {
   font-size: 16px;
@@ -273,7 +273,9 @@ button:focus, a:focus { outline: 3px solid #cfe3ff; outline-offset: 2px; }
 .lightbox-close:hover { background: rgba(255,255,255,0.14); }
 
 #para11{
-  font-size: 36px;
+  font-size: 42px;
+  letter-spacing: 1px;
+  margin-top: 0px;
 }
 #about-para4{
   text-align: center;
