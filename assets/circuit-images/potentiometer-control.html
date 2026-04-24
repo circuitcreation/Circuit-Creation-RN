@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Basic SEO -->
+    <meta name="description" content="Learn how to control Arduino projects using a potentiometer. Step-by-step guide with components list, circuit diagram, code explanation, and working principle for beginners.">
+    <meta name="keywords" content="potentiometer, arduino potentiometer, analog input, potentiometer control, arduino tutorial, electronics">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Potentiometer Control Project using Arduino | Analog Input Tutorial">
+    <meta property="og:description" content="Learn how to read potentiometer values with Arduino and control LED brightness. Complete guide with circuit diagram and code.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/potentiometer-control.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/pot.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Potentiometer Control Project using Arduino">
+    <meta name="twitter:description" content="Complete Arduino potentiometer tutorial for beginners with code and circuit diagram.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/pot.webp">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/potentiometer-control.html">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potentiometer Control Project using Arduino | Analog Input Tutorial</title>
+    <link rel="stylesheet" href="css/circuit.css" text="text/css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg- bg-opacity-90 backdrop-blur-sm shadow-md">
+        <div class="right">
+                <a class="local" href="https://circuitcreation.github.io/Circuit-Creation-RN/">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="https://circuitcreation.github.io/Circuit-Creation-RN/"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                        <td><a href="circuit-gallery.html"><button class="home" >Gallery</button></a></td>
+                        <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <main class="project-detail" style="margin-top: 100px;">
+        <!-- Section 1 -->
+        <section class="project-header" >
+            <h1>Potentiometer Control Project using Arduino</h1>
+            <p>
+                Learn how to read analog values from a potentiometer and use them to control
+                other components like LEDs, servos, or displays. This project introduces you to
+                analog input and variable control in Arduino programming.
+            </p>
+
+            <span class="difficulty --beginner">Beginner</span>
+        </section>
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+
+            <ul class="components-list">
+                <li>Arduino Uno (or compatible board)</li>
+                <li>Potentiometer (10kΩ)</li>
+                <li>LED</li>
+                <li>220Ω Resistor</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+                <li>USB Cable</li>
+            </ul>
+        </section>
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                Follow the steps below to connect the potentiometer and LED with the Arduino board.
+                Make sure the Arduino is not connected to USB while wiring.
+            </p>
+
+            <ol>
+                <li>
+                    Insert the potentiometer into the breadboard.
+                    It has 3 legs: left, middle (wiper), and right.
+                </li>
+                <li>
+                  Connect the left leg of the potentiometer to <strong>5V</strong> on Arduino.
+                </li>
+                <li>
+                  Connect the right leg of the potentiometer to <strong>GND</strong> on Arduino.
+                </li>
+                <li>
+                  Connect the middle leg (wiper) to <strong>analog pin A0</strong>.
+                </li>
+                <li>
+                  Insert the LED into the breadboard.
+                </li>
+                <li>
+                  Connect a 220Ω resistor to the shorter leg (cathode) of the LED.
+                </li>
+                <li>
+                  Connect the other end of the resistor to <strong>GND</strong> on Arduino.
+                </li>
+                <li>
+                  Connect the longer leg of the LED to <strong>digital pin 9</strong> (PWM pin).
+                </li>
+            </ol>
+            <div class="circuit-container">
+                <img loading="lazy" src="circuit-images/pot_led.PNG" class="circuit-image" alt="Potentiometer LED Circuit Diagram">
+                <button class="download-btn" onclick="downloadImage('circuit-images/pot_led.PNG', 'pot_led.PNG')"><i class="fas fa-download"></i>  Download circuit diagram</button>
+            </div>
+            <p>
+                Here's a simple circuit diagram to visualize the connections. The potentiometer acts as a variable resistor, allowing you to adjust the voltage read by the Arduino on pin A0. The LED brightness will change based on the potentiometer's position, demonstrating how analog input can control an output device.
+            </p>
+        </section>
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block">
+                <code>
+/*
+   Project: Potentiometer Control with Arduino
+   description: Learn how to read potentiometer values and control LED brightness using Arduino. 
+
+   Components:
+     - Arduino Uno 
+     - 10kΩ Potentiometer 
+     - LED 
+     - 220Ω Resistor 
+     - Breadboard 
+     - Jumper Wires
+     - USB Cable 
+   Author: Circuit Creation RN
+
+*/
+                    
+// This code reads the potentiometer value and controls the brightness of an LED accordingly.
+
+int potPin = A0;      // Analog pin for potentiometer
+int ledPin = 9;       // PWM pin for LED
+
+void setup() {
+  Serial.begin(9600);     // Initialize serial communication
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Read the potentiometer value (0-1023)
+  int potValue = analogRead(potPin);
+  
+  // Convert analog value (0-1023) to PWM value (0-255)
+  int ledBrightness = map(potValue, 0, 1023, 0, 255);
+  
+  // Set LED brightness
+  analogWrite(ledPin, ledBrightness);
+  
+  // Print values to Serial Monitor
+  Serial.print("Potentiometer: ");
+  Serial.print(potValue);
+  Serial.print(" -> LED Brightness: ");
+  Serial.println(ledBrightness);
+  
+  delay(100);  // Update every 100ms
+}
+                </code>
+            </pre>
+            </div>
+        </section>
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+
+            <ol>
+                <li>Connect the Arduino board to your computer using the USB cable.</li>
+                <li>Open the Arduino IDE and paste the code into a new sketch.</li>
+                <li>Select the correct board and port from the Tools menu.</li>
+                <li>Click the Upload button.</li>
+                <li>Open the Serial Monitor (Tools > Serial Monitor) to see the potentiometer values.</li>
+            </ol>
+
+        </section>
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+            
+            <p>
+                Let us understand how the Arduino code works step by step.
+                This will help you modify the project later and build more projects.
+            </p>
+
+            <h3>Declaring Pins</h3>
+            <p>
+                <code>int potPin = A0;</code> stores the analog pin where the potentiometer is connected.
+                <code>int ledPin = 9;</code> stores the PWM pin for the LED.
+            </p>
+
+            <h3>setup() Function</h3>
+            <p>
+                The <code>setup()</code> function runs only once when the Arduino starts.
+                <code>Serial.begin(9600)</code> initializes serial communication for the Serial Monitor.
+                <code>pinMode(ledPin, OUTPUT)</code> tells Arduino that pin 9 is an output.
+            </p>
+
+            <h3>analogRead() Function</h3>
+            <p>
+                <code>analogRead(potPin)</code> reads the voltage on the analog pin.
+                It returns a value between 0 and 1023, where 0 is 0V and 1023 is 5V.
+            </p>
+
+            <h3>map() Function</h3>
+            <p>
+                The <code>map()</code> function converts values from one range to another.
+                Here, it converts the potentiometer value (0-1023) to PWM value (0-255).
+                This is necessary because PWM brightness only accepts 0-255 values.
+            </p>
+
+            <h3>analogWrite() Function</h3>
+            <p>
+                <code>analogWrite(ledPin, ledBrightness)</code> sets the LED brightness using PWM.
+                PWM values range from 0 (off) to 255 (full brightness).
+            </p>
+
+            <h3>loop() Function</h3>
+            <p>
+                The <code>loop()</code> function runs continuously.
+                It reads the potentiometer, converts the value, and updates the LED brightness.
+            </p>
+        </section>
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+
+            <ul class="mistakes-list">
+                <li>
+                    <strong>LED brightness doesn't change:</strong>
+                    Make sure the LED is connected to a PWM pin (marked with ~). Pins 9 and 10 on Arduino Uno support PWM.
+                </li>
+
+                <li>
+                  <strong>Potentiometer not working:</strong>
+                  Check that the middle pin (wiper) is connected to the analog pin.
+                  Verify connections: left to 5V, right to GND, middle to A0.
+                </li>
+
+                <li>
+                  <strong>Serial Monitor shows only 0 or 1023:</strong>
+                  The potentiometer might not be wired correctly. Double-check all connections.
+                </li>
+
+                <li>
+                  <strong>LED very dim or too bright:</strong>
+                  This is normal. Try rotating the potentiometer to adjust brightness.
+                  If still not working, check the resistor value (220Ω or 330Ω).
+                </li>
+
+                <li>
+                  <strong>Upload error:</strong>
+                  Select the correct board (Arduino Uno) and COM port from the Arduino IDE Tools menu.
+                </li>
+            </ul>
+        </section>
+        <!-- Section 8 -->
+         <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How to read analog values using <code>analogRead()</code>.</li>
+                <li>Understanding analog vs digital inputs and the 0-1023 range.</li>
+                <li>Converting values using the <code>map()</code> function.</li>
+                <li>Using PWM (Pulse Width Modulation) to control brightness with <code>analogWrite()</code>.</li>
+                <li>Using Serial Monitor to debug and view sensor readings.</li>
+                <li>Building a practical control system with a potentiometer.</li>
+            </ul>
+        </section>
+        <!-- Section 9: Next Steps -->
+        <section class="project-section">
+            <h2>Next Steps</h2>
+            <p>
+                Now that you understand potentiometer control, try these advanced projects:
+            </p>
+            <ul>
+                <li>Control a servo motor position with a potentiometer.</li>
+                <li>Use multiple potentiometers to control RGB LED colors.</li>
+                <li>Display potentiometer readings on an LCD screen.</li>
+                <li>Combine with other sensors for multi-input control systems.</li>
+            </ul>
+        </section>
+        <!-- Section 10 -->
+         <a href="circuit-projects.html" class="aa"><button class="button-exp">Explore More Projects</button></a>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy code');
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
