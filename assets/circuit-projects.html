@@ -4,26 +4,43 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Basic SEO -->
-    <meta name="description" content="Arduino & Electronics Projects - Learn with Circuit Creation. Step-by-step tutorials for beginners to advanced. LED projects, servo control, button circuits, and more.">
-    <meta name="keywords" content="arduino projects, electronics tutorials, led projects, servo motor, button control, circuit projects">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Explore comprehensive Arduino & Electronics Projects with step-by-step tutorials, circuit diagrams, and code. Ideal for beginners and advanced DIY electronics learners.">
+    <meta name="keywords" content="arduino projects, electronics tutorials, DIY electronics, LED projects, servo motor, button control, circuit projects, learn arduino">
+    <meta name="author" content="Circuit Creation RN">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="language" content="English">
 
     <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
-    <meta property="og:title" content="Arduino & Electronics Projects | Circuit Creation">
-    <meta property="og:description" content="Explore our collection of Arduino and electronics projects with detailed tutorials and code.">
+    <meta property="og:site_name" content="Circuit Creation RN">
+    <meta property="og:title" content="Arduino & Electronics Projects | Circuit Creation RN">
+    <meta property="og:description" content="Explore our collection of Arduino and electronics projects with detailed tutorials, circuit diagrams, and code.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-projects.html">
     <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
+    <meta property="og:image:alt" content="Circuit Creation RN Projects">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Arduino & Electronics Projects - Circuit Creation">
-    <meta name="twitter:description" content="Learn Arduino and electronics with our comprehensive project tutorials.">
+    <meta name="twitter:title" content="Arduino & Electronics Projects | Circuit Creation RN">
+    <meta name="twitter:description" content="Learn Arduino and electronics with our comprehensive project tutorials, code, and circuit diagrams.">
     <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-projects.html">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Arduino & Electronics Projects",
+          "url": "https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-projects.html",
+          "description": "A collection of step-by-step tutorials for Arduino and electronics projects.",
+          "publisher": {
+            "@type": "EducationalOrganization",
+            "name": "Circuit Creation RN",
+            "logo": "https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png"
+          }
+        }
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -215,7 +232,7 @@
                 </div>
             </a> 
             <!-- Project Card 13 -->
-            <a href="" class="project-a" data-category="Sensor-Projects">
+            <a href="" class="project-a" data-category="Sensor-Projects LED-projects">
                 <div class="project-card">
                     <h3>Touch sensor LED</h3>
                     <img loading="lazy" class="ard-imgg" src="images/Touch Sensor .jpg" alt="">
@@ -325,7 +342,7 @@
                         </p>
                     </div>
                  </a>
-                 <!-- Project Cart 24 -->
+                <!-- Project Cart 24 -->
                   <a href="bluetooth-module.html" class="project-a" data-category="Module-Projects">
                     <div class="project-card">
                         <h3>Bluetooth module Arduino control</h3>
@@ -335,6 +352,16 @@
                         </p>
                     </div>
                   </a>
+                <!-- Project Card 25 -->
+                 <a href="" class="project-a" data-category="Input-Projects LED-projects">
+                    <div class="project-card">
+                        <h3>LED Pattern using potentiometer</h3>
+                        <img loading="lazy" class="ard-imgg" src="https://arduinointro.com/images/pot-4-leds-900.jpg" alt="">
+                        <p>
+                            Create different LED patterns by adjusting a potentiometer with Arduino. Great for learning about analog input and output control.
+                        </p>
+                    </div>
+                 </a>  
             <!-- Coming soon sigh -->
             <section class="coming-soon">
                 <h2>More Projects Coming Soon!</h2>
@@ -346,8 +373,8 @@
     <footer>
         <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
         <div class="footer-social">
-            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
-            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt="Instagram Profile"></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt="YouTube Channel"></a>
         </div>
     </footer>
 
@@ -390,7 +417,7 @@
                 
                 if (category === 'all') {
                     card.style.display = '';
-                } else if (cardCategory === category) {
+                } else if (cardCategory.includes(category)) {
                     card.style.display = '';
                 } else {
                     card.style.display = 'none';
