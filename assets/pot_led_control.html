@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Control LED patterns using a potentiometer and Arduino UNO. Learn how to create dynamic LED effects based on analog input with this beginner-friendly project.">
+    <meta name="keywords"
+        content="arduino led pattern, potentiometer arduino, led sequence, analog input project, beginner arduino">
+    <meta name="author" content="Circuit Creation RN">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="LED Pattern Control using Potentiometer | Arduino Project">
+    <meta property="og:description"
+        content="Learn how to control multiple LEDs using a potentiometer and Arduino to create dynamic visual patterns.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/led-pattern-potentiometer.html">
+    <meta property="og:image"
+        content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/led-pattern.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LED Pattern using Potentiometer | Arduino">
+    <meta name="twitter:description"
+        content="Create LED patterns with Arduino using a potentiometer. Beginner-friendly project.">
+    <meta name="twitter:image"
+        content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/led-pattern.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical"
+        href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/led-pattern-potentiometer.html">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LED Pattern Control using Potentiometer | Arduino Project</title>
+
+    <link rel="stylesheet" href="css/circuit.css">
+    <link rel="icon" href="../favicon.png">
+</head>
+
+<body>
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg- bg-opacity-90 backdrop-blur-sm shadow-md">
+        <div class="right">
+            <a class="local" href="https://circuitcreation.github.io/Circuit-Creation-RN/">Circuit Creation</a>
+        </div>
+        <div class="left">
+            <table>
+                <tr>
+                    <td><a href="https://circuitcreation.github.io/Circuit-Creation-RN/"><button
+                                class="home">Home</button></a></td>
+                    <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                    <td><a href="circuit-gallery.html"><button class="home">Gallery</button></a></td>
+                    <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <main class="project-detail" style="margin-top:100px;">
+        <section class="project-header">
+            <h1>LED Pattern Control using Potentiometer</h1>
+            <p>
+                In this project, you will learn how to control multiple LEDs using a potentiometer.
+                As you rotate the knob, LEDs turn ON step-by-step, creating a smooth bar-style pattern.
+                This project is perfect for understanding analog input and multi-output control.
+            </p>
+            <span class="difficulty --beginner">Beginner</span>
+        </section>
+
+        <section class="project-section">
+            <h2>Components Required</h2>
+            <ul class="components-list">
+                <li>Arduino Uno</li>
+                <li>10kΩ Potentiometer</li>
+                <li>5 LEDs</li>
+                <li>5 × 220Ω Resistors</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+                <li>USB Cable</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+            <p>
+                Follow these steps to connect the potentiometer and LEDs with Arduino:
+            </p>
+
+            <ol>
+                <li>Connect potentiometer middle pin to <strong>A0</strong>.</li>
+                <li>Connect other pins to <strong>5V</strong> and <strong>GND</strong>.</li>
+                <li>Connect LEDs to pins <strong>3, 4, 5, 6, 7</strong> using resistors.</li>
+                <li>Connect LED cathodes to <strong>GND</strong>.</li>
+            </ol>
+
+            <div class="circuit-container">
+                <img src="circuit-images/led_pattern.PNG" class="circuit-image" alt="LED Pattern Circuit">
+                <button class="download-btn"
+                    onclick="downloadImage('circuit-images/led_pattern.PNG','led_pattern.PNG')">
+                    <i class="fas fa-download"></i> Download circuit diagram
+                </button>
+            </div>
+            <p>
+                The potentiometer controls how many LEDs turn ON, forming a progressive lighting pattern.
+            </p>
+        </section>
+
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block">
+                <code>
+int potPin = A0;
+int leds[] = {3,4,5,6,7};
+
+void setup() {
+  for(int i=0;i<5;i++){
+    pinMode(leds[i], OUTPUT);
+  }
+}
+
+void loop() {
+  int value = analogRead(potPin);
+  int level = map(value, 0, 1023, 0, 5);
+
+  for(int i=0;i<5;i++){
+    if(i < level){
+      digitalWrite(leds[i], HIGH);
+    } else {
+      digitalWrite(leds[i], LOW);
+    }
+  }
+
+  delay(50);
+}
+                </code>
+                </pre>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+            <h3>LED Array</h3>
+            <p>
+                The LED pins are stored in an array, allowing easy control using loops.
+            </p>
+
+            <h3>Analog Input</h3>
+            <p>
+                The potentiometer value is read using <code>analogRead()</code>, which gives values from 0 to 1023.
+            </p>
+
+            <h3>Mapping Values</h3>
+            <p>
+                The <code>map()</code> function converts the input into 5 levels, each representing an LED.
+            </p>
+
+            <h3>Pattern Logic</h3>
+            <p>
+                LEDs turn ON progressively depending on the potentiometer position, creating a bar pattern effect.
+            </p>
+        </section>
+
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+            <ul class="mistakes-list">
+                <li><strong>LED not glowing:</strong> Check polarity and resistor.</li>
+                <li><strong>All LEDs ON:</strong> Potentiometer wiring may be incorrect.</li>
+                <li><strong>No response:</strong> Verify A0 connection.</li>
+            </ul>
+        </section>
+
+        <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>Reading analog input from potentiometer</li>
+                <li>Controlling multiple LEDs</li>
+                <li>Using arrays and loops</li>
+                <li>Creating LED patterns</li>
+            </ul>
+        </section>
+
+        <a href="circuit-projects.html" class="aa">
+            <button class="button-exp">Explore More Projects</button>
+        </a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/"><img width="26px" src="images/download.png"></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN"><img width="25px"
+                    src="images/InShot_20251114_191952412.jpg"></a>
+        </div>
+    </footer>
+
+    <script>
+        function copyCode(btn) {
+            const code = btn.nextElementSibling.innerText;
+            navigator.clipboard.writeText(code);
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 2000);
+        }
+
+        function downloadImage(src, filename) {
+            const a = document.createElement("a");
+            a.href = src;
+            a.download = filename;
+            a.click();
+        }
+    </script>
+</body>
+
+</html>
