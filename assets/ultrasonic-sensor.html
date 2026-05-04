@@ -70,7 +70,6 @@
                 <li>Breadboard</li>
                 <li>Jumper Wires</li>
                 <li>USB Cable</li>
-                <li>Optional: LED for visual feedback</li>
             </ul>
         </section>
         <!-- Section 3 -->
@@ -90,10 +89,10 @@
                   Connect the GND pin of the sensor to the GND pin on Arduino.
                 </li>
                 <li>
-                  Connect the TRIG pin to digital pin 9 on Arduino.
+                  Connect the TRIG pin to digital pin 10 on Arduino.
                 </li>
                 <li>
-                  Connect the ECHO pin to digital pin 10 on Arduino.
+                  Connect the ECHO pin to digital pin 13 on Arduino.
                 </li>
                 <li>
                   Double-check all connections before powering up the Arduino.
@@ -126,15 +125,14 @@
      - Breadboard 
      - Jumper Wires 
      - USB Cable 
-     - Optional: LED for visual feedback 
    Author: Circuit Creation RN
 
 */
 //This code reads the distance from the HC-SR04 ultrasonic sensor and prints it to the Serial Monitor in centimeters.
 
 
-const int trigPin = 9;
-const int echoPin = 10;
+const int trigPin = 10;
+const int echoPin = 13;
 
 void setup() {
   Serial.begin(9600);
@@ -194,7 +192,7 @@ void loop() {
 
             <h3>Defining Pins</h3>
             <p>
-                <code>const int trigPin = 9;</code> and <code>const int echoPin = 10;</code> 
+                <code>const int trigPin = 10;</code> and <code>const int echoPin = 13;</code> 
                 define which pins the sensor is connected to.
             </p>
 
@@ -236,7 +234,7 @@ void loop() {
             <ul class="mistakes-list">
                 <li>
                     <strong>Sensor not detecting objects:</strong>
-                    Check that the TRIG and ECHO pins are correctly connected to pins 9 and 10.
+                    Check that the TRIG and ECHO pins are correctly connected to pins 10 and 13.
                 </li>
 
                 <li>
