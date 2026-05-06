@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Basic SEO -->
+    <meta name="description" content="Build a distance indicator using ultrasonic sensor and LEDs with Arduino. Learn object detection and LED visualization step-by-step.">
+    <meta name="keywords" content="arduino ultrasonic project, distance measurement, hc-sr04 led indicator, arduino led distance, beginner arduino project">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ultrasonic Distance Indicator using LEDs | Arduino Project">
+    <meta property="og:description" content="Create a distance indicator using ultrasonic sensor and LEDs with Arduino. Step-by-step guide with code and circuit.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/ultrasonic-led-indicator.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/ultra-led.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/ultrasonic-led-indicator.html">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultrasonic Distance Indicator using LEDs | Arduino Project</title>
+    <link rel="stylesheet" href="css/circuit.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg-opacity-90 backdrop-blur-sm shadow-md">
+        <div class="right">
+            <a class="local" href="https://circuitcreation.github.io/Circuit-Creation-RN/">Circuit Creation</a>
+        </div>
+        <div class="left">
+            <table>
+                <tr>
+                    <td><a href="https://circuitcreation.github.io/Circuit-Creation-RN/"><button class="home">Home</button></a></td>
+                    <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                    <td><a href="circuit-gallery.html"><button class="home">Gallery</button></a></td>
+                    <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+
+    <main class="project-detail" style="margin-top: 100px;">
+
+        <!-- Section 1 -->
+        <section class="project-header">
+            <h1>Ultrasonic Distance Indicator using LEDs</h1>
+            <p>
+                This project demonstrates how to measure distance using an ultrasonic sensor and 
+                visualize it using multiple LEDs. As an object gets closer, more LEDs light up, 
+                creating a simple and effective distance indicator system.
+            </p>
+            <span class="difficulty --beginner">Beginner</span>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="project-section">
+            <h2>Components Required</h2>
+            <ul class="components-list">
+                <li>Arduino Uno</li>
+                <li>HC-SR04 Ultrasonic Sensor</li>
+                <li>9 LEDs</li>
+                <li>9 × 220Ω Resistors</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+                <li>USB Cable</li>
+            </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="project-section">
+            <h2>Circuit Connections</h2>
+
+            <p>
+                Follow the steps below to connect the ultrasonic sensor and LEDs to the Arduino board.
+                Ensure proper connections before powering the circuit.
+            </p>
+
+            <ol>
+                <li>Connect VCC of HC-SR04 to 5V on Arduino.</li>
+                <li>Connect GND of HC-SR04 to GND on Arduino.</li>
+                <li>Connect TRIG pin to digital pin 12.</li>
+                <li>Connect ECHO pin to digital pin 13.</li>
+                <li>Connect LEDs to digital pins 2 to 10 (via resistors).</li>
+                <li>Connect all LED cathodes to GND.</li>
+            </ol>
+
+            <div class="circuit-container">
+                <img loading="lazy" src="circuit-images/ultrasonic_led_indicator.PNG" class="circuit-image" alt="Ultrasonic LED Distance Indicator Circuit">
+                <button class="download-btn" onclick="downloadImage('circuit-images/ultrasonic_led_indicator.PNG', 'ultrasonic_led_indicator.PNG')">
+                    <i class="fas fa-download"></i> Download circuit diagram
+                </button>
+            </div>
+
+            <p>
+                The ultrasonic sensor measures distance, and based on that value,
+                the Arduino lights up a number of LEDs to indicate how close the object is.
+            </p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="project-section">
+            <h2>Arduino Code</h2>
+
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre class="code-block"><code>
+
+/*
+   Project: Ultrasonic LED Distance Indicator
+   description: Measure distance using HC-SR04 and display it using LEDs.
+
+   Components:
+     - Arduino Uno
+     - HC-SR04 Ultrasonic Sensor
+     - 9 LEDs
+     - Resistors
+     - Breadboard
+     - Jumper Wires
+   Author: Circuit Creation RN
+*/
+
+const int trigPin = 12;
+const int echoPin = 13;
+const int ledPins[] = {10, 9, 8, 7, 6, 5, 4, 3, 2};
+const int ledCount = 9;
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
+  for (int i = 0; i < ledCount; i++) {
+    pinMode(ledPins[i], OUTPUT);
+  }
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  long duration;
+  int distance;
+
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration * 0.034 / 2;
+
+  int ledsToLight = map(distance, 5, 30, ledCount, 0);
+  ledsToLight = constrain(ledsToLight, 0, ledCount);
+
+  for (int i = 0; i < ledCount; i++) {
+    if (i < ledsToLight) {
+      digitalWrite(ledPins[i], HIGH);
+    } else {
+      digitalWrite(ledPins[i], LOW);
+    }
+  }
+
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  delay(100);
+}
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="project-section">
+            <h2>Upload the Code</h2>
+            <ol>
+                <li>Connect Arduino to your computer.</li>
+                <li>Open Arduino IDE and paste the code.</li>
+                <li>Select correct board and port.</li>
+                <li>Click Upload.</li>
+                <li>Open Serial Monitor to view distance readings.</li>
+            </ol>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="project-section">
+            <h2>Code Explanation</h2>
+
+            <p>This project reads distance using ultrasonic waves and visualizes it using LEDs.</p>
+
+            <h3>Trigger and Echo</h3>
+            <p>
+                The TRIG pin sends an ultrasonic pulse, and the ECHO pin receives it back after reflection.
+            </p>
+
+            <h3>Distance Calculation</h3>
+            <p>
+                <code>distance = duration * 0.034 / 2</code> converts time into distance in cm.
+            </p>
+
+            <h3>LED Mapping</h3>
+            <p>
+                The <code>map()</code> function converts distance into number of LEDs.
+                Closer object = more LEDs ON.
+            </p>
+
+            <h3>Loop Logic</h3>
+            <p>
+                A loop turns ON LEDs based on distance and turns OFF the rest.
+            </p>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="project-section">
+            <h2>Common Mistakes & Troubleshooting</h2>
+            <ul class="mistakes-list">
+                <li><strong>No LED lighting:</strong> Check wiring and resistors.</li>
+                <li><strong>Wrong distance:</strong> Ensure TRIG and ECHO pins are correct.</li>
+                <li><strong>Unstable readings:</strong> Avoid loose wires.</li>
+                <li><strong>Upload error:</strong> Select correct board and COM port.</li>
+            </ul>
+        </section>
+
+        <!-- Section 8 -->
+        <section class="project-section">
+            <h2>What You Learned</h2>
+            <ul>
+                <li>How ultrasonic sensors measure distance</li>
+                <li>Using multiple LEDs as output indicators</li>
+                <li>Mapping sensor values to outputs</li>
+                <li>Basic Arduino programming logic</li>
+            </ul>
+        </section>
+
+        <!-- Section 9 -->
+        <a href="circuit-projects.html" class="aa">
+            <button class="button-exp">Explore More Projects</button>
+        </a>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                setTimeout(() => button.textContent = 'Copy', 2000);
+            });
+        }
+
+        function downloadImage(src, filename) {
+            const link = document.createElement('a');
+            link.href = src;
+            link.download = filename;
+            link.click();
+        }
+    </script>
+
+</body>
+</html>
