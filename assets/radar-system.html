@@ -45,9 +45,8 @@
             </table>
         </div>
     </div>
-
+    <hr>
     <main class="project-detail" style="margin-top: 100px;">
-
         <!-- Section 1 -->
         <section class="project-header">
             <h1>Radar System using Ultrasonic Sensor</h1>
@@ -89,13 +88,13 @@
                     Connect the GND pin of the ultrasonic sensor to the GND pin on Arduino.
                 </li>
                 <li>
-                    Connect the TRIG pin of the sensor to digital pin 9 on Arduino.
+                    Connect the TRIG pin of the sensor to digital pin 10 on Arduino.
                 </li>
                 <li>
-                    Connect the ECHO pin of the sensor to digital pin 10 on Arduino.
+                    Connect the ECHO pin of the sensor to digital pin 11 on Arduino.
                 </li>
                 <li>
-                    Connect the signal pin of the servo motor to digital pin 11 on Arduino.
+                    Connect the signal pin of the servo motor to digital pin 12 on Arduino.
                 </li>
                 <li>
                     Connect the VCC of the servo motor to 5V and GND to GND.
@@ -103,8 +102,8 @@
             </ol>
 
             <div class="circuit-container">
-                <img loading="lazy" src="circuit-images/radar.PNG" class="circuit-image" alt="Arduino Radar system circuit connection">
-                <button class="download-btn" onclick="downloadImage('circuit-images/radar.PNG', 'radar.PNG')">
+                <img loading="lazy" src="circuit-images/radar_system.PNG" class="circuit-image" alt="Arduino Radar system circuit connection">
+                <button class="download-btn" onclick="downloadImage('circuit-images/radar_system.PNG', 'radar_system.PNG')">
                     <i class="fas fa-download"></i>  Download circuit diagram
                 </button>
             </div>
@@ -123,43 +122,82 @@
                 <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                 <pre class="code-block">
                 <code>
-#include &lt;Servo.h&gt;
+/*
+    Project: Radar System using Ultrasonic Sensor
+    description: This project demonstrates how to create a simple radar system using an ultrasonic
+     sensor and a servo motor with Arduino. The sensor scans the surroundings by rotating with the 
+     servo, measuring distances to objects, and sending data to the Serial Monitor for visualization.
 
-Servo myServo;
+   Components:
+     -  Arduino Uno
+     -  HC-SR04 Ultrasonic Sensor
+     -  SG90 Servo Motor
+     -  Breadboard
+     -  Jumper Wires
+     -  USB Cable 
+   Author: Circuit Creation RN
 
-int trigPin = 9;
-int echoPin = 10;
+*/
 
+
+// Includes the Servo library
+#include &lt;Servo.h&gt; 
+
+// Defines Tirg and Echo pins of the Ultrasonic Sensor
+const int trigPin = 10;
+const int echoPin = 11;
+
+// Variables for the duration and the distance
 long duration;
 int distance;
 
+Servo myServo; // Creates a servo object for controlling the servo motor
+
 void setup() {
+  pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
+  pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+
   Serial.begin(9600);
-  myServo.attach(11);
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
+  myServo.attach(12); // Defines on which pin is the servo motor attached
 }
-
 void loop() {
-  for(int angle = 15; angle <= 165; angle++){
-    myServo.write(angle);
-    delay(30);
+  // rotates the servo motor from 15 to 165 degrees
+    for(int i=15;i<=165;i++){  
+        myServo.write(i);
+        delay(30);
+        distance = calculateDistance();// Calls a function for calculating the distance measured by the Ultrasonic sensor for each degree
+  
+        Serial.print(i); // Sends the current degree into the Serial Port
+        Serial.print(","); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
+        Serial.print(distance); // Sends the distance value into the Serial Port
+        Serial.print("."); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
+    }
+  // Repeats the previous lines from 165 to 15 degrees
+    for(int i=165;i>15;i--){  
+        myServo.write(i);
+        delay(30);
+        distance = calculateDistance();
 
-    digitalWrite(trigPin, LOW);
-    delayMicroseconds(2);
-    digitalWrite(trigPin, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(trigPin, LOW);
-
-    duration = pulseIn(echoPin, HIGH);
-    distance = duration * 0.034 / 2;
-
-    Serial.print(angle);
-    Serial.print(",");
-    Serial.print(distance);
-    Serial.print(".");
-  }
+        Serial.print(i);
+        Serial.print(",");
+        Serial.print(distance);
+        Serial.print(".");
+    }
 }
+  // Function for calculating the distance measured by the Ultrasonic sensor
+    int calculateDistance(){ 
+  
+        digitalWrite(trigPin, LOW); 
+        delayMicroseconds(2);
+        // Sets the trigPin on HIGH state for 10 micro seconds
+        digitalWrite(trigPin, HIGH); 
+        delayMicroseconds(10);
+        digitalWrite(trigPin, LOW);
+
+        duration = pulseIn(echoPin, HIGH); // Reads the echoPin, returns the sound wave travel time in microseconds
+        distance= duration*0.034/2;
+        return distance;
+    }
             </code>
             </pre>
             </div>
@@ -195,26 +233,27 @@ void loop() {
             <h3>Creating Servo Object</h3>
             <p>
                 <code>Servo myServo;</code> creates a servo object that will control the rotation
-                of the sensor for scanning.
+                of the ultrasonic sensor for scanning.
             </p>
 
             <h3>Defining Pins</h3>
             <p>
-                <code>int trigPin = 9;</code> and <code>int echoPin = 10;</code> define the pins
+                <code>const int trigPin = 10;</code> and <code>const int echoPin = 11;</code> define the pins
                 connected to the ultrasonic sensor.
             </p>
 
             <h3>setup() Function</h3>
             <p>
-                The <code>setup()</code> function initializes Serial communication at 9600 baud
-                and attaches the servo motor to pin 11 using <code>myServo.attach(11)</code>.
-                It also sets trigPin as OUTPUT and echoPin as INPUT.
+                The <code>setup()</code> function initializes Serial communication at 9600 baud,
+                sets trigPin as OUTPUT and echoPin as INPUT, and attaches the servo motor to pin 12
+                using <code>myServo.attach(12)</code>.
             </p>
 
             <h3>Servo Scanning</h3>
             <p>
-                The <code>for</code> loop rotates the servo from 15° to 165°.
-                This creates a scanning motion similar to a radar system.
+                The first <code>for</code> loop rotates the servo from 15° to 165°, and the second loop
+                rotates it back from 165° to 15°. This back-and-forth motion creates a continuous
+                radar scanning effect.
             </p>
 
             <h3>Triggering the Sensor</h3>
@@ -226,7 +265,7 @@ void loop() {
             <h3>Reading the Echo</h3>
             <p>
                 <code>pulseIn(echoPin, HIGH)</code> measures how long the echo signal stays HIGH.
-                This duration represents the time taken by the sound wave to travel.
+                This duration represents the time taken by the sound wave to travel to the object and return.
             </p>
 
             <h3>Calculating Distance</h3>
@@ -235,10 +274,17 @@ void loop() {
                 The value 0.034 represents the speed of sound in cm/µs.
             </p>
 
+            <h3>Custom Function</h3>
+            <p>
+                The <code>calculateDistance()</code> function handles triggering the ultrasonic sensor
+                and calculating the distance. This keeps the main loop clean and organized.
+            </p>
+
             <h3>Sending Data to Processing</h3>
             <p>
-                The Arduino sends data in the format <code>angle,distance</code> using Serial communication.
-                This data is used by Processing software to create the radar visualization.
+                The Arduino sends data in the format <code>angle,distance.</code> using Serial communication.
+                The comma separates angle and distance values, while the dot indicates the end of each data set.
+                This format is used by Processing software to create the radar visualization.
             </p>
         </section>
 
@@ -304,6 +350,10 @@ void loop() {
 
     <footer>
         <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
     </footer>
 
     <script>
