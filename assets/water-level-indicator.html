@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Basic SEO -->
+    <meta name="description" content="Learn how to build a water level indicator using Arduino and a water level sensor. Complete guide with components, circuit diagram, code, and troubleshooting.">
+    <meta name="keywords" content="water level sensor, water level indicator, arduino sensor, water detection, liquid level">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
+    <meta property="og:title" content="Water Level Indicator Project using Arduino | Beginner Tutorial">
+    <meta property="og:description" content="Build a water level indicator with Arduino and a water level sensor. Perfect for tanks and containers.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/water-level-indicator.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/water-level.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Water Level Indicator Project using Arduino">
+    <meta name="twitter:description" content="Learn to detect water levels using Arduino and sensor modules - great for automation projects.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/water-level.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/water-level-indicator.html">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Level Indicator Project using Arduino | Beginner Tutorial</title>
+    <link rel="stylesheet" href="css/circuit.css" text="text/css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+    <div class="container header fixed top-0 left-0 right-0 z-50 p-4 bg- bg-opacity-90 backdrop-blur-sm shadow-md">
+        <div class="right">
+                <a class="local" href="https://circuitcreation.github.io/Circuit-Creation-RN/">Circuit Creation</a>
+        </div>
+        <div class="left">
+                <table>
+                    <tr>
+                        <td><a href="https://circuitcreation.github.io/Circuit-Creation-RN/"><button class="home">Home</button></a></td>
+                        <td><a href="circuit-about.html"><button class="home">About</button></a></td>
+                        <td><a href="circuit-gallery.html"><button class="home" >Gallery</button></a></td>
+                        <td><a href="circuit-projects.html"><button class="home">Projects</button></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <hr>
+    <div style="margin-top: 100px;">
+        <main class="project-detail">
+            <!-- Section 1 -->
+            <section class="project-header">
+                <h1>Water Level Indicator Project using Arduino</h1>
+                <p>
+                    In this project, we will create a water level indicator using Arduino and a water level sensor.
+                    This project is useful for monitoring water levels in tanks, containers, and other applications.
+                    We will display the water level status using LEDs and a buzzer for alerts.
+                </p>
+
+                <span class="difficulty --beginner">Beginner</span>
+            </section>
+            <!-- Section 2 -->
+            <section class="project-section">
+                <h2>Components Required</h2>
+
+                <ul class="components-list">
+                    <li>Arduino Uno (or compatible board)</li>
+                    <li>Water Level Sensor Module</li>
+                    <li>3 × LEDs (Red, Yellow, Green)</li>
+                    <li>3 × 220Ω Resistors (for LEDs)</li>
+                    <li>Buzzer (5V)</li>
+                    <li>Breadboard</li>
+                    <li>Jumper Wires</li>
+                    <li>USB Cable</li>
+                    <li>Container with water (for testing)</li>
+                </ul>
+            </section>
+            <!-- Section 3 -->
+            <section class="project-section">
+                <h2>Circuit Connections</h2>
+
+                <p>
+                    Follow the steps below to connect the water level sensor, LEDs, and buzzer with the Arduino board.
+                    Make sure the Arduino is not connected to USB while wiring.
+                </p>
+
+                <ol>
+                    <li>
+                        Connect the water level sensor module:
+                        <ul>
+                            <li>VCC to Arduino 5V</li>
+                            <li>GND to Arduino GND</li>
+                            <li>Signal to Arduino Analog Pin A0</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Connect the Green LED (Low water) to digital pin 8 with 220Ω resistor to GND.
+                    </li>
+                    <li>
+                        Connect the Yellow LED (Medium water) to digital pin 9 with 220Ω resistor to GND.
+                    </li>
+                    <li>
+                        Connect the Red LED (High water) to digital pin 10 with 220Ω resistor to GND.
+                    </li>
+                    <li>
+                        Connect the Buzzer positive to digital pin 11 and negative to GND.
+                    </li>
+                </ol>
+                <div class="circuit-container">
+                    <img loading="lazy" src="circuit-images/water_sensor.png" class="circuit-image" alt="Arduino Water Level Indicator circuit connection">
+                    <button class="download-btn" onclick="downloadImage('circuit-images/water_level.PNG', 'water_level.PNG')"><i class="fas fa-download"></i> Download circuit diagram</button>
+                </div>
+                <p>
+                    Here is the circuit diagram for reference.
+                </p>
+            </section>
+            <!-- Section 4 -->
+            <section class="project-section">
+                <h2>Arduino Code</h2>
+
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre class="code-block">
+                    <code>
+/*
+   Project: Water Level Indicator using Arduino
+   Description: This project uses a water level sensor to detect the level of water in a container
+
+   Components:
+     - Water Level Sensor Module
+     - Arduino Uno 
+     - 3 LEDs (Red, Yellow, Green) 
+     - 3 × 220Ω Resistors 
+     - Buzzer (5V) 
+     - Breadboard and Jumper Wires
+     - USB Cable for programming
+     - Container with water for testing 
+   Author: Circuit Creation RN
+
+*/
+//This code reads the water level from the sensor and controls the LEDs and buzzer based on the water level.
+
+
+int waterSensor = A0;  // Analog pin A0
+int greenLED = 8;      // Low water indicator
+int yellowLED = 9;     // Medium water indicator
+int redLED = 10;       // High water indicator
+int buzzer = 11;       // Buzzer pin
+
+void setup() {
+  pinMode(greenLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(redLED, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int waterLevel = analogRead(waterSensor);
+  
+  Serial.print("Water Level: ");
+  Serial.println(waterLevel);
+  
+  // Turn off all LEDs and buzzer first
+  digitalWrite(greenLED, LOW);
+  digitalWrite(yellowLED, LOW);
+  digitalWrite(redLED, LOW);
+  digitalWrite(buzzer, LOW);
+  
+  // Check water level and turn on appropriate LED
+  if (waterLevel < 300) {
+    // Low water level
+    digitalWrite(greenLED, HIGH);
+  } 
+  else if (waterLevel >= 300 && waterLevel < 600) {
+    // Medium water level
+    digitalWrite(yellowLED, HIGH);
+  } 
+  else {
+    // High water level - trigger alert
+    digitalWrite(redLED, HIGH);
+    digitalWrite(buzzer, HIGH);
+  }
+  
+  delay(500);
+}
+                    </code>
+                </pre>
+                </div>
+            </section>
+            <!-- Section 5 -->
+            <section class="project-section">
+                <h2>Upload the Code</h2>
+
+                <ol>
+                    <li>Connect the Arduino board to your computer using the USB cable.</li>
+                    <li>Open the Arduino IDE and paste the code into a new sketch.</li>
+                    <li>Select the correct board and port from the Tools menu.</li>
+                    <li>Click the Upload button.</li>
+                    <li>Once uploaded, open the Serial Monitor (Ctrl+Shift+M) to view water level values.</li>
+                    <li>Test by dipping the sensor into water to see the LEDs and buzzer respond.</li>
+                </ol>
+
+            </section>
+            <!-- Section 6 -->
+            <section class="project-section">
+                <h2>Code Explanation</h2>
+
+                <p>
+                    Let us understand how the Arduino code works step by step.
+                    This will help you modify the project for your specific needs.
+                </p>
+
+                <h3>Declaring the Pins</h3>
+                <p>
+                    <code>int waterSensor = A0;</code> stores the analog pin where the sensor is connected.
+                    The LEDs are connected to digital pins 8, 9, and 10.
+                    The buzzer is connected to digital pin 11.
+                </p>
+
+                <h3>setup() Function</h3>
+                <p>
+                    The <code>setup()</code> function initializes all the digital pins as outputs.
+                    We also start serial communication at 9600 baud rate to monitor water level values
+                    on the Serial Monitor for debugging and calibration.
+                </p>
+
+                <h3>loop() Function</h3>
+                <p>
+                    The <code>loop()</code> function runs continuously.
+                    It reads the analog value from the water sensor using <code>analogRead()</code>.
+                    The sensor returns values between 0-1023, where higher values indicate more water.
+                </p>
+
+                <h3>Water Level Logic</h3>
+                <p>
+                    We have three water level ranges:
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Low Level (< 300):</strong> Green LED turns ON - water is low</li>
+                        <li><strong>Medium Level (300-600):</strong> Yellow LED turns ON - water is at normal level</li>
+                        <li><strong>High Level (> 600):</strong> Red LED and buzzer turn ON - water overflow warning</li>
+                    </ul>
+                    You can adjust these threshold values based on your sensor's calibration.
+                </p>
+
+                <h3>Sensor Calibration</h3>
+                <p>
+                    To calibrate the sensor for your specific container:
+                    <ol style="margin-left: 20px; margin-top: 10px;">
+                        <li>Empty water - note the analog value</li>
+                        <li>Fill with water - note the analog value</li>
+                        <li>Adjust the threshold values (300, 600) in the code accordingly</li>
+                    </ol>
+                </p>
+            </section>
+
+            <!-- Section 7 -->
+            <section class="project-section">
+                <h2>How It Works</h2>
+
+                <p>
+                    The water level sensor detects the presence of water through capacitive sensing or conductivity.
+                    When the sensor is dry (no water), it sends a low analog value to the Arduino.
+                    As water level increases, the analog value increases.
+                </p>
+
+                <p>
+                    The Arduino continuously reads this analog value and determines the water level status.
+                    Based on predefined thresholds, different LEDs are illuminated to indicate the water level.
+                </p>
+
+                <p>
+                    When the water level becomes too high, the buzzer sounds an alert to warn you of potential overflow.
+                    This automatic detection and alert system is crucial for preventing water wastage and damage.
+                </p>
+            </section>
+
+            <!-- Section 8 -->
+            <section class="project-section">
+                <h2>Common Mistakes & Troubleshooting</h2>
+
+                <ul class="mistakes-list">
+                    <li>
+                        <strong>Sensor not detecting water:</strong>
+                        Make sure the sensor pins are fully submerged in water during testing.
+                        Check all connections are secure.
+                    </li>
+
+                    <li>
+                      <strong>LEDs not lighting up:</strong>
+                      Check the LED orientation - longer leg should be connected to Arduino pin.
+                      Verify the 220Ω resistors are in place.
+                    </li>
+
+                    <li>
+                      <strong>Buzzer not sounding:</strong>
+                      Make sure positive terminal of buzzer is connected to the Arduino pin.
+                      Check if buzzer is functioning by testing with a battery.
+                    </li>
+
+                    <li>
+                      <strong>Incorrect water level readings:</strong>
+                      The sensor needs calibration. Check Serial Monitor values when dry and wet.
+                      Adjust threshold values in the code based on actual readings.
+                    </li>
+
+                    <li>
+                      <strong>Upload error:</strong>
+                      Select the correct board (Arduino Uno) and COM port from Tools menu.
+                    </li>
+
+                    <li>
+                      <strong>Erratic readings:</strong>
+                      Make sure sensor is not touching metal parts of container.
+                      Use proper jumper wires and avoid loose connections.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Section 9 -->
+             <a href="circuit-projects.html" class="aa"><button class="button-exp">Explore More Projects</button></a>
+        </main>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy code');
+            });
+        }
+        // Download image functionality
+        function downloadImage(src, filename) {
+            const link = document.createElement('a');
+            link.href = src;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const container = document.querySelector('.container');
+            if (window.scrollY > 10) {
+                container.classList.add('scrolled');
+            } else {
+                container.classList.remove('scrolled');
+            }
+        });
+        // Disable right-click on images
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

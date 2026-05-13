@@ -1,6 +1,6 @@
 // Navbar scroll effect
-window.addEventListener('scroll', function() {
-const container = document.querySelector('.container');
+window.addEventListener('scroll', function () {
+    const container = document.querySelector('.container');
     if (window.scrollY > 10) {
         container.classList.add('scrolled');
     } else {
@@ -8,8 +8,15 @@ const container = document.querySelector('.container');
     }
 });
 
+// Disable right-click on images
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+});
+
 // Lightbox: open clicked image in overlay, close on click/outside/Escape
-(function() {
+(function () {
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxClose = document.getElementById('lightboxClose');
@@ -32,7 +39,7 @@ const container = document.querySelector('.container');
     galleryImages.forEach(img => {
         img.style.cursor = 'pointer';
         img.addEventListener('click', (e) => {
-        openLightbox(e.currentTarget.src, e.currentTarget.alt);
+            openLightbox(e.currentTarget.src, e.currentTarget.alt);
         });
     });
 

@@ -28,17 +28,21 @@
     <!-- Canonical -->
     <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-about.html">
     <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          "name": "About Circuit Creation RN",
-          "url": "https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-about.html",
-          "publisher": {
-            "@type": "EducationalOrganization",
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-about.html"
+      },
+      "name": "About Circuit Creation RN",
+      "url": "https://circuitcreation.github.io/Circuit-Creation-RN/assets/circuit-about.html",
+      "publisher": {
+        "@type": "EducationalOrganization",
             "name": "Circuit Creation RN",
             "logo": "https://circuitcreation.github.io/Circuit-Creation-RN/assets/logo/Logo.png"
-          }
-        }
+      }
+    }
     </script>
 
     <meta charset="UTF-8">
@@ -84,6 +88,7 @@
             • easy to learn <br>
             • develop <br>
         </p>
+        <br>
         <p class="about-para4">Also a creative tech platform where innovation meets imagination. We build exciting electronics projects, explore coding challenges, and turn simple ideas into powerful real-world solutions. From Arduino-based systems to smart innovations, our goal is to inspire creators, learners, and future engineers. Join us as we experiment, create, and push the boundaries of technology one circuit at a time</p>
     </div>
     
@@ -94,5 +99,13 @@
             <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt="YouTube Channel"></a>
         </div>
     </footer>
+    <script>
+        // Disable right-click on images
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>
