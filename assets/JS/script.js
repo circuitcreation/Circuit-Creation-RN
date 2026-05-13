@@ -15,6 +15,12 @@ document.addEventListener('contextmenu', function(e) {
     }
 });
 
+document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+});
+
 // Lightbox: open clicked image in overlay, close on click/outside/Escape
 (function () {
     const lightbox = document.getElementById('lightbox');
