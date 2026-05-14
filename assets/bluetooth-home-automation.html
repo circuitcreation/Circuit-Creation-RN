@@ -4,31 +4,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Basic SEO -->
-    <meta name="description" content="Control an LED wirelessly using HC-05 Bluetooth module and Arduino. Step-by-step guide with circuit diagram and code.">
-    <meta name="keywords" content="bluetooth module, hc-05, arduino bluetooth, wireless control, led control, arduino project">
+    <meta name="description" content="Control home appliances wirelessly using HC-05 Bluetooth module, Arduino Uno, and relay module. Step-by-step guide with circuit diagram and code.">
+    <meta name="keywords" content="bluetooth home automation, hc-05, arduino bluetooth, relay control, wireless home control, arduino project, iot home automation">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
 
-    <!-- Open Graph (Facebook, WhatsApp, Instagram preview) -->
-    <meta property="og:title" content="Bluetooth Control using Arduino | HC-05 Project">
-    <meta property="og:description" content="Learn how to control LED wirelessly using Bluetooth module and Arduino.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bluetooth Home Automation using Arduino | HC-05 & Relay Project">
+    <meta property="og:description" content="Learn how to control home appliances wirelessly using Bluetooth module, Arduino, and relay.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/bluetooth-control.html">
-    <meta property="og:image" content="https://www.electronicwings.com/storage/PlatformSection/TopicContent/173/icon/HC-05%20Bluetooth%20Module%20Interfacing%20with%20Arduino%20UNO.jpg">
+    <meta property="og:url" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/bluetooth-home-automation.html">
+    <meta property="og:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/homeAuto-Bluetooth.jpeg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bluetooth Control using Arduino | HC-05 Project">
-    <meta name="twitter:description" content="Learn how to control LED wirelessly using Bluetooth module and Arduino.">
-    <meta name="twitter:image" content="https://www.electronicwings.com/storage/PlatformSection/TopicContent/173/icon/HC-05%20Bluetooth%20Module%20Interfacing%20with%20Arduino%20UNO.jpg">
+    <meta name="twitter:title" content="Bluetooth Home Automation using Arduino | HC-05 & Relay Project">
+    <meta name="twitter:description" content="Control home appliances wirelessly using Bluetooth module, Arduino, and relay. Step-by-step guide with circuit diagram and code.">
+    <meta name="twitter:image" content="https://circuitcreation.github.io/Circuit-Creation-RN/assets/images/homeAuto-Bluetooth.jpeg">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/bluetooth-control.html">
-
+    <link rel="canonical" href="https://circuitcreation.github.io/Circuit-Creation-RN/assets/bluetooth-home-automation.html">
 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bluetooth Control using Arduino | HC-05 Project</title>
+    <title>Bluetooth Home Automation using Arduino | HC-05 & Relay Project</title>
     <link rel="stylesheet" href="css/circuit.css">
     <link rel="icon" type="image/png" href="../favicon.png">
 </head>
@@ -54,10 +53,10 @@
 
         <!-- Section 1 -->
         <section class="project-header">
-            <h1>Bluetooth Control using Arduino (HC-05)</h1>
+            <h1>Bluetooth Home Automation using Arduino Uno and HC-05</h1>
             <p>
-                This project demonstrates how to control an LED wirelessly using a Bluetooth module (HC-05) and Arduino.
-                You can send commands from your smartphone to turn devices ON or OFF, making it a great beginner IoT project.
+                This project demonstrates how to control home appliances wirelessly using a Bluetooth module (HC-05), Arduino Uno, and a relay module.
+                You can send commands from your smartphone to turn devices ON or OFF, making it a foundation for smart home automation.
             </p>
             <span class="difficulty --beginner">Beginner</span>
         </section>
@@ -67,9 +66,8 @@
             <ul class="components-list">
                 <li>Arduino Uno</li>
                 <li>HC-05 Bluetooth Module</li>
-                <li>LED</li>
-                <li>220Ω Resistor</li>
-                <li>Breadboard</li>
+                <li>Home Appliance (e.g., Lamp, Fan)</li>
+                <li>Relay Module (5V)</li>
                 <li>Jumper Wires</li>
                 <li>USB Cable</li>
                 <li>Smartphone (Bluetooth Terminal App)</li>
@@ -80,7 +78,7 @@
             <h2>Circuit Connections</h2>
 
             <p>
-                Follow the steps below to connect the Bluetooth module and LED with Arduino.
+                Follow the steps below to connect the Bluetooth module and relay with Arduino.
             </p>
 
             <ol>
@@ -88,20 +86,22 @@
                 <li>Connect HC-05 GND to Arduino GND.</li>
                 <li>Connect HC-05 TX to Arduino RX (pin 0).</li>
                 <li>Connect HC-05 RX to Arduino TX (pin 1).</li>
-                <li>Connect LED positive to pin 8 through a 220Ω resistor.</li>
-                <li>Connect LED negative to GND.</li>
+                <li>Connect Relay IN to Arduino pin 2.</li>
+                <li>Connect Relay VCC to Arduino 5V.</li>
+                <li>Connect Relay GND to Arduino GND.</li>
+                <li>Connect the home appliance to the relay's normally open (NO) and common (COM) terminals.</li>
             </ol>
 
             <div class="circuit-container">
-                <img src="circuit-images/bluetooth_control_arduino.jpeg" class="circuit-image">
-                <button class="download-btn" onclick="downloadImage('circuit-images/bluetooth_control_arduino.jpeg','bluetooth_control_arduino.jpeg')">
+                <img src="circuit-images/homeAuto-Bluetooth.jpeg" class="circuit-image" alt="Bluetooth Home Automation Circuit">
+                <button class="download-btn" onclick="downloadImage('circuit-images/homeAuto-Bluetooth.jpeg','Bluetooth_Home_Automation_Circuit.jpeg')">
                     <i class="fas fa-download"></i> Download circuit diagram
                 </button>
             </div>
 
             <p>
                 The Bluetooth module receives commands from your phone and sends them to Arduino,
-                which then controls the LED accordingly.
+                which then controls the relay to turn the appliance ON or OFF.
             </p>
         </section>
 
@@ -114,41 +114,43 @@
                 <pre class="code-block">
                 <code>
 /*
-   Project: Bluetooth LED Control using Arduino
-   Description: Control an LED wirelessly using HC-05 Bluetooth module and Arduino. Send "1" to turn ON and "0" to turn OFF the LED.
+   Project: Bluetooth Home Automation using Arduino Uno and HC-05
+   Description: Control a relay wirelessly using HC-05 Bluetooth module and Arduino. Send "1" to turn ON and "2" to turn OFF the relay.
 
    Components:
      - Arduino Uno 
      - HC-05 Bluetooth Module
-     - LED 
-     - 220Ω Resistor 
-     - Breadboard 
+     - Relay Module
+     - Home Appliance
      - Jumper Wires
      - USB Cable 
      - Smartphone with Bluetooth Terminal App
+
    Author: Circuit Creation RN
 
 */
 
-// This code reads data from the Bluetooth module and controls an LED connected to pin 8 based on the received commands.
-
-
-char data;
+char command;
+int relayPin = 2;
 
 void setup() {
-  pinMode(8, OUTPUT);
+
+  pinMode(relayPin, OUTPUT);
+  digitalWrite(relayPin, HIGH); // make sure relay starts OFF
   Serial.begin(9600);
+
 }
 
 void loop() {
   if (Serial.available()) {
-    data = Serial.read();
+    command = Serial.read();
 
-    if (data == '1') {
-      digitalWrite(8, HIGH);
-    }
-    else if (data == '0') {
-      digitalWrite(8, LOW);
+    if (command == '1') {
+      digitalWrite(relayPin, LOW);  // Turn ON (active LOW)
+
+    } else if (command == '2') {
+      digitalWrite(relayPin, HIGH); // Turn OFF
+
     }
   }
 }
@@ -165,7 +167,7 @@ void loop() {
                 <li>Upload the code using Arduino IDE.</li>
                 <li>Reconnect Bluetooth module after upload.</li>
                 <li>Pair HC-05 with your phone (password: 1234 or 0000).</li>
-                <li>Use a Bluetooth terminal app to send "1" or "0".</li>
+                <li>Use a Bluetooth terminal app to send "1" to turn ON or "2" to turn OFF.</li>
             </ol>
         </section>
 
@@ -173,20 +175,19 @@ void loop() {
         <section class="project-section">
             <h2>Code Explanation</h2>
 
-            <h3>Serial Communication</h3>
+            <h3>Setup Function</h3>
             <p>
-                <code>Serial.begin(9600)</code> starts communication between Arduino and Bluetooth module.
+                <code>pinMode(relayPin, OUTPUT)</code> sets the relay pin as output.
+                <code>digitalWrite(relayPin, HIGH)</code> ensures the relay starts OFF (assuming active LOW relay).
+                <code>Serial.begin(9600)</code> initializes serial communication at 9600 baud rate.
             </p>
 
-            <h3>Reading Data</h3>
+            <h3>Loop Function</h3>
             <p>
-                <code>Serial.read()</code> reads incoming data from the Bluetooth module.
-            </p>
-
-            <h3>Controlling LED</h3>
-            <p>
-                If the received data is <code>'1'</code>, the LED turns ON.
-                If it is <code>'0'</code>, the LED turns OFF.
+                <code>if (Serial.available())</code> checks if data is available from Bluetooth.
+                <code>command = Serial.read()</code> reads the incoming command.
+                If command is '1', sets relay LOW to turn ON.
+                If command is '2', sets relay HIGH to turn OFF.
             </p>
         </section>
 
@@ -195,10 +196,11 @@ void loop() {
             <h2>Common Mistakes & Troubleshooting</h2>
 
                 <ul class="mistakes-list">
-                <li><strong>Bluetooth not connecting:</strong> Check pairing password (1234).</li>
+                <li><strong>Bluetooth not connecting:</strong> Check pairing password (1234 or 0000).</li>
                 <li><strong>Upload error:</strong> Disconnect RX/TX before uploading.</li>
-                <li><strong>LED not working:</strong> Check resistor and polarity.</li>
-                <li><strong>No response:</strong> Ensure correct baud rate (9600).</li>
+                <li><strong>Relay not working:</strong> Ensure correct relay connections and power supply.</li>
+                <li><strong>No response:</strong> Ensure correct baud rate (9600) and app settings.</li>
+                <li><strong>Appliance not turning on:</strong> Check relay wiring to appliance and power source.</li>
             </ul>
             </section>
 
@@ -207,9 +209,9 @@ void loop() {
             <h2>What You Learned</h2>
             <ul>
                 <li>How Bluetooth communication works with Arduino.</li>
-                <li>Using HC-05 module.</li>
-                <li>Wireless control using smartphone.</li>
-                <li>Basic IoT project development.</li>
+                <li>Using HC-05 module for wireless control.</li>
+                <li>Controlling relays for home automation.</li>
+                <li>Basic IoT project development for smart homes.</li>
             </ul>
         </section>
 

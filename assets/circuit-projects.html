@@ -311,7 +311,7 @@
                 </div>
             </a>
             <!-- Project Card 19 -->
-            <a href="" class="project-a" data-category="servo">
+            <a href="" class="project-a" data-category="servo Input-Projects">
                 <div class="project-card">
                     <h3>Servo controlled by potentiometer</h3>
                     <img loading="lazy" class="ard-imgg" src="images/servo_pot.jpg" alt="">
@@ -406,6 +406,16 @@
                 </div>
              </a>
             <!-- Project Card 27 -->
+             <a href="bluetooth-home-automation.html" class="project-a" data-category="Module-Projects IoT-Projects">
+                <div class="project-card">
+                    <h3>Bluetooth Home Automation using Arduino Uno and HC-05</h3>
+                    <img loading="lazy" class="ard-imgg" src="images/home-automation-bluetooth.jpeg" alt="">
+                    <p>
+                        Control home appliances wirelessly using HC-05 Bluetooth module and Arduino with relay. Perfect for smart home automation projects.
+                    </p>
+                </div>
+             </a>
+            <!-- Project Card 28 -->
              <a href="" class="project-a">
                 <div class="project-card">
                     <h3>mini dino game using LCD display</h3>
@@ -496,6 +506,16 @@
                 e.preventDefault();
             }
         });
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 

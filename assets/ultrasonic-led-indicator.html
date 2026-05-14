@@ -249,6 +249,10 @@ void loop() {
 
     <footer>
         <p>&copy; 2026 Circuit Creation RN. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/circuitcreation_rn/" title="Instagram"><img width="26px" src="images/download.png" alt=""></a>
+            <a href="https://www.youtube.com/@CircuitCreation-RN" title="YouTube"><img class="yyy" width="25px" src="images/InShot_20251114_191952412.jpg" alt=""></a>
+        </div>
     </footer>
 
     <script>
@@ -274,6 +278,16 @@ void loop() {
                 e.preventDefault();
             }
         });
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        }, { passive: false });
     </script>
 
 </body>
