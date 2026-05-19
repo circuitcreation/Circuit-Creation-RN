@@ -26,6 +26,61 @@ a {
 
 button {
   font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  color: inherit;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(99, 102, 241, 0.95));
+  transform: translateY(100%);
+  transform-origin: bottom;
+  transition: transform 0.35s ease;
+  z-index: -1;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: -1;
+}
+
+button:hover::before {
+  transform: translateY(0%);
+}
+
+button:hover::after {
+  opacity: 1;
+}
+
+button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.container .left button {
+  background: transparent;
+  border: none;
+  padding: 6px 10px;
+  font-size: 16px;
+  color: #494949;
+  cursor: pointer;
+  transition: transform .18s ease, color .18s;
+  overflow: visible;
+}
+
+.container .left button::before,
+.container .left button::after {
+  display: none;
 }
 
 .yyy {
@@ -594,16 +649,37 @@ a:focus {
   background-color: #ffffff;
   padding: 18px;
   border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   transition: transform 0.24s ease, box-shadow 0.24s ease;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: relative;
+  overflow: hidden;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  
+}
+
+/* Reflection effect */
+.project-card::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-75%;
+    width:50%;
+    height:200%;
+    background:rgba(255,255,255,0.25);
+    transform:rotate(25deg);
+    transition:0.8s;
+    filter:blur(8px);
+}
+
+.project-card:hover::before{
+    left:130%;
 }
 
 .project-card h3 {
