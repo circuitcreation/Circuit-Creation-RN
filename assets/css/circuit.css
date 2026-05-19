@@ -36,11 +36,17 @@ button {
 button::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(99, 102, 241, 0.95));
-  transform: translateY(100%);
-  transform-origin: bottom;
-  transition: transform 0.35s ease;
+  width: 140%;
+  height: 220%;
+  left: -20%;
+  bottom: -220%;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.95),
+    rgba(99, 102, 241, 0.95)
+  );
+  border-radius: 80%;
+  transition: bottom 0.5s ease;
   z-index: -1;
 }
 
@@ -56,6 +62,7 @@ button::after {
 
 button:hover::before {
   transform: translateY(0%);
+  bottom: -40%;
 }
 
 button:hover::after {
