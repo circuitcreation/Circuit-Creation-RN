@@ -656,7 +656,7 @@ a:focus {
   background-color: #ffffff;
   padding: 18px;
   border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.22);
   transition: transform 0.24s ease, box-shadow 0.24s ease;
   display: flex;
   flex-direction: column;
@@ -665,28 +665,52 @@ a:focus {
   overflow: hidden;
 }
 
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-  
+.project-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
 }
 
-/* Reflection effect */
+/* Reflection layer */
 .project-card::before{
-    content:"";
-    position:absolute;
-    top:-50%;
-    left:-75%;
-    width:50%;
-    height:200%;
-    background:rgba(255,255,255,0.25);
-    transform:rotate(25deg);
-    transition:0.8s;
-    filter:blur(8px);
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+
+  width: 40%;
+  height: 200%;
+
+  background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.22),
+      transparent
+  );
+
+  transform: rotate(25deg);
+
+  opacity: 0;
+  pointer-events: none;
 }
 
+/* Start infinite animation on hover */
 .project-card:hover::before{
-    left:130%;
+  opacity: 1;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine{
+ 0%{
+      left:-75%;
+  }
+
+  30%{
+      left:140%;
+  }
+
+  100%{
+      left:140%;
+  }
 }
 
 .project-card h3 {
