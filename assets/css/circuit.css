@@ -805,7 +805,7 @@ a:focus {
   width: 600px;
   margin: 25px auto;
   border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2);
 }
 
 .circuit-container {
@@ -976,6 +976,83 @@ a:focus {
   border-radius: 10px;
 }
 
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 44px;
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1;
+  border-radius: 9999px;
+  color:#0f172a !important;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+.search-input::placeholder {
+  color: #64748b !important; /* Medium-Dark Slate Gray placeholder */
+  opacity: 1;
+}
+.search-input:focus {
+  background-color: #ffffff !important;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+.search-input:focus ~ .search-icon {
+  color: #3b82f6;
+}
+.search-clear-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  cursor: pointer;
+  display: none;
+  transition: color 0.2s ease;
+  z-index: 10;
+}
+.search-clear-btn:hover {
+  color: #ef4444;
+}
+.search-input:not(:placeholder-shown) ~ .search-clear-btn {
+  display: block;
+}
+.filter-search-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+.no-results-card {
+  display: none;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.no-results-card i {
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem;
+}
 /* Slightly increase gap on larger screens */
 @media (min-width: 1200px) {
   .projects-grid {
@@ -1457,6 +1534,12 @@ footer .footer-bottom p {
 
   .mobile-video {
     display: block;
+  }
+  .filter-search-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0;
   }
 }
 

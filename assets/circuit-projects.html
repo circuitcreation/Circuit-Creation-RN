@@ -84,6 +84,13 @@
         <section class="projects-intro">
             <div class="projects-intro-header">
                 <h1>Arduino Projects</h1>
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="aiSearchBar" class="search-input" placeholder="Search for projects (e.g. 'heat', 'light', 'buzzer')..." autocomplete="off">
+                    <i class="fa-solid fa-circle-xmark search-clear-btn" id="searchClear"></i>
+                </div>
+                
                 <div class="category-filter">
                     <label for="categorySelect">Filter:</label>
                     <div class="custom-dropdown" id="customDropdown">
@@ -416,7 +423,7 @@
                 </div>
              </a>
             <!-- Project Card 28 -->
-             <a href="" class="project-a">
+             <a href="" class="project-a" data-category="">
                 <div class="project-card">
                     <h3>mini dino game using LCD display</h3>
                     <img src="" class="ard-imgg" alt="">
@@ -426,12 +433,39 @@
                     </p>
                 </div>
              </a>
+             <!-- Project Card 29 -->
+              <a href="smart-dustbin.html" class="project-a" data-category="Sensor-Projects servo">
+                <div class="project-card">
+                    <h3>Smart dustbin using Arduino</h3>
+                    <img src="images/Dustbin_Project.jpeg" class="ard-imgg" alt="">
+                    <p>
+                        Build a smart dustbin that opens automatically using an ultrasonic sensor and Arduino.
+                    </p>
+                </div>
+              </a>
+
+            <div id="noResults" class="no-results-card">
+                <i class="fa-solid fa-microchip"></i>
+                <p class="text-xl font-semibold mb-1">No Matching Projects Found</p>
+                <p class="text-sm">Try searching with other terms like "light", "motor", "sound", or "analog".</p>
+            </div>
+
             <!-- Coming soon sigh -->
             <section class="coming-soon">
                 <h2>More Projects Coming Soon!</h2>
                 <p>Stay tuned for more exciting Arduino projects.</p>
             </section>
         </section>
+
+
+        <!-- Sensor-Projects -->
+        <!-- LED-projects -->
+        <!-- servo -->
+        <!-- Input-Projects -->
+        <!-- Output-Projects -->
+        <!-- Module-Projects -->
+        <!-- IoT-Projects -->
+        <!-- other -->
     </div>
 
     <footer>
@@ -516,6 +550,141 @@
                 e.preventDefault();
             }
         }, { passive: false });
+                // UPDATED: AI SEARCH ENGINE & SYNERGY FILTER COUPLING START
+
+        // Keep track of the currently selected dropdown category
+        let currentCategory = 'all';
+
+        // Dictionary of AI synonyms and context matching words to make searching super smart
+        const aiSynonyms = {
+            "blink": ["flash", "toggle", "on", "off", "delay", "periodic", "frequency"],
+            "pattern": ["chaser", "sequence", "running", "effect", "animation"],
+            "button": ["switch", "press", "click", "tactile", "digital input"],
+            "servo": ["motor", "sweep", "degree", "angle", "rotate", "robotic", "movement", "arm"],
+            "ultrasonic": ["distance", "range", "sonar", "depth", "proximity", "obstacle", "radar"],
+            "ldr": ["light", "photoresistor", "dark", "brightness", "day", "night", "sun", "illumination", "automatic"],
+            "lcd": ["display", "screen", "text", "characters", "print", "monitor", "message"],
+            "temperature": ["temp", "heat", "cold", "weather", "thermometer", "degrees", "celsius", "hot"],
+            "ir": ["infrared", "proximity", "detection", "line follower", "barrier"],
+            "buzzer": ["sound", "beep", "tone", "alarm", "noise", "frequency", "music", "audio", "speaker"],
+            "potentiometer": ["pot", "knob", "dial", "analog input", "variable", "tune", "adjust"],
+            "soil": ["moisture", "water", "humidity", "plant", "garden", "agriculture", "wet", "dry"],
+            "touch": ["capacitive", "finger", "contact", "press"],
+            "joystick": ["analog", "controller", "axis", "x-y", "thumbstick", "navigation"],
+            "pir": ["motion", "movement", "security", "intruder", "infrared", "passive", "detect"],
+            "vibration": ["shake", "shock", "tilt", "impact", "knock", "earthquake"],
+            "gas": ["smoke", "mq2", "air", "pollution", "leak", "fire", "safety", "breath"],
+            "relay": ["switch", "high voltage", "appliance", "ac", "bulb", "home automation"],
+            "piano": ["keys", "buzzer", "tune", "melody", "sound", "music"],
+            "7-segment": ["seven", "segment", "display", "digit", "number", "counter"],
+            "water": ["liquid", "level", "indicator", "rain", "tank", "depth"],
+            "radar": ["sonar", "sweep", "map", "processing", "scan"],
+            "bluetooth": ["wireless", "hc-05", "hc05", "remote", "serial", "phone", "app"],
+            "dino": ["game", "t-rex", "lcd", "run", "jump", "play"],
+            "dustbin": ["trash", "bin", "garbage", "waste", "lid", "smart"]
+        };
+
+        const aiSearchBar = document.getElementById('aiSearchBar');
+        const searchClear = document.getElementById('searchClear');
+        const noResults = document.getElementById('noResults');
+
+        // Handle category option selection
+        dropdownOptions.forEach(option => {
+            option.addEventListener('click', function () {
+                const value = this.getAttribute('data-value');
+                const text = this.textContent;
+                dropdownSelected.textContent = text;
+                dropdownMenu.classList.remove('active');
+                
+                currentCategory = value;
+                applySearchAndFilter(); // Apply updated filtering state
+            });
+        });
+
+        // Trigger filter on user search input
+        aiSearchBar.addEventListener('input', function() {
+            applySearchAndFilter();
+        });
+
+        // Clear search input button action
+        searchClear.addEventListener('click', function() {
+            aiSearchBar.value = '';
+            applySearchAndFilter();
+            aiSearchBar.focus();
+        });
+
+        // Combined Filter and Search Function
+        function applySearchAndFilter() {
+            const query = aiSearchBar.value.toLowerCase().trim();
+            const projectCards = document.querySelectorAll('.project-a');
+            let visibleCount = 0;
+
+            projectCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category') || '';
+                const titleElement = card.querySelector('h3');
+                const title = titleElement ? titleElement.textContent.toLowerCase() : '';
+                const descElement = card.querySelector('p');
+                const desc = descElement ? descElement.textContent.toLowerCase() : '';
+
+                // 1. Check Category Filter Match first
+                let matchesCategory = false;
+                if (currentCategory === 'all') {
+                    matchesCategory = true;
+                } else if (cardCategory.includes(currentCategory)) {
+                    matchesCategory = true;
+                }
+
+                // 2. Check AI Search Match
+                let matchesSearch = false;
+                if (query === '') {
+                    matchesSearch = true; // No search term active
+                } else {
+                    // Check direct matches in title and description
+                    if (title.includes(query) || desc.includes(query) || cardCategory.toLowerCase().includes(query)) {
+                        matchesSearch = true;
+                    } else {
+                        // Check semantic matches using AI Synonym Dictionary
+                        for (const [key, synonyms] of Object.entries(aiSynonyms)) {
+                            // If title or desc contains the keyword...
+                            if (title.includes(key) || desc.includes(key)) {
+                                // check if the search query is matches any synonyms related to this keyword
+                                const synonymMatch = synonyms.some(syn => syn.toLowerCase().includes(query) || query.includes(syn.toLowerCase()));
+                                if (synonymMatch) {
+                                    matchesSearch = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // 3. Render decision
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show or hide "No Results" message card
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+                document.querySelector('.coming-soon').style.display = 'none';
+            } else {
+                noResults.style.display = 'none';
+                document.querySelector('.coming-soon').style.display = '';
+            }
+        }
+
+        // Overwrite standard filterProjects function to support combined search engine state
+        function filterProjects(category) {
+            currentCategory = category;
+            applySearchAndFilter();
+        }
+
+        // UPDATED: AI SEARCH ENGINE & SYNERGY FILTER COUPLING END
+
     </script>
 </body>
 
